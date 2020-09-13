@@ -2,6 +2,58 @@
 body {
     background-color: #DAF0E0;
 }
+
+#top_menu {
+    background-color: #BAD9CC;
+    width: 100%;
+    height: 30px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.top_menu {
+    height: 30px;
+}
+
+#programming{
+    background-color: #BCD9BA;
+    margin-top: 30px;
+    margin-left: 0px;
+    height: 100vh;
+    width: 100%;
+}
+
+#math {
+    background-color: #C7FCF8;
+    height: 100vh;
+    width: 100%;
+}
+
+#contact{
+    background-color: #BCD9BA;
+    height: 100vh;
+    width: 100%;
+}
 #social_media {
     background-color: #E9FAD9;
+    width:105px;
+    position: fixed;
+    left: 45%;
+    right: 50%;
+    margin-top: auto;
+    bottom: 0px;
+    border-radius: 20%;
+}
+
+.social_media {
+    width: 50px;
+}
+#facebook {
+    /* position: fixed; */
+    float: right;
+}
+#linkedin {
+    /* position: fixed; */
+    float: left;
 }
