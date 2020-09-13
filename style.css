@@ -1,5 +1,5 @@
 /* #C7FCF8  #BAD9CC #DAF0E0 #BCD9BA #E9FAD9*/
-body {
+html, body {
     background-color: #DAF0E0;
 }
 
@@ -13,8 +13,23 @@ body {
 }
 
 .top_menu {
+    position: fixed;
+
     height: 30px;
+    width: 100px;
+    border-width: 0;
 }
+.top_menu:hover {
+    background-color: #E9FAD9;
+}
+#about_me {
+    right: 105px;
+}
+#contact_button {
+    right: 0px;
+}
+
+
 
 #programming{
     background-color: #BCD9BA;
@@ -29,7 +44,11 @@ body {
     height: 100vh;
     width: 100%;
 }
-
+#mees{
+    background-color: #bac1d9;
+    height: 100vh;
+    width: 100%;
+}
 #contact{
     background-color: #BCD9BA;
     height: 100vh;
@@ -45,15 +64,12 @@ body {
     bottom: 0px;
     border-radius: 20%;
 }
-
 .social_media {
     width: 50px;
 }
 #facebook {
-    /* position: fixed; */
     float: right;
 }
 #linkedin {
-    /* position: fixed; */
     float: left;
-}
+  }
