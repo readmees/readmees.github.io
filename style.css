@@ -33,6 +33,7 @@ html, body {
 
 #programming{
     background-color: #BCD9BA;
+    background-image: url(python.png);
     margin-top: 30px;
     margin-left: 0px;
     height: 100vh;
@@ -73,3 +74,5 @@ html, body {
 #linkedin {
     float: left;
   }
+
+
