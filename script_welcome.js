@@ -1,11 +1,11 @@
 // ——————————————————————————————————————————————————
 // TextScramble
-// ——————————————————————————————————————————————————
+// —————————————————————————————————————————————————— '!<>-_\\/[]{}—=+*^?#________'
 
 class TextScramble {
   constructor(el) {
     this.el = el;
-    this.chars = '!<>-_\\/[]{}—=+*^?#________';
+    this.chars = '01';
     this.update = this.update.bind(this);
   }
   setText(newText) {
@@ -61,6 +61,8 @@ class TextScramble {
 // ——————————————————————————————————————————————————
 
 const phrases = [
+'01010110',
+'01011101',
 'Welcome...',
 'Would you like to learn you to program?',
 'I can teach you...',

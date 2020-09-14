@@ -8,7 +8,7 @@ html, body {
     width: 100%;
     height: 30px;
     position: fixed;
-    top: 0px;
+    top: -50px;
     left: 0px;
 }
 
@@ -62,7 +62,7 @@ html, body {
     left: 45%;
     right: 50%;
     margin-top: auto;
-    bottom: 0px;
+    bottom: -100px;
     border-radius: 20%;
 }
 .social_media {
