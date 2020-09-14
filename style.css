@@ -53,6 +53,7 @@
     width: 100%;
 }
 #mees{
+    position: relative;
     background-color: #bac1d9;
     height: 100vh;
     width: 100%;
