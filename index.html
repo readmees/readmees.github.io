@@ -14,6 +14,21 @@
         <button id="contact_button" class="top_menu" onclick="window.location.hash='contact';"> <span> <p> Contact</p></span> </button>
     </div>
 
+    <script>
+        // When the user scrolls down 20px from the top of the document, slide down the navbar
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("top_menu").style.top = "0";
+            document.getElementById("social_media").style.bottom = "0";
+          } else {
+            document.getElementById("top_menu").style.top = "-50px";
+            document.getElementById("social_media").style.bottom = "-100px";
+          }
+        }
+        </script>
+
 
 <!-- partial:index.partial.html -->
 <div class="container">
