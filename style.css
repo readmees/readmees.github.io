@@ -1,26 +1,31 @@
+/* #3A3B6E #1F2053 #212121 #4F8DFF*/
 /* #C7FCF8  #BAD9CC #DAF0E0 #BCD9BA #E9FAD9*/
-html, body {
-    background-color: #DAF0E0;
-}
 
 #top_menu {
-    background-color: #BAD9CC;
+    background-color: #1F2053;
     width: 100%;
-    height: 30px;
+    height: 40px;
     position: fixed;
     top: -50px;
     left: 0px;
 }
 
 .top_menu {
+    font-family: 'Roboto Mono', monospace;
     position: fixed;
-
-    height: 30px;
+    background-color:transparent;
+    height: 50px;
     width: 100px;
     border-width: 0;
 }
+
+p .button {
+    color: white;
+}
+
+
 .top_menu:hover {
-    background-color: #E9FAD9;
+    background-color: #3A3B6E;
 }
 #about_me {
     right: 105px;
@@ -31,14 +36,14 @@ html, body {
 
 
 
-#programming{
+/* #programming{
     background-color: #BCD9BA;
     background-image: url(python.png);
     margin-top: 30px;
     margin-left: 0px;
     height: 100vh;
     width: 100%;
-}
+} */
 
 #math {
     background-color: #C7FCF8;
