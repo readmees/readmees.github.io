@@ -8,6 +8,7 @@
     position: fixed;
     top: -50px;
     left: 0px;
+    z-index: 1;
 }
 
 .top_menu {
@@ -17,9 +18,10 @@
     height: 50px;
     width: 100px;
     border-width: 0;
+    z-index: 2;
 }
 
-p .button {
+.button {
     color: white;
 }
 

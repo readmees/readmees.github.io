@@ -1,14 +1,20 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
 
-
-.text1 {
-  position: absolute;
-  width: 450px;
-  left: 50%;
-  margin-left: -225px;
-  height: 40px;
+/* .container2 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+} */
+.text2 {
+  position: relative;
+  font-size: 50px;
+  /* justify-content: center;
+  align-items: center; */
+  left: 10%;
+  /* margin-left: -225px; */
+  /* height: 40px; */
   top: 50%;
-  margin-top: -20px;
+  /* margin-top: -20px; */
 }
 
 p .started {
@@ -22,8 +28,9 @@ p .started {
 
 .word {
   position: absolute;
-  width: 220px;
+  left: 50%;
   opacity: 0;
+  z-index: 0;
 }
 
 .letter {
