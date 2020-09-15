@@ -10,6 +10,12 @@ body {
     overflow-x: hidden;
 }
 
+#maps {
+    position: absolute;
+    width:100%;
+    height:60%;
+    top: 50px;
+}
 
 
 #top_menu {
@@ -87,6 +93,7 @@ body {
     width: 100%;
 }
 #contact{
+    position: relative;
     background-color: #BCD9BA;
     height: 100vh;
     width: 100%;

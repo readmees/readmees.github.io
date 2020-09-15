@@ -99,7 +99,7 @@
   content: attr(data-cta);
   display: inline-block;
   margin-left: 1.5vmin;
-  font-size: calc(var(--font-size) / 3.25);
+  font-size: calc(var(--font-size) / 2);
   font-weight: 400;
   letter-spacing: 0.125vmin;
   opacity: 0;
