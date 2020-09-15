@@ -2,7 +2,7 @@
 
 .text2 {
   position: absolute;
-  font-size: 50px;
+  font-size: 100px;
   margin: 0 auto;
   right:10%;
   top:20%;
@@ -12,7 +12,6 @@ p .started {
   top: 50%;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
-  font-size: 400px;
   display: inline-block;
   vertical-align: top;
   margin: 0;
