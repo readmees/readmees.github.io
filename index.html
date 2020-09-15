@@ -13,6 +13,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <style>
+
+    .header {
+      position: fixed;
+      bottom: 0;
+      z-index: 4;
+      width: 100%;
+    }
+
+
+    .progress-bar {
+      background-image: url(https://imgur.com/F4ckOyl.png);
+      height: 8px;
+      /* background: #4caf50; */
+      width: 0%;
+    }
+
+
+    </style>
+    </head>
+    <body>
+
+    <div class="header">
+        <div class="progress-bar" id="myBar"> </div>
+    </div>
     <div id="top_menu">
         <button id="about_me" class="top_menu" onclick="window.location.hash='mees';"> <span> <p class='button'> Mees Meester</p> </span> </button>
         <button id="contact_button" class="top_menu" onclick="window.location.hash='contact';"> <span> <p class='button'> Contact</p></span> </button>
@@ -123,7 +148,17 @@
             </div>
 
     </div>
+    <script>
+      // When the user scrolls the page, use scrollbar
+      window.onscroll = function() {myFunction()};
 
+      function myFunction() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("myBar").style.width = scrolled + "%";
+      }
+      </script>
     <a href="https://www.facebook.com/mees.meester.56"></a>
 </body>
 </html>
