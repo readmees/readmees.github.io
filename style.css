@@ -1,5 +1,11 @@
 /* #3A3B6E #1F2053 #212121 #4F8DFF*/
 /* #C7FCF8  #BAD9CC #DAF0E0 #BCD9BA #E9FAD9*/
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+  }
+
 body {
     overflow-x: hidden;
 }
