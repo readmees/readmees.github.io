@@ -1,8 +1,32 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Sura:wght@400;700&display=swap"); */
 
+@media only screen and (max-width: 600px) {
+ #img_wrapper{
+   float: left;
+ }
+  #img_wrapper_left {
+    position: relative;
+  }
+  #img_wrapper_right {
+    position: relative;
+  }
+  .promo {
+    position: relative;
+    display: grid;
+    place-items: center;
+    grid-gap: var(--space);
+    padding: var(--space);
+    font-family: "Sura", sans-serif;
+    color: white;
+    cursor: pointer;
+    width: var(60);
+    height: var(60);
+  }
+}
+
 :root {
   --src: url(https://images.unsplash.com/photo-1554620121-59e7f3f6e3a4?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy);
-  --size: 60vmin;
+  --size: 30vmin;
   --space: 8vmin;
   --duration: 300ms;
   --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
@@ -13,19 +37,38 @@
   box-sizing: border-box;
 }
 
+
+
+#img_wrapper_left {
+  position: relative;
+  left: 15%;
+  float: left;
+}
+#img_wrapper_right {
+  position: relative;
+  right: 15%;
+  float: right;
+}
+
+
 .promo {
+  position: relative;
   display: grid;
   place-items: center;
   grid-gap: var(--space);
-  margin: 0 auto;
   padding: var(--space);
   font-family: "Sura", sans-serif;
   color: white;
-  background-color: rgb(29, 30, 34);
-  position: relative;
   cursor: pointer;
   width: var(--size);
   height: var(--size);
+}
+
+.promo .left{
+
+}
+
+.promo .right{
 }
 
 .title {

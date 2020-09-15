@@ -1,6 +1,8 @@
 /* #3A3B6E #1F2053 #212121 #4F8DFF*/
 /* #C7FCF8  #BAD9CC #DAF0E0 #BCD9BA #E9FAD9*/
-
+body {
+    overflow-x: hidden;
+}
 #top_menu {
     background-color: #1F2053;
     width: 100%;
