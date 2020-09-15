@@ -9,7 +9,10 @@
 body {
     overflow-x: hidden;
 }
-
+#mail{
+    background-color: white;
+    height: 60%;
+}
 #maps {
     position: absolute;
     width:100%;
