@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Sura:wght@400;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Sura:wght@400;700&display=swap"); */
 
 :root {
   --src: url(https://images.unsplash.com/photo-1554620121-59e7f3f6e3a4?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy);
@@ -13,7 +13,7 @@
   box-sizing: border-box;
 }
 
-body {
+.promo {
   display: grid;
   place-items: center;
   grid-gap: var(--space);
@@ -22,9 +22,6 @@ body {
   font-family: "Sura", sans-serif;
   color: white;
   background-color: rgb(29, 30, 34);
-}
-
-.promo {
   position: relative;
   cursor: pointer;
   width: var(--size);
