@@ -36,6 +36,20 @@ body {
     color: white;
 }
 
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 4;
+    width: 100%;
+  }
+
+
+  .progress-bar {
+    background-image: url(https://imgur.com/F4ckOyl.png);
+    height: 8px;
+    /* background: #4caf50; */
+    width: 0%;
+  }
 
 .top_menu:hover {
     background-color: #3A3B6E;
