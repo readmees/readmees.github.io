@@ -13,13 +13,13 @@ function changeWord() {
   for (var i = 0; i < cw.length; i++) {
     animateLetterOut(cw, i);
   }
-  
+
   for (var i = 0; i < nw.length; i++) {
     nw[i].className = 'letter behind';
     nw[0].parentElement.style.opacity = 1;
     animateLetterIn(nw, i);
   }
-  
+
   currentWord = (currentWord == wordArray.length-1) ? 0 : currentWord+1;
 }
 
@@ -46,9 +46,9 @@ function splitLetters(word) {
     word.appendChild(letter);
     letters.push(letter);
   }
-  
+
   wordArray.push(letters);
 }
 
 changeWord();
-setInterval(changeWord, 4000);
+setInterval(changeWord, 2000);

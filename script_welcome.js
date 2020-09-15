@@ -62,9 +62,8 @@ class TextScramble {
 
 const phrases = [
 '01010110',
-'01011101',
 'Welcome...',
-'Would you like to learn you to program?',
+'Would you like to learn how to program?',
 'I can teach you...',
 'Scroll down for more information'];
 
@@ -75,7 +74,7 @@ const fx = new TextScramble(el);
 let counter = 0;
 const next = () => {
   fx.setText(phrases[counter]).then(() => {
-    setTimeout(next, 800);
+    setTimeout(next, 1500);
   });
   counter = (counter + 1) % phrases.length;
 };
