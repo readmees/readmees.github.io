@@ -2,12 +2,14 @@
        window.onscroll = function() {scrollFunction(); scrollbar();};
 
        function scrollFunction() {
-         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+         if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
            document.getElementById("top_menu").style.top = "0";
            document.getElementById("social_media").style.bottom = "0";
+           document.getElementById("myBar").style.top = "0";
          } else {
            document.getElementById("top_menu").style.top = "-50px";
            document.getElementById("social_media").style.bottom = "-100px";
+           document.getElementById("myBar").style.top = "-100px";
          }
        }
              // When the user scrolls the page, use scrollbar
