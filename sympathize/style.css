@@ -1,0 +1,49 @@
+body, html {
+    background-color: #382190;
+    font-family: 'Roboto Mono', monospace;
+
+}
+
+#menubar{
+    background-color: #23303D;
+    height: 40px;
+    width: 100%;
+    position: fixed;
+}
+
+.button :hover {
+    position: absolute;
+    right: 0px;
+    height: 40px;
+    width: 100px;
+    color: white;
+    background-color: #B4DDDA;
+}
+#forum {
+    position: absolute;
+    text-align: center;
+    right: 0px;
+    background-color: #382190;
+    height: 40px;
+    width: 100px;
+    color: white;
+}
+#home {
+    position: absolute;
+    text-align: center;
+    right: 110px;
+    background-color: #382190;
+    height: 40px;
+    width: 100px;
+    color: white;
+}
+.img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+#welcome {
+     height: 100%;
+     width: 100%;
+}
