@@ -47,7 +47,10 @@ Wij zullen elke vijf jaar al onze gebruikers gegevens verwijderen (eerstvolgende
 Delen van persoonsgegevens met derden
 Stampy deelt uw persoonsgegevens met verschillende derden als dit noodzakelijk is voor het uitvoeren van de overeenkomst en om te voldoen aan een eventuele wettelijke verplichting. Met bedrijven die u gegevens verwerken in onze opdracht, sluiten wij een verwerkersovereenkomst om te zorgen voor eenzelfde niveau van beveiliging en vertrouwelijkheid van uw gegevens. Stampy blijft verantwoordelijk voor deze verwerkingen. Daarnaast verstrekt Stampy uw persoonsgegevens aan andere derden. Dit doen wij alleen met uw nadrukkelijke toestemming.
 
-[voeg hier een tabel toe met: de categorie waar derde toe behoort, naam en jurisdictie, doel en welke gegevens.]
+De derde partijen die wij gebruiken:
+Tribe | gebruiken we omdat we hiermee de community kunnen hosten, zie https://tribe.so/.
+Heroku | gebruiken we omdat we hier de externe websites en databases kunnen hosten, zie https://www.heroku.com/.
+GitHub | gebruiken we omdat we hier onze programma's kunnen bewaren. Het is te vergelijken met een Google Drive voor programmeurs, zie https://github.com/. Deze privacy verklaring is zelf ook gehost op GitHub.
 
 
 Cookies, of vergelijkbare technieken, die wij gebruiken
