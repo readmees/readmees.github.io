@@ -1,0 +1,32 @@
+
+/* Define default spinner */
+.ui-icon-loading {
+	background: url("../libs/jquerymobile/1.4.5/images/ajax-loader.gif") repeat scroll 0 0 / 46px 46px transparent!important;
+}
+/* mobilecontainer */
+.ui-content.Scan_mobilecontainer {
+	padding: 15px 15px 15px 15px;
+}
+/* barcode */
+.Scan_barcode {
+	margin: 4px 0px 4px 0px;
+}
+/* name */
+.Scan_name {
+	margin: 4px 0px 4px 0px;
+}
+/* quantity */
+.Scan_quantity {
+	margin: 4px 0px 4px 0px;
+}
+/* mobilebutton_2 */
+#Scan_mobilebutton_2 {
+
+}
+.ui-btn.Scan_mobilebutton_2 {
+	margin: 4px 5px 4px 5px;
+}
+/* mobilefooter */
+.Scan_mobilefooter {
+	min-height:38px;
+}
