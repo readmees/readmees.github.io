@@ -1,0 +1,26 @@
+
+/* Define default spinner */
+.ui-icon-loading {
+	background: url("../libs/jquerymobile/1.4.5/images/ajax-loader.gif") repeat scroll 0 0 / 46px 46px transparent!important;
+}
+/* mobilecontainer */
+.ui-content.Welkom_mobilecontainer {
+	padding: 15px 15px 15px 15px;
+}
+/* mobileimage_2 */
+.Welkom_mobileimage_2 {
+	margin: 4px 0px 4px 0px;
+	width: 100%; height: 100%;
+	display: block;
+}
+/* mobilebutton_3 */
+#Welkom_mobilebutton_3 {
+
+}
+.ui-btn.Welkom_mobilebutton_3 {
+	margin: 4px 5px 4px 5px;
+}
+/* mobilefooter */
+.Welkom_mobilefooter {
+	min-height:38px;
+}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>
+            Fast_API
+        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="msapplication-tap-highlight" content="no">
+        <!-- Enable all requests, inline styles, and eval() -->
+        <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready data:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *">
+        <!-- Uncomment link and meta tags below to activate PWA icons and theme color -->
+        <!-- link rel="manifest" href="../manifest.json" crossOrigin="use-credentials" -->
+        <!-- meta name="theme-color" content="#ffffff" -->
+        <link href="../css/theme/jqm/jqm.css" rel="stylesheet" />
+        <link href="../css/theme/flat-ui/flat-ui.css" rel="stylesheet" />
+        <link href="../libs/apperyio/iphone-fix.css" rel="stylesheet" type="text/css" />
+        <link href="../libs/jquerymobile/1.4.5/jquery.mobile.structure-1.4.5.css" rel="stylesheet"
+        />
+        <link type="text/css" rel="stylesheet" href="../css/CSS1.css" />
+        <!-- Uncomment this script to activate service worker -->
+        <!-- <script>
+        if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('../sw.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.error('Error', err));
+        }
+        </script>
+        -->
+        <script type="text/javascript" src="../libs/underscore/underscore.js">
+        </script>
+        <script type="text/javascript" src="../libs/store/json2.js">
+        </script>
+        <script type="text/javascript" src="../libs/jquery/jquery-2.1.1.js">
+        </script>
+        <script type="text/javascript" src="../libs/jquery/jquery-ajaxTransport.js">
+        </script>
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function() {
+                if (navigator.userAgent.toLowerCase().indexOf("android") != -1) {
+                    $.mobile.defaultPageTransition = 'none';
+                    $.mobile.defaultDialogTransition = 'none';
+                } else if (navigator.userAgent.toLowerCase().indexOf("msie") != -1) {
+                    $.mobile.allowCrossDomainPages = true;
+                    $.support.cors = true;
+                } else if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
+                    $.mobile.hashListeningEnabled = false;
+                }
+            });
+        </script>
+        <script type="text/javascript" src="../libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.js">
+        </script>
+        <script type="text/javascript" src="../libs/apperyio/mobilebase.js">
+        </script>
+        <script type="text/javascript" src="../libs/event/customEventHandler.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/sha1.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/oauth.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/contexts.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/jquery.xml2json.min.js">
+        </script>
+        <script type="text/javascript" src="../libs/ms_sdk_bundle/client-sdk.js">
+        </script>
+        <link href="../libs/exadel-carousel/jquery.mobile.carousel.css" rel="stylesheet"
+        type="text/css" />
+        <script type="text/javascript" src="../libs/exadel-carousel/carousel.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/appery.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/component-manager.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/mapping-impl.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/entity-api.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/login.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/storage-api.js">
+        </script>
+        <script type="text/javascript" src="../get_target_platform.js">
+        </script>
+        <script type="text/javascript" src="../cordova.js">
+        </script>
+        <script type="text/javascript">
+            if (typeof cordova !== "undefined" && cordova.platformId === 'ios') {
+                document.documentElement.style.setProperty('--iphone-safe-area-inset-top', '44px');
+                document.documentElement.style.setProperty('--iphone-safe-area-inset-bottom', '34px');
+            }
+        </script>
+        <link href="../libs/apperyio/mobilebase.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="../js/services/model.js">
+        </script>
+        <script type="text/javascript" src="../js/services/service.js">
+        </script>
+    </head>
+    
+    <body>
+        <script language="JavaScript" type="text/javascript">
+            $("body").bind("swipeleft", function(e) {
+                e.preventDefault();
+            });
+            $("body").bind("swiperight", function(e) {
+                e.preventDefault();
+            });
+        </script>
+        <div data-role="page" style="min-height:480px;" dsid="Fast_API" id="Fast_API" class="type-interior"
+        data-theme="a">
+            <!-- header -->
+            <div data-role="header" data-position="fixed" data-add-back-btn="false" data-back-btn-text="Back"
+            data-theme="a" name="header" id="Fast_API_header" class="header  Fast_API_header">
+                <h1 dsid="header">
+                    STAMPY
+                </h1>
+            </div>
+            <!-- mobilecontainer -->
+            <div data-role="content" id="Fast_API_mobilecontainer" name="mobilecontainer" class="content  Fast_API_mobilecontainer ui-content"
+            dsid="mobilecontainer" data-theme="a">
+                <link href="Fast_API.css" rel="stylesheet" type="text/css" />
+                <script type="text/javascript" src="Fast_API.js">
+                </script>
+                <!-- mobilelabel_10 -->
+                <div name="mobilelabel_10" id="Fast_API_mobilelabel_10" dsid="mobilelabel_10" data-role="appery_label"
+                class="Fast_API_mobilelabel_10">
+                    Label
+                </div>
+                <!-- mobilelabel_9 -->
+                <div name="mobilelabel_9" id="Fast_API_mobilelabel_9" dsid="mobilelabel_9" data-role="appery_label"
+                class="Fast_API_mobilelabel_9">
+                    Label
+                </div>
+                <!-- Error -->
+                <div name="Error" id="Fast_API_Error" dsid="Error" data-role="appery_label" class="Fast_API_Error">
+                    O nee! Er was een error, probeer het opnieuw alstublieft. Indien dit probleem zich
+                    blijft voordoen kunt u contact opnemen met contact@stampy-app.nl.
+                </div>
+                <!-- loading_gif -->
+                <div data-role="appery_html" name="loading_gif" dsid="loading_gif" id="Fast_API_loading_gif"
+                class="Fast_API_loading_gif">
+                    <img src="https://readmees.github.io/stampy/ecoscore_images/stampy_loading.gif"
+                    width=260px height=260px>
+                </div>
+                <!-- mobilecarousel_4 -->
+                <div id="Fast_API_mobilecarousel_4" name="mobilecarousel_4" dsid="mobilecarousel_4"
+                data-role="__carousel" tiggzitype="object" apperytype="object" apperyclass="carousel"
+                tiggziclass="carousel" class="Fast_API_mobilecarousel_4" style="">
+                    <div class="ui-carousel-items">
+                        <div class="ui-left-arrow">
+                        </div>
+                        <div class="ui-right-arrow">
+                        </div>
+                        <div data-role="appery_carouselitem" id="Fast_API_mobilecarouselitem_5" name="mobilecarouselitem_5"
+                        dsid="mobilecarouselitem_5" data-type="html" data-title="" class="Fast_API_mobilecarouselitem_5"
+                        style="">
+                            <div style="height: 100%; ">
+                                <!-- html_8 -->
+                                <div data-role="appery_html" name="html_8" dsid="html_8" id="Fast_API_html_8" class="Fast_API_html_8">
+                                </div>
+                            </div>
+                        </div>
+                        <div data-role="appery_carouselitem" id="Fast_API_mobilecarouselitem_6" name="mobilecarouselitem_6"
+                        dsid="mobilecarouselitem_6" data-type="html" data-title="" class="Fast_API_mobilecarouselitem_6"
+                        style="">
+                            <div style="height: 100%; ">
+                            </div>
+                        </div>
+                        <div data-role="appery_carouselitem" id="Fast_API_mobilecarouselitem_7" name="mobilecarouselitem_7"
+                        dsid="mobilecarouselitem_7" data-type="html" data-title="" class="Fast_API_mobilecarouselitem_7"
+                        style="">
+                            <div style="height: 100%; ">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer -->
+            <div data-role="footer" data-position="fixed" class="toolbar-with-central-button  Fast_API_footer"
+            name="footer" dsid="footer" id="Fast_API_footer" data-theme="a" data-id="persistentDataId">
+                <!-- mobilebutton_2 --><!--
+                --><a data-role="button" name="mobilebutton_2" dsid="mobilebutton_2" class="button_scanner  Fast_API_mobilebutton_2"
+                style='min-height:16px;margin-left:5px; ' id="Fast_API_mobilebutton_2" data-corners="true"
+                data-icon="none" data-iconpos='nowhere' x-apple-data-detectors="false" data-inline='true'
+                data-mini='true' data-theme="a" tabindex="1">
+                &nbsp;
+                </a><!--
+                --><!-- mobilebutton_11 --><!--
+                --><a data-role="button" name="mobilebutton_11" dsid="mobilebutton_11" class="button_info  Fast_API_mobilebutton_11"
+                style='min-height:16px;margin-left:5px; ' id="Fast_API_mobilebutton_11" data-corners="true"
+                data-icon="none" data-iconpos='nowhere' x-apple-data-detectors="false" data-inline='true'
+                data-mini='true' data-theme="a" tabindex="2">
+                &nbsp;
+                </a>
+            </div>
+        </div>
+    </body>
+
+</html>

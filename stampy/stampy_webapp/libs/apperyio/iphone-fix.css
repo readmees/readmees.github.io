@@ -1,0 +1,30 @@
+:root {
+    --iphone-safe-area-inset-top: 0px;
+    --iphone-safe-area-inset-bottom: 0px;
+}
+
+@media only screen
+    and (device-width : 375px)
+    and (device-height : 812px), /* iphone 11 */ /* iphone X, xs, 11 pro */
+only screen
+    and (device-width : 414px)
+    and (device-height : 896px)  /* iphone XR */ /* iphone XS Max, 11 Pro Max */
+    {
+        .ui-footer {
+            margin-bottom: 0 !important;
+        }
+        @media (orientation: portrait) {
+            .ui-header-fixed, .panelmenu .ui-panel-inner .ui-listview {
+                /* Status bar height */
+                 padding-top: var(--iphone-safe-area-inset-top) !important;
+            }
+             .ui-header-fixed .ui-btn-left, .ui-header-fixed .ui-btn-right {
+                /* Status bar height */
+                 top: var(--iphone-safe-area-inset-top) !important;
+            }
+             .ui-footer {
+                /* Footer height */
+                padding-bottom: var(--iphone-safe-area-inset-bottom) !important;
+            }
+        }
+    }

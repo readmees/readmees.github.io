@@ -1,0 +1,106 @@
+
+/* Define default spinner */
+.ui-icon-loading {
+	background: url("../libs/jquerymobile/1.4.5/images/ajax-loader.gif") repeat scroll 0 0 / 46px 46px transparent!important;
+}
+/* mobilebutton_7 */
+#Info_mobilebutton_7 {
+
+}
+.ui-btn.Info_mobilebutton_7 {
+
+}
+/* mobilecontainer */
+.ui-content.Info_mobilecontainer {
+	padding: 15px 15px 15px 15px;
+}
+/* html_2 */
+.Info_html_2 {
+	margin: 8px 5px 8px 5px;
+	font-weight: normal;
+	width: 250px; height: 50px;
+}
+div.Info_html_2 {
+	overflow: auto;
+}
+/* mobilelabel_9 */
+.Info_mobilelabel_9 {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Georgia; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobilelabel_11 */
+.Info_mobilelabel_11 {
+	text-decoration: none; font-weight: bold; font-style: italic; text-align: left; font-family: Georgia; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobilelabel_10 */
+.Info_mobilelabel_10 {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Georgia; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobilelabel_12 */
+.Info_mobilelabel_12 {
+	text-decoration: none; font-weight: bold; font-style: italic; text-align: left; font-family: Georgia; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobilelabel_13 */
+.Info_mobilelabel_13 {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Georgia; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobilelabel_14 */
+.Info_mobilelabel_14 {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Georgia; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobilelabel_15 */
+.Info_mobilelabel_15 {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Georgia; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobilelabel_16 */
+.Info_mobilelabel_16 {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Georgia; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobilelabel_17 */
+.Info_mobilelabel_17 {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Georgia; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobilelabel_19 */
+.Info_mobilelabel_19 {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Georgia; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobilelabel_18 */
+.Info_mobilelabel_18 {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Georgia; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobilefooter */
+.Info_mobilefooter {
+	min-height:38px;
+}

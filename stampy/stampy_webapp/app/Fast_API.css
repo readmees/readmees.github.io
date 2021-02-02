@@ -1,0 +1,93 @@
+
+/* Define default spinner */
+.ui-icon-loading {
+	background: url("../libs/jquerymobile/1.4.5/images/ajax-loader.gif") repeat scroll 0 0 / 46px 46px transparent!important;
+}
+/* mobilecontainer */
+.ui-content.Fast_API_mobilecontainer {
+	padding: 15px 15px 15px 15px;
+}
+/* mobilelabel_10 */
+.Fast_API_mobilelabel_10 {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Helvetica; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	display: none;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* mobilelabel_9 */
+.Fast_API_mobilelabel_9 {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Georgia; font-size: 26px;
+	margin: 4px 0px 4px 0px;
+	display: none;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* Error */
+.Fast_API_Error {
+	text-decoration: none; font-weight: normal; font-style: italic; text-align: left; font-family: Georgia; font-size: 16px;
+	margin: 4px 0px 4px 0px;
+	display: none;
+	word-wrap: break-word;
+	white-space: normal;
+}
+/* loading_gif */
+.Fast_API_loading_gif {
+	margin: 8px 5px 8px 5px;
+	font-weight: normal;
+	display: none;
+	width: 265px; height: 260px;
+}
+div.Fast_API_loading_gif {
+	overflow: auto;
+}
+/* mobilecarousel_4 */
+.Fast_API_mobilecarousel_4 {
+	display: none;
+	margin: 0px 0px 0px 0px!important;
+}
+.Fast_API_mobilecarousel_4 ul {
+	margin: 0px 0px 0px 0px!important;
+}
+.Fast_API_mobilecarousel_4 .ui-carousel-box {
+	min-height: 50px;
+}
+/* mobilecarouselitem_5 */
+.Fast_API_mobilecarouselitem_5 .ui-carousel-box {
+	padding: 0px 0px 0px 0px;
+}
+/* html_8 */
+.Fast_API_html_8 {
+	margin: 8px 5px 8px 5px;
+	font-weight: normal;
+	width: 260px; height: 260px;
+}
+div.Fast_API_html_8 {
+	overflow: auto;
+}
+/* mobilecarouselitem_6 */
+.Fast_API_mobilecarouselitem_6 .ui-carousel-box {
+	padding: 0px 0px 0px 0px;
+}
+/* mobilecarouselitem_7 */
+.Fast_API_mobilecarouselitem_7 .ui-carousel-box {
+	padding: 0px 0px 0px 0px;
+}
+/* footer */
+.Fast_API_footer {
+	min-height:38px;
+}
+/* mobilebutton_2 */
+#Fast_API_mobilebutton_2 {
+
+}
+.ui-btn.Fast_API_mobilebutton_2 {
+	margin: 4px 5px 4px 5px;
+}
+/* mobilebutton_11 */
+#Fast_API_mobilebutton_11 {
+
+}
+.ui-btn.Fast_API_mobilebutton_11 {
+	margin: 4px 5px 4px 5px;
+}

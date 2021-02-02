@@ -1,0 +1,13 @@
+{
+    "short_name": "STAMPY_FAST_API",
+    "name": "STAMPY_FAST_API",
+    "description": "Uw gids voor duurzame en gezonde producten in de supermarkt. ",
+    "display": "fullscreen",
+    "orientation": "any",
+    "start_url": "/",
+    "scope": "/",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": [
+    ]
+}

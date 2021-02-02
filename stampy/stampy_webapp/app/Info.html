@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>
+            Info
+        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="msapplication-tap-highlight" content="no">
+        <!-- Enable all requests, inline styles, and eval() -->
+        <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready data:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *">
+        <!-- Uncomment link and meta tags below to activate PWA icons and theme color -->
+        <!-- link rel="manifest" href="../manifest.json" crossOrigin="use-credentials" -->
+        <!-- meta name="theme-color" content="#ffffff" -->
+        <link href="../css/theme/jqm/jqm.css" rel="stylesheet" />
+        <link href="../css/theme/flat-ui/flat-ui.css" rel="stylesheet" />
+        <link href="../libs/apperyio/iphone-fix.css" rel="stylesheet" type="text/css" />
+        <link href="../libs/jquerymobile/1.4.5/jquery.mobile.structure-1.4.5.css" rel="stylesheet"
+        />
+        <link type="text/css" rel="stylesheet" href="../css/CSS1.css" />
+        <!-- Uncomment this script to activate service worker -->
+        <!-- <script>
+        if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('../sw.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.error('Error', err));
+        }
+        </script>
+        -->
+        <script type="text/javascript" src="../libs/underscore/underscore.js">
+        </script>
+        <script type="text/javascript" src="../libs/store/json2.js">
+        </script>
+        <script type="text/javascript" src="../libs/jquery/jquery-2.1.1.js">
+        </script>
+        <script type="text/javascript" src="../libs/jquery/jquery-ajaxTransport.js">
+        </script>
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function() {
+                if (navigator.userAgent.toLowerCase().indexOf("android") != -1) {
+                    $.mobile.defaultPageTransition = 'none';
+                    $.mobile.defaultDialogTransition = 'none';
+                } else if (navigator.userAgent.toLowerCase().indexOf("msie") != -1) {
+                    $.mobile.allowCrossDomainPages = true;
+                    $.support.cors = true;
+                } else if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
+                    $.mobile.hashListeningEnabled = false;
+                }
+            });
+        </script>
+        <script type="text/javascript" src="../libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.js">
+        </script>
+        <script type="text/javascript" src="../libs/apperyio/mobilebase.js">
+        </script>
+        <script type="text/javascript" src="../libs/event/customEventHandler.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/sha1.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/oauth.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/contexts.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/jquery.xml2json.min.js">
+        </script>
+        <script type="text/javascript" src="../libs/ms_sdk_bundle/client-sdk.js">
+        </script>
+        <link href="../libs/exadel-carousel/jquery.mobile.carousel.css" rel="stylesheet"
+        type="text/css" />
+        <script type="text/javascript" src="../libs/exadel-carousel/carousel.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/appery.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/component-manager.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/mapping-impl.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/entity-api.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/login.js">
+        </script>
+        <script type="text/javascript" src="../libs/base/storage-api.js">
+        </script>
+        <script type="text/javascript" src="../get_target_platform.js">
+        </script>
+        <script type="text/javascript" src="../cordova.js">
+        </script>
+        <script type="text/javascript">
+            if (typeof cordova !== "undefined" && cordova.platformId === 'ios') {
+                document.documentElement.style.setProperty('--iphone-safe-area-inset-top', '44px');
+                document.documentElement.style.setProperty('--iphone-safe-area-inset-bottom', '34px');
+            }
+        </script>
+        <link href="../libs/apperyio/mobilebase.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="../js/services/model.js">
+        </script>
+        <script type="text/javascript" src="../js/services/service.js">
+        </script>
+    </head>
+    
+    <body>
+        <script language="JavaScript" type="text/javascript">
+            $("body").bind("swipeleft", function(e) {
+                e.preventDefault();
+            });
+            $("body").bind("swiperight", function(e) {
+                e.preventDefault();
+            });
+        </script>
+        <div data-role="page" style="min-height:480px;" dsid="Info" id="Info" class="type-interior"
+        data-theme="a">
+            <!-- mobileheader -->
+            <div data-role="header" data-position="fixed" data-add-back-btn="false" data-back-btn-text="Back"
+            data-theme="a" name="mobileheader" id="Info_mobileheader" class="header  Info_mobileheader">
+                <h1 dsid="mobileheader">
+                    STAMPY
+                </h1>
+                <!-- mobilebutton_7 --><!--
+                --><a data-role="button" name="mobilebutton_7" dsid="mobilebutton_7" class="back_button  Info_mobilebutton_7 ui-btn-left"
+                style='min-height:16px; ' id="Info_mobilebutton_7" data-corners="true" data-icon="none"
+                data-iconpos='nowhere' x-apple-data-detectors="false" data-inline='true' data-mini='true'
+                data-theme="a" tabindex="4">
+                &nbsp;
+                </a>
+            </div>
+            <!-- mobilecontainer -->
+            <div data-role="content" id="Info_mobilecontainer" name="mobilecontainer" class="Info_mobilecontainer ui-content"
+            dsid="mobilecontainer" data-theme="a">
+                <link href="Info.css" rel="stylesheet" type="text/css" />
+                <script type="text/javascript" src="Info.js">
+                </script>
+                <!-- html_2 -->
+                <div data-role="appery_html" name="html_2" dsid="html_2" id="Info_html_2" class="hidden  Info_html_2">
+                    <p>
+                        Stampy info zal snel verschijnen
+                    </p>
+                    <p>
+                        &nbsp;
+                    </p>
+                </div>
+                <!-- mobilelabel_9 -->
+                <div name="mobilelabel_9" id="Info_mobilelabel_9" dsid="mobilelabel_9" data-role="appery_label"
+                class="Info_mobilelabel_9">
+                    Wat fijn dat u gebruik maakt van onze app, dank u wel! U kunt met deze app gemakkelijk
+                    producten scannen bij de Albert Heijn. Na het scannen zal u een Eco-score ontvangen
+                    op basis van de certificaten van het product.
+                </div>
+                <!-- mobilelabel_11 -->
+                <div name="mobilelabel_11" id="Info_mobilelabel_11" dsid="mobilelabel_11" data-role="appery_label"
+                class="Info_mobilelabel_11">
+                    Support
+                </div>
+                <!-- mobilelabel_10 -->
+                <div name="mobilelabel_10" id="Info_mobilelabel_10" dsid="mobilelabel_10" data-role="appery_label"
+                class="Info_mobilelabel_10">
+                    Aangezien wij een beginnend bedrijfje zijn en de app gratis is, maken wij op dit
+                    moment gebruik van servers die nog niet extreem krachtig zijn. Wij rekenen daarom
+                    op uw begrip als de app problemen veroorzaakt. U kunt contact opnemen met contact@stampy-app.nl
+                    indien deze problemen zich blijvend voordoen.
+                </div>
+                <!-- mobilelabel_12 -->
+                <div name="mobilelabel_12" id="Info_mobilelabel_12" dsid="mobilelabel_12" data-role="appery_label"
+                class="Info_mobilelabel_12">
+                    De Ecoscore
+                </div>
+                <!-- mobilelabel_13 -->
+                <div name="mobilelabel_13" id="Info_mobilelabel_13" dsid="mobilelabel_13" data-role="appery_label"
+                class="Info_mobilelabel_13">
+                    De Ecoscore kan maximaal 5 zijn en wordt behaald op basis van certificaten, ingedeeld
+                    in een aantal categoriën:
+                </div>
+                <!-- mobilelabel_14 -->
+                <div name="mobilelabel_14" id="Info_mobilelabel_14" dsid="mobilelabel_14" data-role="appery_label"
+                class="Info_mobilelabel_14">
+                    - Product, bijv. organic label
+                </div>
+                <!-- mobilelabel_15 -->
+                <div name="mobilelabel_15" id="Info_mobilelabel_15" dsid="mobilelabel_15" data-role="appery_label"
+                class="Info_mobilelabel_15">
+                    - Verpakking, bijv. FCS, plastic free
+                </div>
+                <!-- mobilelabel_16 -->
+                <div name="mobilelabel_16" id="Info_mobilelabel_16" dsid="mobilelabel_16" data-role="appery_label"
+                class="Info_mobilelabel_16">
+                    - Handel, bijv. Fair Trade
+                </div>
+                <!-- mobilelabel_17 -->
+                <div name="mobilelabel_17" id="Info_mobilelabel_17" dsid="mobilelabel_17" data-role="appery_label"
+                class="Info_mobilelabel_17">
+                    - Extra's, bijv. NDOA
+                </div>
+                <!-- mobilelabel_19 -->
+                <div name="mobilelabel_19" id="Info_mobilelabel_19" dsid="mobilelabel_19" data-role="appery_label"
+                class="Info_mobilelabel_19">
+                    Daarnaast kunnen nog bonuspunten behaald worden als een product volgens ons een
+                    'groen' product is en het bijvoorbeeld het carbon neutral certificaat heeft. Deze
+                    bonuspunten komen bij de normale score er bovenop, maar de totale score laten wij
+                    nooit boven de 5 uitkomen.
+                </div>
+                <!-- mobilelabel_18 -->
+                <div name="mobilelabel_18" id="Info_mobilelabel_18" dsid="mobilelabel_18" data-role="appery_label"
+                class="Info_mobilelabel_18">
+                    Houdt u er alstublieft rekening mee dat ook de ecoscore nog in de beginfase is en
+                    hier en daar nog wat vreemde scores kunnen voorkomen.
+                </div>
+            </div>
+            <!-- mobilefooter -->
+            <div data-role="footer" data-position="fixed" class="white  Info_mobilefooter" name="mobilefooter"
+            dsid="mobilefooter" id="Info_mobilefooter" data-theme="a">
+            </div>
+        </div>
+    </body>
+
+</html>
