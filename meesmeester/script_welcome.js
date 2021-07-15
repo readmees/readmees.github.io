@@ -63,8 +63,6 @@ class TextScramble {
 const phrases = [
 '01010110',
 'Welcome...',
-'Would you like to learn how to program?',
-'I can teach you...',
 'Scroll down for more information'];
 
 
