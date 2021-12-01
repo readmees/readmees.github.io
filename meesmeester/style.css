@@ -104,14 +104,13 @@ body {
     width: 100%;
 }
 #social_media {
-    background-color: #E9FAD9;
+    background-color: #1F2053;
     width:105px;
     position: fixed;
     left: 45%;
     right: 50%;
     margin-top: auto;
     bottom: -100px;
-    border-radius: 20%;
 }
 .social_media {
     width: 50px;
