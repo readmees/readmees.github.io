@@ -76,7 +76,7 @@
 }
 
 .line1 {
-	color: #9CD9F0;
+	color: #fff;
 	-webkit-animation: type 0.5s 1s steps(20, end) forwards;
 	-moz-animation: type 0.5s 1s steps(20, end) forwards;
 	-o-animation: type 0.5s 1s steps(20, end) forwards;
@@ -91,7 +91,7 @@
 }
 
 .line2 {
-	color: #CDEE69;
+	color: #fff;
 	-webkit-animation: type 0.5s 4.25s steps(20, end) forwards;
 	-moz-animation: type 0.5s 4.25s steps(20, end) forwards;
 	-o-animation: type 0.5s 4.25s steps(20, end) forwards;
@@ -106,7 +106,7 @@
 }
 
 .line3 {
-	color: #E09690;
+	color: #fff;
 	-webkit-animation: type 0.5s 7.5s steps(20, end) forwards;
 	-moz-animation: type 0.5s 7.5s steps(20, end) forwards;
 	-o-animation: type 0.5s 7.5s steps(20, end) forwards;
@@ -122,17 +122,17 @@
 
 .line4 {
 	color: #fff;
-	-webkit-animation: type 0.5s 10.75s steps(20, end) forwards;
-	-moz-animation: type 0.5s 10.75s steps(20, end) forwards;
-	-o-animation: type 0.5s 10.75s steps(20, end) forwards;
-	animation: type 0.5s 10.75s steps(20, end) forwards;
+	-webkit-animation: type 0.5s 8.75s steps(20, end) forwards;
+	-moz-animation: type 0.5s 8.75s steps(20, end) forwards;
+	-o-animation: type 0.5s 8.75s steps(20, end) forwards;
+	animation: type 0.5s 8.75s steps(20, end) forwards;
 }
 
 .cursor4 {
-	-webkit-animation: blink 1s 11.5s infinite;
-	-moz-animation: blink 1s 11.5s infinite;
-	-o-animation: blink 1s 11.5s infinite;
-	animation: blink 1s 11.5s infinite;
+	-webkit-animation: blink 1s 11.5s 2 forwards;
+	-moz-animation: blink 1s 11.5s 2 forwards;
+	-o-animation: blink 1s 11.5s 2 forwards;
+	animation: blink 1s 11.5s 2 forwards;
 }
 
 .line5 {
@@ -145,9 +145,9 @@
 
 .cursor5 {
 	-webkit-animation: blink 1s 11.75s infinite;
-	-moz-animation: blink 1s 11.75s infinite;
-	-o-animation: blink 1s 11.75s infinite;
-	animation: blink 1s 11.75s infinite;
+	-moz-animation: blink 1s 14.75s infinite;
+	-o-animation: blink 1s 14.75s infinite;
+	animation: blink 1s 14.75s infinite;
 }
 
 @-webkit-keyframes blink {
