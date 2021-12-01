@@ -55,7 +55,7 @@
 	padding: 20px;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
-    height: 50%;
+    height: 100vh;
 }
 
 .terminal_p {
@@ -240,24 +240,24 @@
 
 @-webkit-keyframes type {
 	to {
-		width: 30em;
+		width: 80%;
 	}
 }
 
 @-moz-keyframes type {
 	to {
-		width: 30em;
+		width: 80%;
 	}
 }
 
 @-o-keyframes type {
 	to {
-		width: 30em;
+		width: 80%;
 	}
 }
 
 @keyframes type {
 	to {
-		width: 30em;
+		width: 80%;
 	}
 }
