@@ -130,9 +130,24 @@
 
 .cursor4 {
 	-webkit-animation: blink 1s 11.5s infinite;
-	-moz-animation: blink 1s 8.5s infinite;
-	-o-animation: blink 1s 8.5s infinite;
-	animation: blink 1s 8.5s infinite;
+	-moz-animation: blink 1s 11.5s infinite;
+	-o-animation: blink 1s 11.5s infinite;
+	animation: blink 1s 11.5s infinite;
+}
+
+.line5 {
+	color: #fff;
+	-webkit-animation: type 0.5s 13s steps(20, end) forwards;
+	-moz-animation: type 0.5s 13s steps(20, end) forwards;
+	-o-animation: type 0.5s 13s steps(20, end) forwards;
+	animation: type 0.5s 13s steps(20, end) forwards;
+}
+
+.cursor5 {
+	-webkit-animation: blink 1s 11.75s infinite;
+	-moz-animation: blink 1s 11.75s infinite;
+	-o-animation: blink 1s 11.75s infinite;
+	animation: blink 1s 11.75s infinite;
 }
 
 @-webkit-keyframes blink {
