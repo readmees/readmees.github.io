@@ -1,9 +1,15 @@
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-device-width: 380px) {
     .terminal_p {
         font-size: 3vw !important;
-        /* margin-left: -60px !important;
-        margin-right: 10px !important; */
-     }
+        margin-left: -50px !important;
+        }
+}
+@media only screen and (min-device-width: 609px) {
+    .terminal_p {
+        
+        font-size: 1.25em !important;
+        margin-left: -.5em !important;
+        }
 }
 
 .fakeButtons {
@@ -49,15 +55,15 @@
 	padding: 20px;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
-    height: 80%;
+    height: 50%;
 }
 
 .terminal_p {
 	position: relative;
 	left: 20%;
-	margin-left: -.5em;
+	margin-left: -60px;
 	text-align: left;
-	font-size: 1.25em;
+	font-size: 2vw;
 	font-family: monospace;
 	white-space: normal;
 	overflow: hidden;
