@@ -7,6 +7,7 @@
     
     <link rel="stylesheet" href="meesmeester/style.css">
     <link rel="stylesheet" href="meesmeester/style_welcome.css">
+    <link rel="stylesheet" href="meesmeester/style_terminal.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
     <script src="meesmeester/script.js"></script>
@@ -18,23 +19,35 @@
         <div class="progress-bar" id="myBar"> </div>
     </div>
     <div id="top_menu">
-        <button id="about_me" class="top_menu" onclick="window.location.hash='';"> <span> <p class='button'> Return to top </p> </span> </button>
+        <button id="about_me" class="top_menu" onclick="document.documentElement.scrollTop = 0;"> <span> <p class='button' style='z-index: 40;'> To top </p> </span> </button>
     </div>
 
-
+  <!-- FIRST PAGE (Matrix)-->
   <div class="container">
     <div class="text"></div>
   </div>
-      <script  src="meesmeester/script_welcome.js"></script>
-      <!-- </div> -->
+  <script  src="meesmeester/script_welcome.js"></script>
 
+  <!-- SECOND PAGE (Terminal)-->
+  <div id="about_programming">
 
-
-      <div id="about_programming">
-
+    <div class=fakeMenu>
+      <div class="fakeButtons fakeClose"></div>
+      <div class="fakeButtons fakeMinimize"></div>
+      <div class="fakeButtons fakeZoom"></div>
+    </div>
+    <div class="fakeScreen">
+      <p class="terminal_p line1">(new-freelance-job) [~] $ echo '# Artificial Intelligence solutions' >> website.md <span class="terminal_span cursor1">_</span></p>
       
-      </div>
-
+      <p class="terminal_p line2">(new-freelance-job) [~] $ echo 'My goal is to provide you or your company Providing artificial intelligence, big data and other software solutions.' >> website.md && python
+        <span class="terminal_span cursor2">_</span></p>
+      <p class="terminal_p line3"> Python 3.9.4 | packaged by conda-forge | (default, May 10 2021, 22:13:33) <br \>
+        [GCC 9.3.0] on linux <br \>
+        Type "help", "copyright", "credits" or "license" for more information.<br /> >>> print('The most frequent language I use to solve projects is Python') <br \> <span class="terminal_span cursor3">_</span></p>
+      <p class="terminal_p line4">The most frequent language I use to solve projects is Python <span class="terminal_span cursor4"></span></p>
+      
+    </div>
+  </div>
 
   </div>
 
