@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .folder {
+    margin-bottom: 20px;
+  }
+  
+  .folder h2 {
+    color: #333;
+  }
+  
+  .folder ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .folder ul li a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .folder ul li a:hover {
+    text-decoration: underline;
+  }
+  
