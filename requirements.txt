@@ -32,7 +32,7 @@ beautifulsoup4 @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T
 binaryornot @ file:///tmp/build/80754af9/binaryornot_1617751525010/work
 bitarray @ file:///opt/concourse/worker/volumes/live/39912a06-1fdd-4d60-40a6-aad1836148be/volume/bitarray_1648739520150/work
 bkcharts==0.2
-black==19.10b0
+black==24.3.0
 bleach @ file:///opt/conda/conda-bld/bleach_1641577558959/work
 bokeh @ file:///opt/concourse/worker/volumes/live/daea12c5-5a78-4471-406c-958ab70942ea/volume/bokeh_1638362839809/work
 boto3 @ file:///opt/conda/conda-bld/boto3_1649078879353/work
