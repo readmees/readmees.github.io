@@ -1,89 +1,242 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    
-    <link rel="stylesheet" href="meesmeester/style.css">
-    <link rel="stylesheet" href="meesmeester/style_welcome.css">
-    <link rel="stylesheet" href="meesmeester/style_terminal.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-    <script src="meesmeester/script.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Matrix – Gefeliciteerd Yochem</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    canvas { display: block; width: 100%; height: 100%; }
+    /* On-screen hint (kan je weghalen) */
+    .hint {
+      position: fixed; inset: auto 1rem 1rem auto;
+      color: #0f0; opacity: .6; font-size: .9rem;
+      user-select: none;
+    }n   
+  </style>
 </head>
 <body>
+<canvas id="matrix"></canvas>
+<div class="hint"> Spatie</div>
 
-    <div class="header">
-        <div class="progress-bar" id="myBar"> </div>
-    </div>
-    <div id="top_menu">
-        <button id="about_me" class="top_menu" onclick="document.documentElement.scrollTop = 0;"> <span> <p class='button' style='z-index: 40;'> To top </p> </span> </button>
-    </div>
+<script>
+(() => {
+  // ====== Basis setup ======
+  const canvas = document.getElementById('matrix');
+  const ctx = canvas.getContext('2d');
+  const DPR = Math.max(1, Math.min(window.devicePixelRatio || 1, 2)); // scherp maar niet te zwaar
 
-  <!-- FIRST PAGE (Matrix)-->
-  <div class="container">
-    <div class="text"></div>
-  </div>
-  <script  src="meesmeester/script_welcome.js"></script>
+  let W, H, fontSize, columns, drops;
+  const glyphs = 'アイウエオカキクケコサシスセソ0123456789abcdefghijklmnopqrstuvwxyz#$%&*+-/<>=';
+  const message = 'Gefeliciteerd met je verjaardag Yochem!!!';   // <- jouw tekst
+  const revealMsPerChar = 170;              // snelheid van onthullen (ms/teken)
+  const scrambleSpeed = 30;                 // hoe snel de "wiebels" van nog-niet-onthulde tekens updaten (ms)
+  let paused = false;
 
-  <!-- SECOND PAGE (Terminal)-->
-  <div id="about_programming">
+  // Voor het onthul-effect
+  let revealIndex = 0; // hoeveel echte tekens al zichtbaar zijn
+  let scrambleState = Array.from(message, ch => ({ fixed: ch === ' ', view: ch === ' ' ? ' ' : randomGlyph() }));
 
-    <div class=fakeMenu>
-      <div class="fakeButtons fakeClose"></div>
-      <div class="fakeButtons fakeMinimize"></div>
-      <div class="fakeButtons fakeZoom"></div>
-    </div>
-    <div class="fakeScreen">
-      <p class="terminal_p line1">(new-freelance-job) [~] $ echo '# Artificial Intelligence solutions' >> website.md <span class="terminal_span cursor1">_</span></p>
-      
-      <p class="terminal_p line2">(new-freelance-job) [~] $ echo 'My goal is to provide Artificial Intelligence, big data and other software solutions for you or your company.' >> website.md && python
-        <span class="terminal_span cursor2">_</span></p>
-      <p class="terminal_p line3"> Python 3.9.4 | packaged by conda-forge | (default, May 10 2021, 22:13:33) <br \>
-        [GCC 9.3.0] on linux <br \>
-        Type "help", "copyright", "credits" or "license" for more information.<br /> <span class="terminal_span cursor3"></span></p>
-        
-      <p class="terminal_p line4"> >>> with open("website.md") as file: <br \>
-        ...    print(f'{file.read()} The most frequent language I use to solve projects is Python.')<span class="terminal_span cursor4">_</span></p>
-      <p class="terminal_p line5"> <span style="color:aquamarine"># Artificial Intelligence solutions <br \> My goal is to provide Artificial Intelligence, big data and other software solutions for you or your company. <br \> The most frequent language I use to solve projects is Python. </span><br \>>>><span class="terminal_span cursor5">_</span></p>
-      
-    </div>
-  </div>
+  function randomGlyph() {
+    return glyphs[Math.floor(Math.random() * glyphs.length)];
+  }
 
-  </div>
-  <!-- SECOND PAGE (Resume)-->
-  <div id="about_programming">
-    <object data="meesmeester/resume.pdf" type="application/pdf" width="100%" height="800px"> 
-      <p>It appears you don't have a PDF plugin for this browser.
-       No biggie... you can <a href="meesmeester/resume.pdf">click here to
-      download the PDF file.</a></p>  
-    </object>
-  </div>
+  function resize() {
+    const { innerWidth, innerHeight } = window;
+    canvas.width  = Math.floor(innerWidth * DPR);
+    canvas.height = Math.floor(innerHeight * DPR);
+    canvas.style.width  = innerWidth + 'px';
+    canvas.style.height = innerHeight + 'px';
 
-  <!-- FOOTER -->
-    <div id="social_media" >
+    W = canvas.width;
+    H = canvas.height;
 
-            <div id="linkedin" class="social_media" >
-                <a href="https://www.linkedin.com/in/meesmeester/">
-                    <img class="social_media" src="https://img.icons8.com/office/200/000000/linkedin.png"/>
-                </a>
+    fontSize = Math.max(14, Math.floor(18 * DPR)); // basis fontgrootte
+    ctx.font = `${fontSize}px monospace`;
+    columns = Math.floor(W / fontSize);
 
+    // Startposities per kolom
+    drops = Array.from({ length: columns }, () => Math.floor(Math.random() * -40));
+  }
 
-            </div>
+  // ====== Matrix-regen tekenen ======
+  function drawMatrix() {
+    // transparant zwart voor "trail"
+    ctx.fillStyle = 'rgba(0,0,0,0.07)';
+    ctx.fillRect(0, 0, W, H);
 
+    ctx.fillStyle = '#0f0';
+    ctx.textBaseline = 'top';
+    for (let i = 0; i < columns; i++) {
+      const text = glyphs[Math.floor(Math.random() * glyphs.length)];
+      const x = i * fontSize;
+      const y = drops[i] * fontSize;
 
-            <div id="facebook" class="social_media" >
-                <a href="mailto:contact@meesmeester.nl">
-                    <img class="social_media" src="https://img.icons8.com/office/200/000000/new-post.png"/>
+      // Highlight kop van de regen iets feller
+      if (Math.random() < 0.02) {
+        ctx.shadowColor = '#0f0';
+        ctx.shadowBlur = 12;
+      } else {
+        ctx.shadowBlur = 0;
+      }
+      ctx.fillText(text, x, y);
 
-                </a>
+      // Verplaats druppel
+      if (y > H && Math.random() > 0.975) {
+        drops[i] = Math.floor(Math.random() * -20);
+      } else {
+        drops[i]++;
+      }
+    }
+    ctx.shadowBlur = 0;
+  }
 
-            </div>
-            
-    </div>
-    <a href="https://www.facebook.com/mees.meester.56"></a>
+  // ====== Tekst centreren en geleidelijk tonen ======
+  function drawMessage() {
+    const lines = wrapMessage(message, Math.max(12, Math.floor((W / DPR) / 24))); // simpele wrap voor kleine schermen
+    const lineHeight = fontSize * 1.8;
 
+    const totalHeight = lines.length * lineHeight;
+    let y = (H - totalHeight) / 2;
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    const centerX = W / 2;
+
+    let consumed = 0; // hoeveel tekens al getekend in deze render
+
+    for (const line of lines) {
+      // Bouw de zichtbare string met scramble
+      let visual = '';
+      for (let i = 0; i < line.length; i++) {
+        const globalIndex = consumed + i;
+        const originalChar = line[i];
+
+        if (originalChar === '\n') { continue; }
+
+        // Synchroniseer scrambleState met echte message (spaties inbegrepen)
+        if (scrambleState[globalIndex] && !scrambleState[globalIndex].fixed) {
+          // Als nog niet onthuld: laat 'm af en toe flippen
+          if (Math.random() < 0.3) {
+            scrambleState[globalIndex].view = randomGlyph();
+          }
+        }
+        const cell = scrambleState[globalIndex] || { fixed: true, view: originalChar };
+
+        // Wanneer het globale index kleiner is dan revealIndex: toon het echte teken
+        const isRevealed = globalIndex < revealIndex || originalChar === ' ';
+        const ch = isRevealed ? originalChar : cell.view;
+        visual += ch;
+      }
+
+      // Schaduw/glow voor het bericht
+      ctx.shadowColor = '#0f0';
+      ctx.shadowBlur = 18;
+
+      // Tekst in twee lagen voor die neon-look
+      ctx.lineWidth = Math.max(1, DPR);
+      ctx.strokeStyle = 'rgba(0,255,0,0.35)';
+      ctx.strokeText(visual, centerX, y + lineHeight / 2);
+
+      ctx.fillStyle = '#00ff8a';
+      ctx.fillText(visual, centerX, y + lineHeight / 2);
+
+      ctx.shadowBlur = 0;
+
+      y += lineHeight;
+      consumed += line.length;
+    }
+  }
+
+  // Eenvoudige wrapper die op whitespace breekt
+  function wrapMessage(text, maxChars) {
+    const words = text.split(' ');
+    const lines = [];
+    let line = '';
+    for (const w of words) {
+      if ((line + (line ? ' ' : '') + w).length <= maxChars) {
+        line += (line ? ' ' : '') + w;
+      } else {
+        lines.push(line);
+        line = w;
+      }
+    }
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  // ====== Timers: onthullen & scramble ======
+  let revealTimer = null;
+  let scrambleTimer = null;
+
+  function startReveal() {
+    stopReveal();
+    revealIndex = 0;
+    // Markeer vaste posities voor spaties direct
+    scrambleState.forEach((s, i) => { if (message[i] === ' ') s.fixed = true; });
+
+    revealTimer = setInterval(() => {
+      const nextIdx = revealIndex;
+      if (nextIdx >= message.length) {
+        clearInterval(revealTimer);
+        revealTimer = null;
+        return;
+      }
+      // Sla spaties over en markeer teken "vast"
+      if (message[nextIdx] === ' ') {
+        scrambleState[nextIdx].fixed = true;
+        revealIndex++;
+        return;
+      }
+      scrambleState[nextIdx].fixed = true;
+      scrambleState[nextIdx].view = message[nextIdx];
+      revealIndex++;
+    }, revealMsPerChar);
+
+    scrambleTimer = setInterval(() => {
+      // Triggert hertekenen van niet-onthulde tekens
+      // (de eigenlijke flip gebeurt in drawMessage)
+    }, scrambleSpeed);
+  }
+  function stopReveal() {
+    if (revealTimer) clearInterval(revealTimer), revealTimer = null;
+    if (scrambleTimer) clearInterval(scrambleTimer), scrambleTimer = null;
+  }
+
+  // ====== Main loop ======
+  function tick() {
+    if (!paused) {
+      drawMatrix();
+      drawMessage();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ====== Events ======
+  window.addEventListener('resize', resize);
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') {
+      paused = !paused;
+      e.preventDefault();
+    } else if (e.key.toLowerCase() === 'r') {
+      // Reset & opnieuw afspelen
+      scrambleState = Array.from(message, ch => ({ fixed: ch === ' ', view: ch === ' ' ? ' ' : randomGlyph() }));
+      startReveal();
+    }
+  });
+
+  // Start
+  resize();
+  startReveal();
+  requestAnimationFrame(tick);
+})();
+</script>
 </body>
 </html>
