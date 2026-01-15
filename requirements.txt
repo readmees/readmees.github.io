@@ -225,7 +225,7 @@ pyasn1-modules==0.2.8
 pycodestyle @ file:///tmp/build/80754af9/pycodestyle_1615748559966/work
 pycosat==0.6.3
 pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
-pycryptodomex==3.19.0
+pycryptodomex==3.19.1
 pyct @ file:///opt/concourse/worker/volumes/live/ccd71eed-b3d2-406c-4c0c-d7a4f61f6921/volume/pyct_1613411566045/work
 pycurl==7.44.1
 pydantic==2.5.2
