@@ -48,9 +48,12 @@
   }
   @media (max-width: 760px){
     .ms-pad{ padding-left:22px !important; padding-right:22px !important; }
-    .ms-navbar{ flex-wrap:wrap; row-gap:12px; }
+    .ms-navbar{ flex-wrap:nowrap; }
     .ms-navlinks{ display:none !important; }
+    .ms-burger{ display:inline-flex !important; }
+    .ms-contactpill{ display:none !important; }
     .ms-hero{ padding-top:40px !important; gap:36px !important; }
+    .ms-bigh1{ font-size:27px !important; }
     .ms-herocol{ min-width:0 !important; flex:1 1 100% !important; }
     .ms-herovis{ min-width:0 !important; flex:1 1 100% !important; width:100% !important; height:380px !important; }
     .ms-solgrid{ grid-template-columns:1fr !important; }
@@ -84,9 +87,18 @@
           <span onClick="{{ setNL }}" style="{{ nlStyle }}">NL</span>
           <span onClick="{{ setEN }}" style="{{ enStyle }}">EN</span>
         </div>
-        <span onClick="{{ goContact }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:999px; background:#18181b; color:#f5f1e8; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px; box-shadow:0 8px 20px -8px rgba(24,24,27,0.5);">{{ t.contact }} <i class="ph-bold ph-arrow-up-right" style="font-size:14px;"></i></span>
+        <span class="ms-contactpill" onClick="{{ goContact }}" style="cursor:pointer; display:inline-flex; style="font-size:14px;"></i></span>
+        <span class="ms-burger" onClick="{{ toggleMenu }}" aria-label="Menu" style="display:none; cursor:pointer; width:44px; height:44px; border-radius:12px; align-items:center; justify-content:center; background:rgba(24,24,27,0.06);"><i class="ph-bold {{ burgerIcon }}" style="font-size:22px; color:#18181b;"></i></span>
       </div>
     </div>
+    <sc-if value="{{ menuOpen }}">
+      <div class="ms-pad" style="max-width:1240px; margin:0 auto; padding:6px 22px 18px; display:flex; flex-direction:column; gap:2px;">
+        <span onClick="{{ mServices }}" style="cursor:pointer; padding:13px 6px; border-bottom:1px solid rgba(24,24,27,0.07); font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; color:#27272a;">{{ t.navServices }}</span>
+        <span onClick="{{ mAbout }}" style="cursor:pointer; padding:13px 6px; border-bottom:1px solid rgba(24,24,27,0.07); font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; color:#27272a;">{{ t.navAbout }}</span>
+        <span onClick="{{ mApproach }}" style="cursor:pointer; padding:13px 6px; border-bottom:1px solid rgba(24,24,27,0.07); font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; color:#27272a;">{{ t.navApproach }}</span>
+        <span onClick="{{ mContact }}" style="cursor:pointer; padding:13px 6px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px; color:#6366f1;">{{ t.contact }}</span>
+      </div>
+    </sc-if>
   </div>
 
   <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
@@ -153,7 +165,7 @@
         </div>
         <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; line-height:1.55; color:#71717a; max-width:340px;">{{ t.solSub }}</p>
       </div>
-      <div class="ms-solgrid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:24px;">
+      <div class="ms-solgrid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:24px;">
         <sc-for list="{{ cards }}" as="c" hint-placeholder-count="4">
           <div style="{{ c.cardStyle }}" onClick="{{ c.onOpen }}" onMouseEnter="{{ c.onEnter }}" onMouseLeave="{{ c.onLeave }}">
             <div style="{{ c.visualStyle }}">
@@ -209,7 +221,7 @@
       <div style="position:relative; z-index:2;">
         <div style="display:inline-flex; align-items:center; justify-content:center; width:66px; height:66px; border-radius:20px; background:rgba(255,255,255,0.22); backdrop-filter:blur(6px); color:#fff;"><i class="ph-bold {{ cur.icon }}" style="font-size:34px;"></i></div>
         <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.1em; color:rgba(255,255,255,0.8); margin-top:26px;">{{ cur.num }} &nbsp;/&nbsp; MEESTER SOLUTIONS</div>
-        <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(34px,5vw,58px); line-height:1.0; letter-spacing:-0.03em; color:#fff; margin:12px 0 0; max-width:680px;">{{ cur.title }}</h1>
+        <h1 class="ms-bigh1" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(34px,5vw,58px); line-height:1.0; letter-spacing:-0.03em; color:#fff; margin:12px 0 0; max-width:680px; overflow-wrap:break-word; hyphens:auto;">{{ cur.title }}</h1>
         <p style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:400; font-size:19px; line-height:1.55; color:rgba(255,255,255,0.9); margin:18px 0 0; max-width:540px;">{{ cur.tagline }}</p>
       </div>
     </div>
@@ -285,7 +297,7 @@
       <div style="position:absolute; top:-70px; right:-40px; width:260px; height:260px; border-radius:46% 54% 60% 40% / 50% 42% 58% 50%; background:rgba(255,255,255,0.16); animation:floatA 10s ease-in-out infinite;"></div>
       <div style="position:relative; z-index:2; max-width:640px;">
         <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.12em; color:rgba(255,255,255,0.82);">{{ about.eyebrow }}</div>
-        <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(34px,4.6vw,54px); line-height:1.02; letter-spacing:-0.03em; color:#fff; margin:14px 0 0;">{{ about.title }}</h1>
+        <h1 class="ms-bigh1" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(34px,4.6vw,54px); line-height:1.02; letter-spacing:-0.03em; color:#fff; margin:14px 0 0; overflow-wrap:break-word; hyphens:auto;">{{ about.title }}</h1>
         <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:19px; line-height:1.55; color:rgba(255,255,255,0.9); margin:18px 0 0; max-width:540px; text-wrap:pretty;">{{ about.lead }}</p>
       </div>
     </div>
@@ -301,7 +313,7 @@
       </div>
     </div>
 
-    <div style="margin-top:72px;">
+    <div id="werkwijze" style="margin-top:72px; scroll-margin-top:90px;">
       <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(26px,3vw,36px); letter-spacing:-0.03em; margin:0 0 24px;">{{ about.approachTitle }}</h2>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px;">
         <sc-for list="{{ about.steps }}" as="s" hint-placeholder-count="4">
@@ -334,7 +346,7 @@
 
     <div style="margin-top:34px;">
       <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:#6366f1;">{{ legal.eyebrow }}</div>
-      <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(32px,4.2vw,50px); line-height:1.05; letter-spacing:-0.03em; margin:12px 0 0;">{{ legal.title }}</h1>
+      <h1 class="ms-bigh1" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(32px,4.2vw,50px); line-height:1.05; letter-spacing:-0.03em; margin:12px 0 0; overflow-wrap:break-word; hyphens:auto;">{{ legal.title }}</h1>
       <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:18px; line-height:1.6; color:#52525b; margin:18px 0 0; text-wrap:pretty;">{{ legal.intro }}</p>
       <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; color:#a1a1aa; margin-top:14px;">{{ legal.updated }}</div>
     </div>
@@ -397,6 +409,7 @@ class Component extends DCLogic {
       screen: 'home',
       lang: (this.props.startLang === 'en' ? 'en' : 'nl'),
       flowIn: false,
+      menuOpen: false,
       lightbox: null,
       form: { name: '', email: '', message: '' },
       sent: false,
@@ -526,7 +539,7 @@ class Component extends DCLogic {
         contactLine: 'Vragen over deze informatie?',
         sections: [
           { id: 'privacy', h: 'Privacybeleid', p: 'Meester Solutions verwerkt persoonsgegevens zorgvuldig en alleen voor het doel waarvoor je ze deelt, zoals contact opnemen of een opdracht uitvoeren. Gegevens worden niet verkocht aan derden.' },
-          { id: 'terms', h: 'Algemene voorwaarden', p: 'Afspraken over scope, planning en tarieven leggen we vooraf schriftelijk vast.' },
+          { id: 'terms', h: 'Algemene voorwaarden', p: 'Ik doe mijn uiterste best om binnen een week een proof of concept te laten zien; een demo binnen die termijn is een streven, geen garantie. Je krijgt altijd een demo en beslist op basis daarvan of je verder wilt. De uren aan de demo worden alleen gefactureerd als je doorgaat — wil je niet verder, dan breng ik niets in rekening, maar mag de geleverde code niet worden gebruikt. Opgeleverde producten mogen door beide partijen worden gebruikt: ik hergebruik mijn eigen code en methoden voor andere projecten, maar deel nooit jouw bedrijfsgegevens met derden. Afspraken over scope, planning en tarieven leggen we vooraf schriftelijk vast.' },
           { id: 'cookies', h: 'Cookiebeleid', p: 'Deze website gebruikt alleen functionele cookies die nodig zijn om de site goed te laten werken. Er worden geen tracking-cookies geplaatst zonder je toestemming.' },
           { id: 'gdpr', h: 'AVG / GDPR', p: 'Je hebt het recht om je gegevens in te zien, te corrigeren of te laten verwijderen. Stuur daarvoor een bericht naar hello@meester.solutions; we reageren binnen 30 dagen.' },
         ],
@@ -539,7 +552,7 @@ class Component extends DCLogic {
         contactLine: 'Questions about this information?',
         sections: [
           { id: 'privacy', h: 'Privacy policy', p: 'Meester Solutions handles personal data carefully and only for the purpose you share it for, such as getting in touch or carrying out a project. Data is never sold to third parties.' },
-          { id: 'terms', h: 'Terms of service', p: 'Agreements on scope, planning and rates are recorded in writing in advance.' },
+          { id: 'terms', h: 'Terms of service', p: 'I do my utmost to show a proof of concept within a week; a demo within that timeframe is a goal, not a guarantee. You always receive a demo and decide, based on it, whether you want to continue. Hours spent on the demo are only invoiced if you proceed — if you decide not to continue, I charge nothing, but the delivered code may not be used. Delivered products may be used by both parties: I reuse my own code and methods for other projects, but never share your business data with third parties. Agreements on scope, planning and rates are recorded in writing in advance.' },
           { id: 'cookies', h: 'Cookie policy', p: 'This website only uses functional cookies needed to make the site work properly. No tracking cookies are placed without your consent.' },
           { id: 'gdpr', h: 'GDPR', p: 'You have the right to view, correct or delete your data. Send a message to hello@meester.solutions and we will respond within 30 days.' },
         ],
@@ -557,7 +570,7 @@ class Component extends DCLogic {
         heroRow1: 'Prototype gebouwd', heroRow2: 'Automatisering live', heroRow3: 'Website gelanceerd',
         solEyebrow: 'Diensten', solTitle: 'Kies een richting', solSub: 'Vier diensten die je idee naar werkende techniek brengen. Beweeg over een kaart, klik om verder te lezen.',
         contact: 'Contact', view: 'Bekijk dienst', back: 'Terug naar overzicht',
-        navServices: 'Diensten', navAbout: 'Over Mees',
+        navServices: 'Diensten', navAbout: 'Over Mees', navApproach: 'Werkwijze',
         work: 'Wat ik doe', portfolio: 'Geselecteerd werk', portfolioHint: 'Sleep je eigen beelden in de kaders',
         dropHero: 'Hero-beeld: sleep hier je afbeelding', dropWork: 'Sleep een beeld',
         dropVideo: 'Sleep een video (MP4)',
@@ -588,7 +601,7 @@ class Component extends DCLogic {
         heroRow1: 'Prototype built', heroRow2: 'Automation live', heroRow3: 'Website launched',
         solEyebrow: 'Services', solTitle: 'Pick a direction', solSub: 'Four services that take your idea to working technology. Hover a card, click to read more.',
         contact: 'Contact', view: 'View service', back: 'Back to overview',
-        navServices: 'Services', navAbout: 'About',
+        navServices: 'Services', navAbout: 'About', navApproach: 'How I work',
         work: 'What I do', portfolio: 'Selected work', portfolioHint: 'Drop your own images into the frames',
         dropHero: 'Hero visual: drop your image here', dropWork: 'Drop an image',
         dropVideo: 'Drop a video (MP4)',
@@ -633,7 +646,11 @@ class Component extends DCLogic {
     const r = parseInt(n.substring(0, 2), 16), g = parseInt(n.substring(2, 4), 16), b = parseInt(n.substring(4, 6), 16);
     return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
   }
-  toTop() { try { if (document.scrollingElement) document.scrollingElement.scrollTop = 0; } catch (e) {} }
+  toTop() {
+    const go = () => { try { window.scrollTo(0, 0); if (document.scrollingElement) document.scrollingElement.scrollTop = 0; if (document.documentElement) document.documentElement.scrollTop = 0; if (document.body) document.body.scrollTop = 0; } catch (e) {} };
+    go();
+    try { requestAnimationFrame(go); setTimeout(go, 60); } catch (e) {}
+  }
 
   componentDidMount() { this.observeFlow(); }
   componentDidUpdate() { this.observeFlow(); }
@@ -652,9 +669,15 @@ class Component extends DCLogic {
     } catch (e) {}
   }
   openService(i) { this.setState({ screen: i }); this.toTop(); }
-  goAbout() { this.setState({ screen: 'about' }); this.toTop(); }
+  goAbout() { this.setState({ screen: 'about', menuOpen: false }); this.toTop(); }
+  goAboutAnchor(id) {
+    this.setState({ menuOpen: false });
+    if (this.state.screen !== 'about') { this.setState({ screen: 'about' }); setTimeout(() => this.scrollTo(id), 90); }
+    else { this.scrollTo(id); }
+  }
   goLegal(id) { this.setState({ screen: 'legal' }); this.toTop(); if (id) setTimeout(() => this.scrollTo(id), 90); }
   goHomeAnchor(id) {
+    this.setState({ menuOpen: false });
     if (this.state.screen !== 'home') { this.setState({ screen: 'home' }); setTimeout(() => this.scrollTo(id), 60); }
     else { this.scrollTo(id); }
   }
@@ -663,7 +686,20 @@ class Component extends DCLogic {
   scrollTo(id) {
     try {
       const el = document.getElementById(id);
-      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 78, behavior: 'smooth' });
+      if (!el) return;
+      const target = el.getBoundingClientRect().top + (window.pageYOffset || 0) - 78;
+      let smoothWorked = false;
+      try { window.scrollTo({ top: target, behavior: 'smooth' }); smoothWorked = true; } catch (e) {}
+      // Fallback for containers/iframes where smooth window scroll is a no-op.
+      setTimeout(() => {
+        const cur = window.pageYOffset || (document.scrollingElement ? document.scrollingElement.scrollTop : 0);
+        if (Math.abs(cur - target) > 4) {
+          const se = document.scrollingElement || document.documentElement;
+          if (se) se.scrollTop = target;
+          if (document.body) document.body.scrollTop = target;
+          window.scrollTo(0, target);
+        }
+      }, smoothWorked ? 400 : 0);
     } catch (e) {}
   }
 
@@ -709,7 +745,7 @@ class Component extends DCLogic {
       { title: (L === 'nl' ? 'Diensten' : 'Services'), links: S.map((s, i) => lk(s.shortTitle[L], () => this.openService(i))) },
       { title: (L === 'nl' ? 'Bedrijf' : 'Company'), links: [
         lk(L === 'nl' ? 'Over Mees' : 'About Mees', () => this.goAbout()),
-        lk(L === 'nl' ? 'Werkwijze' : 'How I work', () => this.goAbout()),
+        lk(L === 'nl' ? 'Werkwijze' : 'How I work', () => this.goAboutAnchor('werkwijze')),
         lk(L === 'nl' ? 'Start een prototype' : 'Start a prototype', () => this.goSolutionsRef()),
         lk('Contact', () => this.goContactRef()),
       ] },
@@ -754,6 +790,13 @@ class Component extends DCLogic {
       goAbout: () => this.goAbout(),
       goSolutions: () => this.goSolutionsRef(),
       goContact: () => this.goContactRef(),
+      menuOpen: this.state.menuOpen,
+      burgerIcon: (this.state.menuOpen ? 'ph-x' : 'ph-list'),
+      toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
+      mServices: () => this.goSolutionsRef(),
+      mAbout: () => this.goAbout(),
+      mApproach: () => this.goAboutAnchor('werkwijze'),
+      mContact: () => this.goContactRef(),
       lb: this.state.lightbox || {}, lbOpen: !!this.state.lightbox,
       closeLb: () => this.setState({ lightbox: null }),
       formName: this.state.form.name, formEmail: this.state.form.email, formMessage: this.state.form.message,
