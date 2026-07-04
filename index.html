@@ -94,8 +94,8 @@
           <span onClick="{{ setNL }}" style="{{ nlStyle }}">NL</span>
           <span onClick="{{ setEN }}" style="{{ enStyle }}">EN</span>
         </div>
-        <span class="ms-contactpill" onClick="{{ goContact }}" style="cursor:pointer; display:inline-flex; style="font-size:14px;"></i></span>
-        <span class="ms-burger" onClick="{{ toggleMenu }}" aria-label="Menu" style="display:none; cursor:pointer; width:44px; height:44px; border-radius:12px; align-items:center; justify-content:center; background:rgba(24,24,27,0.06);"><i class="ph-bold {{ burgerIcon }}" style="font-size:22px; color:#18181b;"></i></span>
+        <span class="ms-contactpill" onClick="{{ goContact }}" style="cursor:pointer"; display:inline-flex; style="font-size:14px;"></i></span>
+        <span class="ms-burger" onClick="{{ toggleMenu }}" aria-label="Menu" style="display:none; cursor:pointer; width:54px; height:54px; border-radius:12px; align-items:center; justify-content:center; background:rgba(24,24,27,0.06);"><i class="ph-bold {{ burgerIcon }}" style="font-size:22px; color:#18181b;"></i></span>
       </div>
     </div>
     <sc-if value="{{ menuOpen }}">
@@ -377,7 +377,7 @@
     <div class="ms-foot" style="max-width:1240px; margin:0 auto; padding:64px 40px 30px; display:grid; grid-template-columns:1.7fr 1fr 1fr 1fr; gap:40px;">
       <div style="min-width:220px;">
         <div onClick="{{ goHome }}" style="cursor:pointer; display:flex; align-items:center; gap:11px;">
-          <span style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,#6366f1,#7c3aed); display:inline-flex; align-items:center; justify-content:center; box-shadow:0 6px 14px -4px rgba(99,102,241,0.6);"><img src="./logo-nieuw-28-08-2025-1--mqxyx4ba.png" alt="Meester Solutions logo" style="max-width:100%; height:auto; display:block; object-fit:cover;"></span>
+          <span style="width:54px; height:54px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center;"><img src="./logo-nieuw-28-08-2025-1--mqxyx4ba.png" alt="Meester Solutions logo" style="max-width:100%; height:auto; display:block; object-fit:cover;"></span>
           <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:17px; letter-spacing:-0.01em;">Meester Solutions</span>
         </div>
         <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:14.5px; line-height:1.6; color:#71717a; margin:18px 0 0; max-width:280px; text-wrap:pretty;">{{ t.footerBlurb }}</p>
@@ -428,17 +428,17 @@ class Component extends DCLogic {
         title: { nl: 'Prototype in een week', en: 'Prototype in a week' },
         desc: { nl: 'Van idee naar werkend voorbeeld, in dagen.', en: 'From idea to a working example, in days.' },
         tagline: { nl: 'Van idee naar werkend prototype. In dagen, niet maanden.', en: 'From idea to working prototype. In days, not months.' },
-        long: { nl: 'In één sprint zet ik je idee om in iets dat je kunt vasthouden, klikken en testen. Echt werkend, niet alleen plaatjes, zodat je snel weet of het klopt.', en: 'In a single sprint I turn your idea into something you can hold, click and test. Truly working, not just visuals, so you know fast whether it holds up.' },
+        long: { nl: 'In één week zet ik je idee om naar een demo. Echt werkend, zodat je snel weet of je idee mogelijk is.', en: 'In a single week I turn your idea into a demo. A working example, so you know quickly whether your idea is possible.' },
         caps: [
           { nl: 'Snelle validatie van je idee', en: 'Validate your idea fast' },
           { nl: 'Een werkende demo, geen mockup', en: 'A working demo, not a mockup' },
-          { nl: 'Klaar om te testen met gebruikers', en: 'Ready to test with real users' },
+          { nl: 'Niet interessant? Geen kosten!', en: 'No cure, no pay!' },
         ],
         work: [
           { slotId: 'w-proto-1', img: 'data/game.jpeg', title: { nl: '3D game', en: '3D game' }, meta: { nl: 'Unity', en: 'Unity' }, desc: { nl: 'Voor deze opdracht was ik gevraagd een simpel 3D spel te ontwikkelen dat online gespeeld kan worden. Het spel zou moeten bestaan uit een boogschutter die op een doel kon schieten met pijl en boog. In plaats van een puntensysteem wou de opdrachtgever dat de gebruiker zelf (levens)doelen kon invullen en dat deze dan behaald zouden zijn op het moment dat het doel geraakt was.', en: 'For this assignment I was asked to develop a simple 3D game that could be played online. The game should exist of an archer that could shoot at a goal. Instead of a point system the assignee asked wanted to have the ability for users to add their own (life)goals and reach them when they hit the goal (with their lifegoal showing in the goal).' } },
           { slotId: 'w-proto-2', img: 'data/Dermabase.jpeg', title: { nl: 'Dermamatch applicatie', en: 'Dermamatch application'}, meta: { nl: 'App store · Google Play', en: 'App store · Google Play' }, desc: { nl: "Mijn tweede opdracht bij Dermabase was het uitbreiden van de app. Het doel was een prototype waarbij gebruikers een huidprofiel konden aanmaken, zoals droge huid, dat werd opgeslagen in de database en gekoppeld aan een gebruikers-ID dat via een cookie op het apparaat werd bewaard. Elke keer dat een product werd gescand bij Kruidvat of Etos, gebruikte de app die ID om het bijbehorende huidprofiel op te halen. Ik bouwde een API die op basis van het gebruikers-ID het huidprofiel ophaalde en daarmee bepaalde hoe geschikt een gescand product was voor dat specifieke huidtype.", en: "My second assignment at Dermabase involved expanding the app. The goal was to build a prototype where users could create a skin profile, such as dry skin, which was stored in the database and linked to a user ID saved on their device via a cookie. Each time a product was scanned at Kruidvat or Etos, the app used that ID to retrieve the corresponding skin profile. I built an API that fetched the skin profile based on the user ID and used it to determine how suitable a scanned product was for that particular skin type." } },
           { slotId: 'w-proto-3', img: 'data/dermascore.jpeg', title: { nl: 'Dermascore applicatie', en: 'Dermascore application' }, meta: { nl: 'App store · Google Play', en: 'App store · Google Play' }, desc: { nl: 'Voor mijn eerste opdracht bij startup Dermabase werkte ik aan de mobiele app DermaScore, beschikbaar op iOS en Android. Dit omvatte het opzetten van een database door Kruidvat en Etos te scrapen, waarbij duizenden productbarcodes en ingrediëntenlijsten werden verzameld. De app stelde gebruikers in staat om producten in de winkel te scannen en te zien of ze geschikt waren voor hun huidtype, op basis van een formule met de ingrediënten van het product.', en: 'For my first assignment at startup Dermabase, I worked on the mobile app DermaScore, available on both iOS and Android. This involved setting up a database by web scraping Kruidvat and Etos, gathering thousands of product barcodes and ingredient lists. The app let users scan products in-store and see whether they were suitable for their skin type, based on a formula using the product\'s ingredients.' } },
-          { slotId: 'w-proto-4', img: 'data/Stampy_cropped.png', title: { nl: 'Stampy application', en: 'Stampy application' }, meta: { nl: 'App store · Google Play', en: 'App store · Google Play'}, desc: { nl: 'Het doel van Stampy is om mensen te helpen hun voedsel ecologische voetafdruk te verlagen. Hiervoor bouwde ik een app genaamd Stampy, destijds beschikbaar op Android en iOS. Gebruikers konden productbarcodes scannen in de Albert Heijn om inzicht te krijgen in de gegevens van een product. De barcodes en ingrediënten werden direct van de Albert Heijn website gescraped. De app werkte met een puntensysteem waarbij elk product een score kreeg op basis van hoe milieuvriendelijk de ingrediënten en keurmerken waren, wat gebruikers hielp hun ecologische voetafdruk te verlagen.'}, en: "Stampy's goal is to help people reduce their food ecological footprint. To achieve this, I built an app called Stampy, which was available on both Android and iOS. Users could scan product barcodes in Albert Heijn to get insight into a product's data. The barcodes and ingredients were scraped directly from Albert Heijn's website. The app worked with a points system where each product receives a score based on how environmentally friendly its ingredients and certifications are, helping users lower their ecological footprint." },
+          { slotId: 'w-proto-4', img: 'data/Stampy_cropped.png', title: { nl: 'Stampy application', en: 'Stampy application' }, meta: { nl: 'App store · Google Play', en: 'App store · Google Play'}, desc: { nl: 'Het doel van Stampy is om mensen te helpen hun voedsel ecologische voetafdruk te verlagen. Hiervoor bouwde ik een app genaamd Stampy, destijds beschikbaar op Android en iOS. Gebruikers konden productbarcodes scannen in de Albert Heijn om inzicht te krijgen in de gegevens van een product. De barcodes en ingrediënten werden direct van de Albert Heijn website gescraped. De app werkte met een puntensysteem waarbij elk product een score kreeg op basis van hoe milieuvriendelijk de ingrediënten en keurmerken waren, wat gebruikers hielp hun ecologische voetafdruk te verlagen.', en: "Stampy's goal is to help people reduce their food ecological footprint. To achieve this, I built an app called Stampy, which was available on both Android and iOS. Users could scan product barcodes in Albert Heijn to get insight into a product's data. The barcodes and ingredients were scraped directly from Albert Heijn's website. The app worked with a points system where each product receives a score based on how environmentally friendly its ingredients and certifications are, helping users lower their ecological footprint." }},
         ],
       },
       {
@@ -456,8 +456,9 @@ class Component extends DCLogic {
         work: [
           { slotId: 'w-auto-1', img: 'portfolio-automatisering-1.jpg', title: { nl: 'Order-naar-factuur', en: 'Order-to-invoice' }, meta: { nl: 'Retail · automation', en: 'Retail · automation' }, desc: { nl: 'Bestellingen worden automatisch omgezet naar facturen en verstuurd, zonder handmatig overtypen.', en: 'Orders are automatically turned into invoices and sent, with no manual re-keying.' } },
           { slotId: 'w-auto-2', img: 'portfolio-automatisering-2.jpg', title: { nl: 'Data-sync pipeline', en: 'Data sync pipeline' }, meta: { nl: 'B2B · integratie', en: 'B2B · integration' }, desc: { nl: 'Een pijplijn die systemen continu synchroon houdt, zodat data overal actueel is.', en: 'A pipeline that keeps systems continuously in sync, so data stays current everywhere.' } },
-          { slotId: 'w-auto-3', img: 'portfolio-automatisering-3.jpg', title: { nl: 'Documentverwerking', en: 'Document processing' }, meta: { nl: 'Legal · OCR', en: 'Legal · OCR' }, desc: { nl: 'Inkomende documenten worden gelezen, geclassificeerd en verwerkt met OCR — volledig automatisch.', en: 'Incoming documents are read, classified and processed with OCR — fully automatically.' } },
-        ],
+          { slotId: 'w-auto-3', video: true, videoSrc: 'data/darkificial.mp4', title: { nl: 'Automatische video-editing en publiseren op Youtube en sociale media', en: 'Automatic video-editing and publishing on Youtube & social media' }, meta: { nl: 'FFmpeg · Youtube API · Discord API', en: 'FFmpeg · Youtube API · Discord API'}, desc: { nl: 'Automatische visuele inspectie die defecten op de productielijn realtime markeert.', en: 'Automated visual inspection that flags defects on the production line in real time.' } },
+    
+          ],
       },
       {
         num: '03', icon: 'ph-globe-hemisphere-west', accent: '#d97706',
@@ -575,7 +576,7 @@ class Component extends DCLogic {
         heroCardTitle: 'Vier diensten', heroCardSub: 'Eén aanspreekpunt',
         heroMockTitle: 'Meester Solutions', heroMockSub: 'Van prototype tot werkende oplossing',
         heroRow1: 'Prototype gebouwd', heroRow2: 'Automatisering live', heroRow3: 'Website gelanceerd',
-        solEyebrow: 'Diensten', solTitle: 'Kies een richting', solSub: 'Vier diensten die je idee naar werkende techniek brengen. Beweeg over een kaart, klik om verder te lezen.',
+        solEyebrow: 'Diensten', solTitle: 'Ontdek een service', solSub: 'Vier diensten die je idee naar werkende techniek brengen. Beweeg over een kaart, klik om verder te lezen.',
         contact: 'Contact', view: 'Bekijk dienst', back: 'Terug naar overzicht',
         navServices: 'Diensten', navAbout: 'Over Mees', navApproach: 'Werkwijze',
         work: 'Wat ik doe', portfolio: 'Voorbeelden voorafgaande projecten', portfolioHint: 'Zie afbeeldingen',
@@ -592,23 +593,23 @@ class Component extends DCLogic {
         flowSub: 'Eén voorbeeld: een binnenkomende cv wordt automatisch gelezen en beantwoord. Geen handwerk, geen wachttijd.',
         flowInLabel: 'Input · PDF ontvangen', flowOutLabel: 'Output · E-mail gegenereerd',
         flowResumeRole: 'Software Engineer',
-        flowPhone: '+31 6 12 34 56 78', flowEmailAddr: 'john.doe@email.com', flowLoc: 'Amsterdam, NL',
+        flowPhone: '+31 6 12 34 56 78', flowEmailAddr: 'jane.doe@email.com', flowLoc: 'Amsterdam, NL',
         flowSubjectLabel: 'Onderwerp', flowSubject: 'Kandidaat ontvangen', flowFromLabel: 'Aan',
-        flowBody: 'Hallo John, dank je voor je sollicitatie. We hebben je cv in goede orde ontvangen en nemen binnen 3 werkdagen contact met je op.',
-        flowStatus: 'Automatisch verzonden naar john.doe@email.com', flowSeconds: 'in 1,2 sec',
+        flowBody: 'Hallo Jane, dank je voor je sollicitatie. We hebben je cv in goede orde ontvangen en nemen binnen 3 werkdagen contact met je op. Fijne dag!',
+        flowStatus: 'Automatisch verzonden naar jane.doe@email.com', flowSeconds: 'in 1,2 sec',
       },
       en: {
         eyebrow: 'AI & AUTOMATION · FREELANCE',
-        h1a: 'Tailor-made ', h1b: 'automation solutions',
-        heroSub: 'A working example prototype within a week — no strings attached, just to see what’s possible for your process.',
+        h1a: 'Custom ', h1b: 'automation solutions',
+        heroSub: 'A demo of a working example prototype within a week: no strings attached, just finding out what’s possible.',
         ctaPrimary: 'Start with a prototype', ctaSecondary: 'Get in touch',
-        trust1: 'First prototype within a week', trust2: 'Free and no obligation',
+        trust1: 'First prototype within a week', trust2: 'Free & no obligation',
         heroCardTitle: 'Four services', heroCardSub: 'One point of contact',
         heroMockTitle: 'Meester Solutions', heroMockSub: 'From prototype to working solution',
         heroRow1: 'Prototype built', heroRow2: 'Automation live', heroRow3: 'Website launched',
-        solEyebrow: 'Services', solTitle: 'Pick a direction', solSub: 'Four services that take your idea to working technology. Hover a card, click to read more.',
+        solEyebrow: 'Services', solTitle: 'Explore a service', solSub: 'Four services that take your idea to working technology. Hover a card, click to read more.',
         contact: 'Contact', view: 'View service', back: 'Back to overview',
-        navServices: 'Services', navAbout: 'About', navApproach: 'How I work',
+        navServices: 'Services', navAbout: 'About Mees', navApproach: 'How I work',
         work: 'What I do', portfolio: 'Examples of previous projects', portfolioHint: 'See images',
         dropHero: 'Hero visual: see image', dropWork: 'Image',
         dropVideo: '(MP4)',
@@ -623,10 +624,10 @@ class Component extends DCLogic {
         flowSub: 'One example: an incoming CV is read and answered automatically. No manual work, no waiting.',
         flowInLabel: 'Input · PDF received', flowOutLabel: 'Output · Email generated',
         flowResumeRole: 'Software Engineer',
-        flowPhone: '+31 6 12 34 56 78', flowEmailAddr: 'john.doe@email.com', flowLoc: 'Amsterdam, NL',
+        flowPhone: '+31 6 12 34 56 78', flowEmailAddr: 'jane.doe@email.com', flowLoc: 'Amsterdam, NL',
         flowSubjectLabel: 'Subject', flowSubject: 'Candidate received', flowFromLabel: 'To',
-        flowBody: 'Hi John, thanks for your application. We have received your CV and will get back to you within 3 business days.',
-        flowStatus: 'Automatically sent to john.doe@email.com', flowSeconds: 'in 1.2 sec',
+        flowBody: 'Hello Jane, thank you for your application. We have received your CV and will get back to you within 3 business days. Have a nice day!',
+        flowStatus: 'Automatically sent to Jane.doe@email.com', flowSeconds: 'in 1.2 sec',
       },
     };
   }
@@ -688,7 +689,7 @@ class Component extends DCLogic {
     if (this.state.screen !== 'home') { this.setState({ screen: 'home' }); setTimeout(() => this.scrollTo(id), 60); }
     else { this.scrollTo(id); }
   }
-  goSolutionsRef() { this.goHomeAnchor('solutions'); }
+  goSolutionsRef() { this.openService(0); }
   goContactRef() { this.goHomeAnchor('contact'); }
   scrollTo(id) {
     try {
