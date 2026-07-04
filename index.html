@@ -46,6 +46,11 @@
   @media (max-width: 1024px){
     .ms-foot{ grid-template-columns:1fr 1fr !important; row-gap:36px !important; }
   }
+  /* 760–880px: two columns but too narrow for floating card */
+  @media (min-width: 761px) and (max-width: 880px) {
+    .ms-herocard{ display:none !important; }
+    .ms-emailcard{ bottom:34px !important; }
+  }
   @media (max-width: 760px){
     .ms-pad{ padding-left:22px !important; padding-right:22px !important; }
     .ms-navbar{ flex-wrap:nowrap; }
@@ -55,7 +60,9 @@
     .ms-hero{ padding-top:40px !important; gap:36px !important; }
     .ms-bigh1{ font-size:27px !important; }
     .ms-herocol{ min-width:0 !important; flex:1 1 100% !important; }
-    .ms-herovis{ min-width:0 !important; flex:1 1 100% !important; width:100% !important; height:380px !important; }
+    .ms-herovis{ min-width:0 !important; flex:1 1 100% !important; width:100% !important; height:480px !important; }
+    .ms-herocard{ display:none !important; }
+    .ms-emailcard{ top:24px !important; left:16px !important; right:16px !important; bottom:16px !important; }
     .ms-solgrid{ grid-template-columns:1fr !important; }
     .ms-2col{ grid-template-columns:1fr !important; gap:30px !important; }
     .ms-band{ padding:40px 26px !important; }
@@ -119,12 +126,12 @@
         </div>
       </div>
 
-      <div class="ms-herovis" style="flex:1; min-width:360px; position:relative; height:500px;">
+      <div class="ms-herovis" style="flex:1; min-width:360px; position:relative; height:600px;">
         <div style="position:absolute; top:24px; left:14px; width:130px; height:130px; border-radius:30px; background:linear-gradient(135deg,#fbbf24,#f59e0b); box-shadow:0 24px 50px -18px rgba(245,158,11,0.7); animation:floatB 7s ease-in-out infinite; z-index:1;"></div>
         <div style="position:absolute; bottom:6px; right:18px; width:104px; height:104px; border-radius:50%; background:linear-gradient(135deg,#ec4899,#db2777); box-shadow:0 24px 46px -16px rgba(219,39,119,0.6); animation:floatC 8s ease-in-out infinite; z-index:1;"></div>
         <div style="position:absolute; top:-6px; right:30px; width:118px; height:118px; border-radius:38% 62% 56% 44% / 52% 44% 56% 48%; background:radial-gradient(circle at 32% 30%, #7c3aed, #6366f1); box-shadow:0 30px 60px -22px rgba(124,58,237,0.7); animation:floatA 9s ease-in-out infinite; z-index:1;"></div>
 
-        <div style="position:absolute; top:46px; left:46px; right:46px; bottom:34px; border-radius:30px; overflow:hidden; box-shadow:0 40px 90px -34px rgba(24,24,27,0.4); border:6px solid #fff; z-index:2; background:#fff; display:flex; flex-direction:column;">
+        <div class="ms-emailcard" style="position:absolute; top:46px; left:46px; right:46px; bottom:120px; border-radius:30px; overflow:hidden; box-shadow:0 40px 90px -34px rgba(24,24,27,0.4); border:6px solid #fff; z-index:2; background:#fff; display:flex; flex-direction:column;">
           <div style="display:flex; align-items:center; gap:11px; padding:18px 20px 0;">
             <span style="flex-shrink:0; width:38px; height:38px; border-radius:12px; background:rgba(236,72,153,0.12); color:#ec4899; display:inline-flex; align-items:center; justify-content:center;"><i class="ph-bold ph-envelope" style="font-size:19px;"></i></span>
             <span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13.5px; color:#3f3f46;">{{ t.flowOutLabel }}</span>
@@ -142,7 +149,7 @@
           </div>
         </div>
 
-        <div style="position: absolute; left: -1px; width: 228px; padding: 18px 20px; border-radius: 22px; background: rgba(255,255,255,0.88); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.9); box-shadow: 0 26px 60px -24px rgba(24,24,27,0.35); animation: floatD 6s ease-in-out infinite; z-index: 3; top: 401px">
+        <div class="ms-herocard" style="position: absolute; left: -1px; width: 228px; padding: 18px 20px; border-radius: 22px; background: rgba(255,255,255,0.88); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.9); box-shadow: 0 26px 60px -24px rgba(24,24,27,0.35); animation: floatD 6s ease-in-out infinite; z-index: 3; bottom: 10px;">
           <div style="display:flex; gap:8px;">
             <span style="width:36px; height:36px; border-radius:11px; background:rgba(99,102,241,0.14); color:#6366f1; display:inline-flex; align-items:center; justify-content:center;"><i class="ph-bold ph-rocket-launch" style="font-size:18px;"></i></span>
             <span style="width:36px; height:36px; border-radius:11px; background:rgba(236,72,153,0.14); color:#ec4899; display:inline-flex; align-items:center; justify-content:center;"><i class="ph-bold ph-flow-arrow" style="font-size:18px;"></i></span>
