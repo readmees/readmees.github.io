@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meester Solutions — AI, automatisering & prototypes in een week</title>
+<meta name="description" content="Freelance studio voor slimme software, automatisering, GIS en computer vision. Eén aanspreekpunt, van eerste prototype tot werkende oplossing.">
+<meta name="theme-color" content="#f5f1e8">
 <script src="./support.js"></script>
 <template id="__bundler_thumbnail" data-bg-color="#f5f1e8">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -39,6 +42,39 @@
   @keyframes msFadeUp { from{ opacity:0; transform:translateY(30px); } to{ opacity:1; transform:none; } }
   .ms-reveal{ opacity:1; }
   .ms-reveal.in{ animation:msFadeUp .7s cubic-bezier(.16,1,.3,1) both; }
+  .ms-clamp2{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  /* Full-screen hero on laptop/desktop */
+  @media (min-width: 881px){
+    .ms-hero{ min-height:calc(100vh - 85px); min-height:calc(100svh - 85px); padding-top:20px !important; padding-bottom:56px !important; }
+  }
+  /* Sliding portfolio cards (marquee) */
+  @keyframes msMarquee { from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  .ms-mq{ position:relative; overflow:hidden; }
+  .ms-mq::before, .ms-mq::after{ content:''; position:absolute; top:0; bottom:0; width:70px; z-index:3; pointer-events:none; }
+  .ms-mq::before{ left:0; background:linear-gradient(90deg,#f5f1e8,rgba(245,241,232,0)); }
+  .ms-mq::after{ right:0; background:linear-gradient(270deg,#f5f1e8,rgba(245,241,232,0)); }
+  .ms-mq-track{ display:flex; width:max-content; animation:msMarquee 55s linear infinite; }
+  .ms-mq:hover .ms-mq-track{ animation-play-state:paused; }
+  .ms-mq-group{ display:flex; gap:22px; padding-right:22px; }
+  .ms-slide{ width:min(300px,78vw); flex:0 0 auto; }
+  @media (prefers-reduced-motion: reduce){
+    .ms-mq-track{ animation:none !important; }
+    .ms-mq{ overflow-x:auto; }
+    .ms-mq::before, .ms-mq::after{ display:none; }
+    .ms-reveal.in{ animation:none; }
+  }
+  @media (max-width: 760px){
+    /* On touch devices: swipe instead of auto-scroll */
+    .ms-mq{ overflow-x:auto; -webkit-overflow-scrolling:touch; scroll-snap-type:x proximity; scroll-padding-left:22px; }
+    .ms-mq::before, .ms-mq::after{ display:none; }
+    .ms-mq-track{ animation:none !important; }
+    .ms-mq-group2{ display:none !important; }
+    .ms-mq-group{ padding-left:22px; }
+    .ms-slide{ scroll-snap-align:start; }
+  }
+  @media (max-width: 940px){
+    .ms-2col{ grid-template-columns:1fr !important; gap:34px !important; }
+  }
   @media (max-width: 880px){
     .ms-flow-grid{ grid-template-columns:1fr !important; }
     .ms-flow-arrow{ transform:rotate(90deg); justify-self:center; margin:4px 0 !important; }
@@ -88,13 +124,14 @@
       <div class="ms-navlinks" style="display:flex; align-items:center; gap:28px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px;">
         <span onClick="{{ goSolutions }}" style="cursor:pointer; color:#3f3f46; transition:color 0.25s ease;" style-hover="color:#6366f1;">{{ t.navServices }}</span>
         <span onClick="{{ goAbout }}" style="cursor:pointer; color:#3f3f46; transition:color 0.25s ease;" style-hover="color:#6366f1;">{{ t.navAbout }}</span>
+        <span onClick="{{ goApproach }}" style="cursor:pointer; color:#3f3f46; transition:color 0.25s ease;" style-hover="color:#6366f1;">{{ t.navApproach }}</span>
       </div>
       <div style="display:flex; align-items:center; gap:18px;">
         <div style="display:flex; align-items:center; padding:3px; border-radius:999px; background:rgba(24,24,27,0.05); font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px;">
           <span onClick="{{ setNL }}" style="{{ nlStyle }}">NL</span>
           <span onClick="{{ setEN }}" style="{{ enStyle }}">EN</span>
         </div>
-        <span class="ms-contactpill" onClick="{{ goContact }}" style="cursor:pointer"; display:inline-flex; style="font-size:14px;"></i></span>
+        <span class="ms-contactpill" onClick="{{ goContact }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:8px; padding:11px 20px; border-radius:999px; background:#18181b; color:#f5f1e8; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px;">{{ t.contact }} <i class="ph-bold ph-arrow-right" style="font-size:14px;"></i></span>
         <span class="ms-burger" onClick="{{ toggleMenu }}" aria-label="Menu" style="display:none; cursor:pointer; width:54px; height:54px; border-radius:12px; align-items:center; justify-content:center; background:rgba(24,24,27,0.06);"><i class="ph-bold {{ burgerIcon }}" style="font-size:22px; color:#18181b;"></i></span>
       </div>
     </div>
@@ -114,7 +151,7 @@
     <div class="ms-pad ms-hero" style="max-width:1240px; margin:0 auto; padding:70px 40px 44px; display:flex; flex-wrap:wrap; gap:56px; align-items:center;">
       <div class="ms-herocol" style="flex:1.05; min-width:380px;">
         
-        <h1 lang="nl" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(26px,2.8vw,34px); line-height:1.1; letter-spacing:-0.03em; margin:24px 0 0; text-wrap:balance; overflow-wrap:normal; word-break:keep-all; hyphens:none;">{{ t.h1a }}<span style="color:#6366f1; display:inline-block;">{{ t.h1b }}</span></h1>
+        <h1 lang="nl" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(28px,3.4vw,44px); line-height:1.08; letter-spacing:-0.03em; margin:24px 0 0; text-wrap:balance; overflow-wrap:break-word; hyphens:auto;">{{ t.h1a }}<span style="color:#6366f1;">{{ t.h1b }}</span></h1>
         <p style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:400; font-size:19px; line-height:1.6; color:#52525b; margin:26px 0 0; max-width:500px; text-wrap:pretty;">{{ t.heroSub }}</p>
         <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:34px;">
           <span onClick="{{ goSolutions }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:9px; padding:15px 28px; border-radius:999px; background:linear-gradient(135deg,#6366f1,#7c3aed); color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; box-shadow:0 14px 30px -10px rgba(99,102,241,0.65);">{{ t.ctaPrimary }} <i class="ph-bold ph-arrow-right" style="font-size:16px;"></i></span>
@@ -194,6 +231,50 @@
       </div>
     </div>
 
+    <div class="ms-pad" id="portfolio" style="max-width:1240px; margin:0 auto; padding:0 40px 30px; scroll-margin-top:90px;">
+      <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:20px;">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:#ec4899;">{{ t.sliderEyebrow }}</div>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(30px,3.6vw,44px); line-height:1.05; letter-spacing:-0.03em; margin:12px 0 0;">{{ t.sliderTitle }}</h2>
+        </div>
+        <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; line-height:1.55; color:#71717a; max-width:340px; margin:0;">{{ t.sliderSub }}</p>
+      </div>
+    </div>
+    <div class="ms-mq" style="margin:0 0 84px; padding:8px 0 18px;">
+      <div class="ms-mq-track">
+        <div class="ms-mq-group">
+          <sc-for list="{{ workCards }}" as="w" hint-placeholder-count="6">
+            <div class="ms-slide" onClick="{{ w.onOpen }}" style="cursor:pointer; background:#fff; border-radius:22px; padding:12px 12px 16px; border:1px solid rgba(24,24,27,0.06); box-shadow:0 8px 24px rgba(24,24,27,0.05); transition:transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s ease;" style-hover="transform:translateY(-6px); box-shadow:0 24px 46px -18px {{ w.glow }};">
+              <div style="position:relative; height:158px; border-radius:15px; overflow:hidden; background:#efece4;">
+                <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:12px; text-align:center; color:#b8b2a6;"><i class="ph-bold ph-image-square" style="font-size:24px;"></i><span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:600; word-break:break-all; line-height:1.3;">{{ w.mediaName }}</span></div>
+                {{ w.mediaEl }}
+              </div>
+              <div style="padding:14px 8px 0;">
+                <span style="{{ w.chipStyle }}">{{ w.chip }}</span>
+                <div class="ms-clamp2" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16.5px; line-height:1.25; letter-spacing:-0.01em; margin-top:10px;">{{ w.title }}</div>
+                <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; color:#a1a1aa; margin-top:4px;">{{ w.meta }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div class="ms-mq-group ms-mq-group2" aria-hidden="true">
+          <sc-for list="{{ workCards }}" as="w" hint-placeholder-count="6">
+            <div class="ms-slide" onClick="{{ w.onOpen }}" style="cursor:pointer; background:#fff; border-radius:22px; padding:12px 12px 16px; border:1px solid rgba(24,24,27,0.06); box-shadow:0 8px 24px rgba(24,24,27,0.05); transition:transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s ease;" style-hover="transform:translateY(-6px); box-shadow:0 24px 46px -18px {{ w.glow }};">
+              <div style="position:relative; height:158px; border-radius:15px; overflow:hidden; background:#efece4;">
+                <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:12px; text-align:center; color:#b8b2a6;"><i class="ph-bold ph-image-square" style="font-size:24px;"></i><span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:600; word-break:break-all; line-height:1.3;">{{ w.mediaName }}</span></div>
+                {{ w.mediaEl }}
+              </div>
+              <div style="padding:14px 8px 0;">
+                <span style="{{ w.chipStyle }}">{{ w.chip }}</span>
+                <div class="ms-clamp2" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16.5px; line-height:1.25; letter-spacing:-0.01em; margin-top:10px;">{{ w.title }}</div>
+                <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; color:#a1a1aa; margin-top:4px;">{{ w.meta }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
     <div class="ms-pad" id="contact" style="max-width:1240px; margin:0 auto 80px; padding:0 40px; scroll-margin-top:90px;">
       <div class="ms-band" style="position:relative; overflow:hidden; border-radius:34px; background:linear-gradient(120deg,#6366f1,#7c3aed 55%,#ec4899); padding:52px 52px; box-shadow:0 40px 90px -34px rgba(124,58,237,0.65);">
         <div style="position:absolute; top:-60px; right:-30px; width:220px; height:220px; border-radius:50%; background:rgba(251,191,36,0.35); filter:blur(8px); animation:floatD 7s ease-in-out infinite;"></div>
@@ -204,7 +285,7 @@
             <div style="display:flex; flex-direction:column; gap:14px; align-items:flex-start;">
             <a href="mailto:contact@meesmeester.nl" style="text-decoration:none; cursor:pointer; display:inline-flex; align-items:center; gap:9px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#fff;"><i class="ph-bold ph-envelope-simple" style="font-size:18px;"></i> contact@meesmeester.nl</a>
             <a href="https://wa.me/31617005219" target="_blank" rel="noopener" style="text-decoration:none; cursor:pointer; display:inline-flex; align-items:center; gap:9px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#fff;"><i class="ph-bold ph-whatsapp-logo" style="font-size:18px;"></i> {{ t.waBusiness }}</a>
-            <a href="tel:+617005219" style="text-decoration:none; cursor:pointer; display:inline-flex; align-items:center; gap:9px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#fff;"><i class="ph-bold ph-phone" style="font-size:18px;"></i> +617005219</a>
+            <a href="tel:+31617005219" style="text-decoration:none; cursor:pointer; display:inline-flex; align-items:center; gap:9px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#fff;"><i class="ph-bold ph-phone" style="font-size:18px;"></i> +31 6 17 00 52 19</a>
             </div>
           </div>
 
@@ -274,7 +355,10 @@
       <span onClick="{{ goHome }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:9px; padding:14px 26px; border-radius:999px; background:#18181b; color:#f5f1e8; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px;">{{ t.allServices }} <i class="ph-bold ph-squares-four" style="font-size:16px;"></i></span>
     </div>
 
-    <sc-if value="{{ lbOpen }}">
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ lbOpen }}">
       <div onClick="{{ closeLb }}" style="position:fixed; inset:0; z-index:90; background:rgba(24,24,27,0.62); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; padding:24px;">
         <div onClick="{{ stop }}" style="position:relative; width:min(760px,100%); max-height:88vh; overflow:auto; background:#fff; border-radius:26px; box-shadow:0 50px 120px -30px rgba(0,0,0,0.6);">
           <div style="position:relative; height:clamp(240px,42vh,420px); background:#efece4; overflow:hidden; border-radius:26px 26px 0 0;"><div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:16px; text-align:center; color:#b8b2a6;"><i class="ph-bold ph-image-square" style="font-size:34px;"></i><span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; word-break:break-all;">{{ lb.mediaName }}</span></div>{{ lb.mediaEl }}
@@ -288,9 +372,6 @@
           </div>
         </div>
       </div>
-    </sc-if>
-
-  </div>
   </sc-if>
 
   <sc-if value="{{ isAbout }}">
@@ -311,7 +392,7 @@
 
     <div class="ms-2col" style="margin-top:54px; display:grid; grid-template-columns:0.85fr 1.15fr; gap:48px; align-items:start;">
       <div style="border-radius:24px; overflow:hidden; height:420px; border:6px solid #fff; box-shadow:0 26px 60px -26px rgba(24,24,27,0.35); background:#fff;">
-        <img src="data/mees.jpeg" alt="Mees" style="width:auto; max-height:100%;">
+        <img src="data/mees.jpeg" alt="Mees" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
       </div>
       <div>
         <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:#a1a1aa;">{{ about.bioLabel }}</div>
@@ -383,7 +464,7 @@
         <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:14.5px; line-height:1.6; color:#71717a; margin:18px 0 0; max-width:280px; text-wrap:pretty;">{{ t.footerBlurb }}</p>
         <div style="display:flex; gap:11px; margin-top:24px;">
           <a href="https://www.linkedin.com/in/meesmeester" target="_blank" rel="noopener" style="text-decoration:none; width:40px; height:40px; border-radius:12px; background:linear-gradient(135deg,#6366f1,#7c3aed); color:#fff; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 8px 18px -6px rgba(99,102,241,0.6); transition:transform 0.3s ease;" style-hover="transform:translateY(-3px);"><i class="ph-bold ph-linkedin-logo" style="font-size:19px;"></i></a>
-          <a href="http://github.com/readmees" target="_blank" rel="noopener" style="text-decoration:none; width:40px; height:40px; border-radius:12px; background:linear-gradient(135deg,#6366f1,#7c3aed); color:#fff; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 8px 18px -6px rgba(99,102,241,0.6); transition:transform 0.3s ease;" style-hover="transform:translateY(-3px);"><i class="ph-bold ph-github-logo" style="font-size:19px;"></i></a>
+          <a href="https://github.com/readmees" target="_blank" rel="noopener" style="text-decoration:none; width:40px; height:40px; border-radius:12px; background:linear-gradient(135deg,#6366f1,#7c3aed); color:#fff; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 8px 18px -6px rgba(99,102,241,0.6); transition:transform 0.3s ease;" style-hover="transform:translateY(-3px);"><i class="ph-bold ph-github-logo" style="font-size:19px;"></i></a>
           <a href="mailto:contact@meesmeester.nl" style="text-decoration:none; width:40px; height:40px; border-radius:12px; background:linear-gradient(135deg,#6366f1,#7c3aed); color:#fff; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 8px 18px -6px rgba(99,102,241,0.6); transition:transform 0.3s ease;" style-hover="transform:translateY(-3px);"><i class="ph-bold ph-envelope-simple" style="font-size:19px;"></i></a>
         </div>
       </div>
@@ -402,7 +483,7 @@
 
     <div class="ms-pad" style="max-width:1240px; margin:0 auto; padding:24px 40px 36px; border-top:1px solid rgba(24,24,27,0.08); display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:center;">
       <span style="font-family:'Space Grotesk',sans-serif; font-size:13px; color:#a1a1aa;">© 2026 Meester Solutions · {{ t.footerRights }}</span>
-      <span style="font-family:'Space Grotesk',sans-serif; font-size:13px; color:#a1a1aa;"><div>KvK: 83407367 - BTW: NL003814259B42</div></span>
+      <span style="font-family:'Space Grotesk',sans-serif; font-size:13px; color:#a1a1aa;">KvK: 83407367 · BTW: NL003814259B42</span>
     </div>
   </div>
 
@@ -435,10 +516,10 @@ class Component extends DCLogic {
           { nl: 'Niet interessant? Geen kosten!', en: 'No cure, no pay!' },
         ],
         work: [
-          { slotId: 'w-proto-1', img: 'data/game.jpeg', title: { nl: '3D game', en: '3D game' }, meta: { nl: 'Unity', en: 'Unity' }, desc: { nl: 'Voor deze opdracht was ik gevraagd een simpel 3D spel te ontwikkelen dat online gespeeld kan worden. Het spel zou moeten bestaan uit een boogschutter die op een doel kon schieten met pijl en boog. In plaats van een puntensysteem wou de opdrachtgever dat de gebruiker zelf (levens)doelen kon invullen en dat deze dan behaald zouden zijn op het moment dat het doel geraakt was.', en: 'For this assignment I was asked to develop a simple 3D game that could be played online. The game should exist of an archer that could shoot at a goal. Instead of a point system the assignee asked wanted to have the ability for users to add their own (life)goals and reach them when they hit the goal (with their lifegoal showing in the goal).' } },
+          { slotId: 'w-proto-1', img: 'data/game.jpeg', title: { nl: '3D game', en: '3D game' }, meta: { nl: 'Unity', en: 'Unity' }, desc: { nl: 'Voor deze opdracht was ik gevraagd een simpel 3D spel te ontwikkelen dat online gespeeld kan worden. Het spel zou moeten bestaan uit een boogschutter die op een doel kon schieten met pijl en boog. In plaats van een puntensysteem wou de opdrachtgever dat de gebruiker zelf (levens)doelen kon invullen en dat deze dan behaald zouden zijn op het moment dat het doel geraakt was.', en: 'For this assignment I was asked to develop a simple 3D game that could be played online. The game consists of an archer shooting arrows at a target. Instead of a points system, the client wanted users to enter their own (life) goals, which are marked as achieved the moment the arrow hits the target (with the goal displayed on it).' } },
           { slotId: 'w-proto-2', img: 'data/Dermabase.jpeg', title: { nl: 'Dermamatch applicatie', en: 'Dermamatch application'}, meta: { nl: 'App Store · Google Play', en: 'App Store · Google Play' }, desc: { nl: "Mijn tweede opdracht bij Dermabase was het uitbreiden van de app. Het doel was een prototype waarbij gebruikers een huidprofiel konden aanmaken, zoals droge huid, dat werd opgeslagen in de database en gekoppeld aan een gebruikers-ID dat via een cookie op het apparaat werd bewaard. Elke keer dat een product werd gescand bij Kruidvat of Etos, gebruikte de app die ID om het bijbehorende huidprofiel op te halen. Ik bouwde een API die op basis van het gebruikers-ID het huidprofiel ophaalde en daarmee bepaalde hoe geschikt een gescand product was voor dat specifieke huidtype.", en: "My second assignment at Dermabase involved expanding the app. The goal was to build a prototype where users could create a skin profile, such as dry skin, which was stored in the database and linked to a user ID saved on their device via a cookie. Each time a product was scanned at Kruidvat or Etos, the app used that ID to retrieve the corresponding skin profile. I built an API that fetched the skin profile based on the user ID and used it to determine how suitable a scanned product was for that particular skin type." } },
           { slotId: 'w-proto-3', img: 'data/dermascore.jpeg', title: { nl: 'Dermascore applicatie', en: 'Dermascore application' }, meta: { nl: 'App Store · Google Play', en: 'App Store · Google Play' }, desc: { nl: 'Voor mijn eerste opdracht bij startup Dermabase werkte ik aan de mobiele app DermaScore, beschikbaar op iOS en Android. Dit omvatte het opzetten van een database door Kruidvat en Etos te scrapen, waarbij duizenden productbarcodes en ingrediëntenlijsten werden verzameld. De app stelde gebruikers in staat om producten in de winkel te scannen en te zien of ze geschikt waren voor hun huidtype, op basis van een formule met de ingrediënten van het product.', en: 'For my first assignment at startup Dermabase, I worked on the mobile app DermaScore, available on both iOS and Android. This involved setting up a database by web scraping Kruidvat and Etos, gathering thousands of product barcodes and ingredient lists. The app let users scan products in-store and see whether they were suitable for their skin type, based on a formula using the product\'s ingredients.' } },
-          { slotId: 'w-proto-4', img: 'data/Stampy_cropped.png', title: { nl: 'Stampy application', en: 'Stampy application' }, meta: { nl: 'App Store · Google Play', en: 'App Store · Google Play'}, desc: { nl: 'Het doel van Stampy is om mensen te helpen hun voedsel ecologische voetafdruk te verlagen. Hiervoor bouwde ik een app genaamd Stampy, destijds beschikbaar op Android en iOS. Gebruikers konden productbarcodes scannen in de Albert Heijn om inzicht te krijgen in de gegevens van een product. De barcodes en ingrediënten werden direct van de Albert Heijn website gescraped. De app werkte met een puntensysteem waarbij elk product een score kreeg op basis van hoe milieuvriendelijk de ingrediënten en keurmerken waren, wat gebruikers hielp hun ecologische voetafdruk te verlagen.', en: "Stampy's goal is to help people reduce their food ecological footprint. To achieve this, I built an app called Stampy, which was available on both Android and iOS. Users could scan product barcodes in Albert Heijn to get insight into a product's data. The barcodes and ingredients were scraped directly from Albert Heijn's website. The app worked with a points system where each product receives a score based on how environmentally friendly its ingredients and certifications are, helping users lower their ecological footprint." }},
+          { slotId: 'w-proto-4', img: 'data/Stampy_cropped.png', title: { nl: 'Stampy application', en: 'Stampy application' }, meta: { nl: 'App Store · Google Play', en: 'App Store · Google Play'}, desc: { nl: 'Het doel van Stampy is om mensen te helpen de ecologische voetafdruk van hun voeding te verlagen. Hiervoor bouwde ik een app genaamd Stampy, destijds beschikbaar op Android en iOS. Gebruikers konden productbarcodes scannen in de Albert Heijn om inzicht te krijgen in de gegevens van een product. De barcodes en ingrediënten werden direct van de Albert Heijn website gescraped. De app werkte met een puntensysteem waarbij elk product een score kreeg op basis van hoe milieuvriendelijk de ingrediënten en keurmerken waren, wat gebruikers hielp hun ecologische voetafdruk te verlagen.', en: "Stampy's goal is to help people reduce their food ecological footprint. To achieve this, I built an app called Stampy, which was available on both Android and iOS. Users could scan product barcodes in Albert Heijn to get insight into a product's data. The barcodes and ingredients were scraped directly from Albert Heijn's website. The app worked with a points system where each product receives a score based on how environmentally friendly its ingredients and certifications are, helping users lower their ecological footprint." }},
         ],
       },
       {
@@ -454,9 +535,9 @@ class Component extends DCLogic {
           { nl: 'Schaalt mee zonder extra mensen', en: 'Scales without extra headcount' },
         ],
         work: [
-          { slotId: 'w-auto-1', img: 'data/pdf.png', title: { nl: "Pdf's automatiseren", en: 'PDF automation' }, meta: { nl: 'Python', en: 'Python' }, desc: { nl: "Veel bedrijven wisselen onderling nog steeds data uit via pdf's en willen deze informatie overzichtelijker kunnen verwerken. Voor meerdere opdrachtgevers heb ik programma's ontwikkeld die pdf's automatisch kunnen analyseren en uitlezen. Denk hier aan bouwtekeningen, productlijsten en gestructureerde tabellen.", en: 'Many companies still exchange data through PDFs and want a clearer way to work with that information. For several clients, I developed programs to automatically analyze and extract data from PDFs. Examples are blueprints, product lists, and structured tables.' } },
+          { slotId: 'w-auto-1', img: 'data/pdf.png', title: { nl: "PDF's automatiseren", en: 'PDF automation' }, meta: { nl: 'Python', en: 'Python' }, desc: { nl: "Veel bedrijven wisselen onderling nog steeds data uit via PDF's en willen deze informatie overzichtelijker kunnen verwerken. Voor meerdere opdrachtgevers heb ik programma's ontwikkeld die PDF's automatisch kunnen analyseren en uitlezen. Denk hier aan bouwtekeningen, productlijsten en gestructureerde tabellen.", en: 'Many companies still exchange data through PDFs and want a clearer way to work with that information. For several clients, I developed programs to automatically analyze and extract data from PDFs. Examples are blueprints, product lists, and structured tables.' } },
           { slotId: 'w-auto-2', img: 'data/mail.png', title: {nl: 'Mails genereren', en: 'E-mail generation' }, meta: { nl: 'Python · Gmail API', en: 'Python · Gmail API'}, desc: { nl: "Een taak die veel bedrijven nog grotendeels handmatig uitvoeren is het versturen van mails. Dat is tegenwoordig in veel gevallen niet meer nodig! Mails kunnen automatisch worden gegenereerd op basis van een categorie of vanuit een bestaande database.", en: "A task many companies still handle largely by hand is sending emails. However, in most cases, that's no longer necessary! Emails can be automatically generated based on category or drawn from an existing database." } },
-          { slotId: 'w-auto-3', img: 'data/praioritize.jpg', title: { nl: 'AI Consultancy', en: 'AI Consultancy' }, meta: { nl: 'Python · ChatGPT API', en: 'Python · ChatGPT API'}, desc: { nl: "Voor Praioritize heb ik meerdere opdrachten uitgevoerd, waarvan de voornaamste een geautomatiseerde concurrentieanalyse was op basis van een combinatie van webscrapen en de OpenAI API. De uitdaging zat in het bouwen van een algemene scraper die werkte voor alle websites en tegelijkertijd rekening hield met de voorkeuren van elke site. OPMERKING: de rechten van de afbeelding zijn van Praioritize.", en: "For Praioritize, I worked on several assignments, the main one being an automated competitor analysis tool combining web scraping with the OpenAI API. The challenge was building a general-purpose scraper that worked across all websites while respecting each site's preferences. NOTE: image belongs to Praioritze." } },
+          { slotId: 'w-auto-3', img: 'data/praioritize.jpg', title: { nl: 'AI Consultancy', en: 'AI Consultancy' }, meta: { nl: 'Python · ChatGPT API', en: 'Python · ChatGPT API'}, desc: { nl: "Voor Praioritize heb ik meerdere opdrachten uitgevoerd, waarvan de voornaamste een geautomatiseerde concurrentieanalyse was op basis van een combinatie van webscrapen en de OpenAI API. De uitdaging zat in het bouwen van een algemene scraper die werkte voor alle websites en tegelijkertijd rekening hield met de voorkeuren van elke site. OPMERKING: de rechten van de afbeelding zijn van Praioritize.", en: "For Praioritize, I worked on several assignments, the main one being an automated competitor analysis tool combining web scraping with the OpenAI API. The challenge was building a general-purpose scraper that worked across all websites while respecting each site's preferences. NOTE: image rights belong to Praioritize." } },
     
           ],
       },
@@ -473,7 +554,7 @@ class Component extends DCLogic {
           { nl: 'Kaarten die beslissingen sturen', en: 'Maps that drive decisions' },
         ],
         work: [
-          { slotId: 'w-gis-1', img: 'data/EdgeDetect.png', title: { nl: 'Radar edge detection', en: 'Radar edge detection' }, meta: { nl: 'Manufacturing · QA', en: 'Manufacturing · QA' }, desc: { nl: 'Automatische visuele inspectie die defecten op de productielijn realtime markeert.', en: 'Automated visual inspection that flags defects on the production line in real time.' } },
+          { slotId: 'w-gis-1', img: 'data/EdgeDetect.png', title: { nl: 'Radar edge detection', en: 'Radar edge detection' }, meta: { nl: 'Manufacturing · QA', en: 'Manufacturing · QA' }, desc: { nl: 'Automatische edge detection op radarbeelden, die randen en afwijkingen realtime markeert.', en: 'Automated edge detection on radar imagery, flagging edges and anomalies in real time.' } },
           { slotId: 'w-gis-2', img: 'data/Cobra.png', title: { nl: 'Ontbossing-detectie', en: 'Deforestation' }, meta: { nl: 'Climate · Sentinel', en: 'Climate · Sentinel' }, desc: { nl: 'Sentinel-beelden vergeleken door de tijd om ontbossing vroeg te signaleren.', en: 'Comparing Sentinel imagery over time to detect deforestation early.' } },
           { slotId: 'w-gis-3', img: 'data/Goldeneye.png', title: { nl: 'Stedelijke groei', en: 'Urban growth' }, meta: { nl: 'Gov · time-series', en: 'Gov · time-series' }, desc: { nl: 'Tijdreeksanalyse die stedelijke uitbreiding in kaart brengt voor beleidsmakers.', en: 'Time-series analysis mapping urban expansion for policymakers.' } },
           { slotId: 'w-gis-4', img: 'data/Dogrecognisable.png', title: { nl: 'Wateranalyse', en: 'Water analysis' }, meta: { nl: 'Milieu · SAR', en: 'Environment · SAR' }, desc: { nl: 'SAR-data om waterlichamen en overstromingen betrouwbaar te detecteren.', en: 'SAR data to reliably detect water bodies and flooding.' } },
@@ -489,12 +570,12 @@ class Component extends DCLogic {
         caps: [
           { nl: 'Detectie en classificatie', en: 'Detection & classification' },
           { nl: 'Realtime op de werkvloer', en: 'Real-time on the floor' },
-          { nl: 'Getraind op uw eigen data', en: 'Trained on your own data' },
+          { nl: 'Getraind op je eigen data', en: 'Trained on your own data' },
         ],
         work: [
-          { slotId: 'w-cv-1', video: true, videoSrc: 'data/3dworld.mp4', title: { nl: '3D videos genereren', en: '3D video generation' }, meta: { nl: 'Python · ThreeDWorld', en: 'Python · ThreeDWorld'}, desc: { nl: "Voor een onderzoeker die grote hoeveelheden trainingsdata wilde genereren voor een neuraal netwerk bouwde ik een geautomatiseerd videogeneratiesysteem (vóór het tijdperk van grote taalmodellen). Het systeem draaide in software genaamd ThreeDWorld en kon drie soorten video's produceren: objectgebaseerde trials (zoals botsingen, objectpermanentie, containment en rollen), transitietrials (waarbij objecten zich op onverwachte of fysiek verrassende manieren gedragen) en agentgebaseerde trials (waarbij een agent actief met objecten in de scène interacteert). Dit gaf de onderzoeker een schaalbare manier om automatisch gevarieerde, gelabelde videodata te genereren.", en: "For a researcher looking to generate large amounts of training data for a neural network, before the era of large language models, I built an automated video generation system. The system used software called ThreeDWorld and could produce three types of videos: object-based trials (such as collisions, object permanence, containment, and rolling), transition trials (where objects behave in unexpected or physically surprising ways), and agent-based trials (where an agent actively interacts with objects in the scene). This gave the researcher a scalable way to generate varied, labeled video data automatically." } },
+          { slotId: 'w-cv-1', video: true, videoSrc: 'data/3dworld.mp4', title: { nl: "3D-video's genereren", en: '3D video generation' }, meta: { nl: 'Python · ThreeDWorld', en: 'Python · ThreeDWorld'}, desc: { nl: "Voor een onderzoeker die grote hoeveelheden trainingsdata wilde genereren voor een neuraal netwerk bouwde ik een geautomatiseerd videogeneratiesysteem (vóór het tijdperk van grote taalmodellen). Het systeem draaide in software genaamd ThreeDWorld en kon drie soorten video's produceren: objectgebaseerde trials (zoals botsingen, objectpermanentie, containment en rollen), transitietrials (waarbij objecten zich op onverwachte of fysiek verrassende manieren gedragen) en agentgebaseerde trials (waarbij een agent actief met objecten in de scène interacteert). Dit gaf de onderzoeker een schaalbare manier om automatisch gevarieerde, gelabelde videodata te genereren.", en: "For a researcher looking to generate large amounts of training data for a neural network, before the era of large language models, I built an automated video generation system. The system used software called ThreeDWorld and could produce three types of videos: object-based trials (such as collisions, object permanence, containment, and rolling), transition trials (where objects behave in unexpected or physically surprising ways), and agent-based trials (where an agent actively interacts with objects in the scene). This gave the researcher a scalable way to generate varied, labeled video data automatically." } },
           { slotId: 'w-cv-2', img: 'data/Roof.png', title: { nl: 'Dakcontouren herkennen', en: 'Detecting rooftop outlines' }, meta: { nl: 'Python · Convolutional Neural Network', en: 'Python · Convolutional Neural Network' }, desc: { nl: "Voor dit project werkte ik aan het detecteren van dakcontouren vanuit Google Earth, dit is handig voor het automatisch bepalen waar zonnepanelen geplaatst kunnen worden. De klant wilde dit kunnen toepassen voor elk adres in de Verenigde Staten. Hiervoor gebruikte ik een neuraal netwerk in combinatie met andere technieken om dakranden te herkennen en in kaart te brengen.", en: "For this project I worked on detecting rooftop outlines from Google Earth imagery, useful for automatically determining where to place solar panels. The client wanted this to work for any address in the United States. I used a neural network alongside other approaches to identify and outline rooftops." } },
-          { slotId: 'w-cv-3', video: true, videoSrc: 'data/darkificial.mp4', title: { nl: 'Automatische video-editing en publiseren op Youtube en sociale media', en: 'Automatic video-editing and publishing on Youtube & social media' }, meta: { nl: 'FFmpeg · Youtube API · Discord API', en: 'FFmpeg · Youtube API · Discord API'}, desc: { nl: "Voor Darkificial, een YouTube-kanaal, had een klant podcast-audio, een selectie achtergrondvideo's die in loops moesten afspelen, en een intro dat verwerkt moest worden. De klant wilde een geautomatiseerde video-editor die dit allemaal samenbracht. Zodra de video klaar was, moest deze ook automatisch worden geüpload naar YouTube en aangekondigd op sociale media. OPMERKING: bovenstaande video is van het Youtube kanaal, maar nog van voor dit programma.", en: "For Darkificial, a YouTube channel, a client came to me with podcast audio, a selection of background videos to loop, and an intro that needed to be incorporated. They wanted an automated video editor that could put it all together. Once the video was rendered, it also had to be automatically uploaded to YouTube and announced on social media. NOTE: the video above is from the Youtube channel, but created before the program." } },
+          { slotId: 'w-cv-3', video: true, videoSrc: 'data/darkificial.mp4', title: { nl: 'Automatische videomontage en publicatie op YouTube en sociale media', en: 'Automatic video editing and publishing on YouTube & social media' }, meta: { nl: 'FFmpeg · YouTube API · Discord API', en: 'FFmpeg · YouTube API · Discord API'}, desc: { nl: "Voor Darkificial, een YouTube-kanaal, had een klant podcast-audio, een selectie achtergrondvideo's die in loops moesten afspelen, en een intro dat verwerkt moest worden. De klant wilde een geautomatiseerde video-editor die dit allemaal samenbracht. Zodra de video klaar was, moest deze ook automatisch worden geüpload naar YouTube en aangekondigd op sociale media. OPMERKING: bovenstaande video is van het YouTube-kanaal, maar nog van vóór dit programma.", en: "For Darkificial, a YouTube channel, a client came to me with podcast audio, a selection of background videos to loop, and an intro that needed to be incorporated. They wanted an automated video editor that could put it all together. Once the video was rendered, it also had to be automatically uploaded to YouTube and announced on social media. NOTE: the video above is from the YouTube channel, but created before this program." } },
         
           ],
       },
@@ -512,10 +593,10 @@ class Component extends DCLogic {
         steps: [
           { n: '01', t: 'Kennismaking', d: 'We maken kennis en zien of het interessant voor beide partijen is om samen te werken. Vrijblijvend en concreet.' },
           { n: '02', t: 'Prototype in een week', d: 'Ik bouw een werkend voorbeeld voor een demo.' },
-          { n: '03', t: 'Bijschaven', d: 'Op basis van uw feedback verfijnen we de oplossing.' },
+          { n: '03', t: 'Bijschaven', d: 'Op basis van je feedback verfijnen we de oplossing.' },
           { n: '04', t: 'Opleveren', d: 'Van prototype naar product.' },
         ],
-        ctaTitle: 'Benieuwd wat ik voor u kan bouwen?',
+        ctaTitle: 'Benieuwd wat ik voor je kan bouwen?',
         ctaSub: 'Stuur me een bericht. Ik denk graag vrijblijvend mee.',
         ctaBtn: 'Neem contact op',
       },
@@ -525,7 +606,7 @@ class Component extends DCLogic {
         lead: 'I\u2019m Mees. I build smart software, automation and AI for founders who want to know fast whether an idea works.',
         bioLabel: 'Who I am',
         bio1: 'No agency with multiple layers, but one point of contact from first sketch to working solution. I choose interesting projects, ideally always with a challenging angle, for companies I find compelling and believe in. That is why I am genuinely passionate about the work I do and love thinking outside the box. Beyond that, I have a strong network of specialists in the same field – if something falls outside my direct expertise, I can potentially connect you with the right partner or tackle a project collaboratively with one of my colleagues.',
-        bio2: 'I love working with my hands and being creative; welding, metalworking, building bikes and tinkering are my passions. A great thing is that the same creativity applies to complex automation problems where no existing solutions exist yet. I love designing things that do not exist yet. I am also passionate about movement, motorbikes, and I have done quite a bit of acting as a hobby.',
+        bio2: 'I love working with my hands and being creative; welding, metalworking, building bikes and tinkering are my passions. A great thing is that the same creativity applies to complex automation problems for which no solutions exist yet. I am also passionate about movement, motorbikes, and I have done quite a bit of acting as a hobby.',
         dropPortrait: 'Portrait: photo',
         approachTitle: 'How I work',
         steps: [
@@ -548,7 +629,7 @@ class Component extends DCLogic {
         contactLine: 'Vragen over deze informatie?',
         sections: [
           { id: 'privacy', h: 'Privacybeleid', p: 'Meester Solutions verwerkt persoonsgegevens zorgvuldig en alleen voor het doel waarvoor je ze deelt, zoals contact opnemen of een opdracht uitvoeren. Gegevens worden niet verkocht aan derden.' },
-          { id: 'terms', h: 'Algemene voorwaarden', p: 'Ik doe mijn uiterste best om binnen een week een proof of concept te laten zien; een demo binnen die termijn is een streven, geen garantie. Je krijgt altijd een demo en beslist op basis daarvan of je verder wilt. De uren aan de demo worden alleen gefactureerd als je doorgaat — wil je niet verder, dan breng ik niets in rekening, maar mag de geleverde code niet worden gebruikt. Opgeleverde producten mogen alleen door u worden gebruikt. Echter, ik hergebruik wel mijn code en methoden voor andere projecten, maar deel nooit uw bedrijfsgegevens met derden. Afspraken over scope, planning en tarieven leggen we vooraf schriftelijk vast.' },
+          { id: 'terms', h: 'Algemene voorwaarden', p: 'Ik doe mijn uiterste best om binnen een week een proof of concept te laten zien; een demo binnen die termijn is een streven, geen garantie. Je krijgt altijd een demo en beslist op basis daarvan of je verder wilt. De uren aan de demo worden alleen gefactureerd als je doorgaat — wil je niet verder, dan breng ik niets in rekening, maar mag de geleverde code niet worden gebruikt. Opgeleverde producten mogen alleen door jou worden gebruikt. Ik hergebruik wel mijn eigen code en methoden voor andere projecten, maar deel nooit je bedrijfsgegevens met derden. Afspraken over scope, planning en tarieven leggen we vooraf schriftelijk vast.' },
           { id: 'cookies', h: 'Cookiebeleid', p: 'Deze website gebruikt alleen functionele cookies die nodig zijn om de site goed te laten werken. Er worden geen tracking-cookies geplaatst zonder je toestemming.' },
           { id: 'gdpr', h: 'AVG / GDPR', p: 'Je hebt het recht om je gegevens in te zien, te corrigeren of te laten verwijderen. Stuur daarvoor een bericht naar contact@meesmeester.nl; we reageren binnen 30 dagen.' },
         ],
@@ -563,7 +644,7 @@ class Component extends DCLogic {
           { id: 'privacy', h: 'Privacy policy', p: 'Meester Solutions handles personal data carefully and only for the purpose you share it for, such as getting in touch or carrying out a project. Data is never sold to third parties.' },
           { id: 'terms', h: 'Terms of service', p: 'I try hard to show a proof of concept within a week; a demo within that timeframe is a goal, not a guarantee. You always receive a demo and decide, based on it, whether you want to continue. Hours spent on the demo are only invoiced if you proceed; if you decide not to continue, I charge nothing, but the delivered code may not be used. Delivered products may be used only by you, the company. However, I reuse my own code and methods for other projects, but never share your business data with third parties. Agreements on scope, planning and rates are recorded in writing in advance.' },
           { id: 'cookies', h: 'Cookie policy', p: 'This website only uses functional cookies needed to make the site work properly. No tracking cookies are placed without your consent.' },
-          { id: 'gdpr', h: 'GDPR', p: 'You have the right to view, correct or delete your data. Send a message to hello@meester.solutions and we will respond within 30 days.' },
+          { id: 'gdpr', h: 'GDPR', p: 'You have the right to view, correct or delete your data. Send a message to contact@meesmeester.nl and we will respond within 30 days.' },
         ],
       },
     };
@@ -571,22 +652,23 @@ class Component extends DCLogic {
       nl: {
         eyebrow: 'AI & AUTOMATISERING · FREELANCE',
         h1a: 'Maatwerk ', h1b: 'automatiseringsoplossingen',
-        heroSub: 'Een vrijblijvend voorbeeldprototype in een week. Geen verplichtingen, gewoon zien wat er mogelijk is voor uw proces.',
+        heroSub: 'Een vrijblijvend voorbeeldprototype in een week. Geen verplichtingen, gewoon zien wat er mogelijk is voor je proces.',
         ctaPrimary: 'Start met een prototype', ctaSecondary: 'Neem contact op',
         trust1: 'Eerste prototype binnen een week', trust2: 'Vrijblijvend & zonder verplichtingen',
         heroCardTitle: 'Vier diensten', heroCardSub: 'Eén aanspreekpunt',
         heroMockTitle: 'Meester Solutions', heroMockSub: 'Van prototype tot werkende oplossing',
         heroRow1: 'Prototype gebouwd', heroRow2: 'Automatisering live', heroRow3: 'Website gelanceerd',
         solEyebrow: 'Diensten', solTitle: 'Ontdek een service', solSub: 'Vier diensten die je idee naar werkende techniek brengen. Beweeg over een kaart, klik om verder te lezen.',
+        sliderEyebrow: 'Portfolio', sliderTitle: 'Uitgelicht werk', sliderSub: 'Een greep uit eerdere projecten, over alle vier de diensten heen. Klik op een kaart voor het verhaal erachter.',
         contact: 'Contact', view: 'Bekijk dienst', back: 'Terug naar overzicht',
         navServices: 'Diensten', navAbout: 'Over Mees', navApproach: 'Werkwijze',
-        work: 'Wat ik doe', portfolio: 'Voorbeelden voorafgaande projecten', portfolioHint: 'Zie afbeeldingen',
+        work: 'Wat ik doe', portfolio: 'Voorbeelden van eerdere projecten', portfolioHint: 'Zie afbeeldingen',
         dropHero: 'Hero-beeld: zie afbeelding', dropWork: 'Afbeelding',
         dropVideo: '(MP4)',
         ctaBandTitle: 'Klaar om iets te bouwen?', ctaBandSub: 'Vertel me over je idee. Binnen een week laat ik zien wat mogelijk is.',
         waBusiness: 'WhatsApp zakelijk',
         formName: 'Naam', formNamePh: 'Je naam', formEmail: 'E-mailadres', formEmailPh: 'jij@bedrijf.nl', formMessage: 'Bericht', formMessagePh: 'Vertel kort over je idee of uitdaging…', formSend: 'Verstuur bericht', formSentTitle: 'Bedankt, bericht ontvangen!', formSentMsg: 'Ik neem binnen één werkdag contact met je op.', formAnother: 'Nog een bericht sturen', lbClose: 'Sluiten',
-        detailCtaTitle: 'Past dit bij uw uitdaging?', detailCtaSub: 'Bekijk de andere diensten of neem direct contact op.',
+        detailCtaTitle: 'Past dit bij jouw uitdaging?', detailCtaSub: 'Bekijk de andere diensten of neem direct contact op.',
         allServices: 'Alle diensten', footerTag: 'Software · Automatisering · GIS · Computer Vision',
         footerBlurb: 'Freelance studio voor slimme software, automatisering en AI. Eén aanspreekpunt, van eerste prototype tot werkende oplossing.',
         footerRights: 'Alle rechten voorbehouden',
@@ -609,6 +691,7 @@ class Component extends DCLogic {
         heroMockTitle: 'Meester Solutions', heroMockSub: 'From prototype to working solution',
         heroRow1: 'Prototype built', heroRow2: 'Automation live', heroRow3: 'Website launched',
         solEyebrow: 'Services', solTitle: 'Explore a service', solSub: 'Four services that take your idea to working technology. Hover a card, click to read more.',
+        sliderEyebrow: 'Portfolio', sliderTitle: 'Selected work', sliderSub: 'A selection of past projects across all four services. Click a card for the story behind it.',
         contact: 'Contact', view: 'View service', back: 'Back to overview',
         navServices: 'Services', navAbout: 'About Mees', navApproach: 'How I work',
         work: 'What I do', portfolio: 'Examples of previous projects', portfolioHint: 'See images',
@@ -628,7 +711,7 @@ class Component extends DCLogic {
         flowPhone: '+31 6 12 34 56 78', flowEmailAddr: 'jane.doe@email.com', flowLoc: 'Amsterdam, NL',
         flowSubjectLabel: 'Subject', flowSubject: 'Candidate received', flowFromLabel: 'To',
         flowBody: 'Hello Jane, thank you for your application. We have received your CV and will get back to you within 3 business days. Have a nice day!',
-        flowStatus: 'Automatically sent to Jane.doe@email.com', flowSeconds: 'in 1.2 sec',
+        flowStatus: 'Automatically sent to jane.doe@email.com', flowSeconds: 'in 1.2 sec',
       },
     };
   }
@@ -749,6 +832,23 @@ class Component extends DCLogic {
       };
     });
 
+    const lbFor = (w, acc) => ({ slotId: w.slotId, video: !!w.video, notVideo: !w.video, media: (w.video ? (w.videoSrc || '') : (w.img || '')), mediaName: (w.video ? (w.videoSrc || '') : (w.img || '')), mediaEl: this.mediaNode(w, true), title: w.title[L], meta: w.meta[L], desc: (w.desc ? w.desc[L] : ''), accent: acc });
+    const workCards = [];
+    S.forEach((s) => {
+      const acc = s.accent || '#6366f1';
+      s.work.forEach((w) => {
+        workCards.push({
+          chip: s.shortTitle[L],
+          chipStyle: { display: 'inline-flex', alignItems: 'center', padding: '5px 12px', borderRadius: '999px', fontFamily: "'Space Grotesk',sans-serif", fontWeight: 600, fontSize: '11.5px', letterSpacing: '0.03em', textTransform: 'uppercase', background: this.hx(acc, 0.12), color: acc },
+          glow: this.hx(acc, 0.4),
+          title: w.title[L], meta: w.meta[L],
+          mediaName: (w.video ? (w.videoSrc || '') : (w.img || '')),
+          mediaEl: this.mediaNode(w, false),
+          onOpen: () => this.setState({ lightbox: lbFor(w, acc) }),
+        });
+      });
+    });
+
     const lk = (label, onClick) => ({ label, onClick });
     const footCols = [
       { title: (L === 'nl' ? 'Diensten' : 'Services'), links: S.map((s, i) => lk(s.shortTitle[L], () => this.openService(i))) },
@@ -782,7 +882,7 @@ class Component extends DCLogic {
           text: c[L],
           dotStyle: { flexShrink: 0, width: '34px', height: '34px', borderRadius: '11px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: this.hx(acc, 0.14), color: acc },
         })),
-        panels: s.work.map((w) => ({ slotId: w.slotId, video: !!w.video, notVideo: !w.video, media: (w.video ? (w.videoSrc || '') : (w.img || '')), mediaName: (w.video ? (w.videoSrc || '') : (w.img || '')), mediaEl: this.mediaNode(w, false), title: w.title[L], meta: w.meta[L], desc: (w.desc ? w.desc[L] : ''), glow: this.hx(acc, 0.4), onOpen: () => { this.setState({ lightbox: { slotId: w.slotId, video: !!w.video, notVideo: !w.video, media: (w.video ? (w.videoSrc || '') : (w.img || '')), mediaName: (w.video ? (w.videoSrc || '') : (w.img || '')), mediaEl: this.mediaNode(w, true), title: w.title[L], meta: w.meta[L], desc: (w.desc ? w.desc[L] : ''), accent: acc } }); } })),
+        panels: s.work.map((w) => ({ slotId: w.slotId, video: !!w.video, notVideo: !w.video, media: (w.video ? (w.videoSrc || '') : (w.img || '')), mediaName: (w.video ? (w.videoSrc || '') : (w.img || '')), mediaEl: this.mediaNode(w, false), title: w.title[L], meta: w.meta[L], desc: (w.desc ? w.desc[L] : ''), glow: this.hx(acc, 0.4), onOpen: () => { this.setState({ lightbox: lbFor(w, acc) }); } })),
       };
     }
 
@@ -790,7 +890,9 @@ class Component extends DCLogic {
       t, isHome, detail: isNum, isAbout, isLegal,
       revealCls: (this.state.flowIn ? 'ms-reveal in' : 'ms-reveal'),
       card0: cards[0], card1: cards[1], card2: cards[2], card3: cards[3], cards,
+      workCards,
       footCols,
+      goApproach: () => this.goAboutAnchor('werkwijze'),
       about: this.ABOUT[L], legal: this.LEGAL[L],
       cur,
       nlStyle: tab(L === 'nl'), enStyle: tab(L === 'en'),
