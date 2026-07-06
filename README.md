@@ -1,0 +1,1 @@
+Feel free to fork and reuse this code. Note that the API key included belongs to a free service and isn't linked to any payment method, which is why I left it in. That said, requests are limited, so if you plan to use the code I'd ask you to create your own key at https://www.staticforms.dev/.

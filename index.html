@@ -3,7 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Meester Solutions — AI, automatisering & prototypes in een week</title>
+<title>Meester Solutions</title>
+<link rel="apple-touch-icon" sizes="180x180" href="data/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="data/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="data/favicon/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
 <meta name="description" content="Freelance studio voor slimme software, automatisering, GIS en computer vision. Eén aanspreekpunt, van eerste prototype tot werkende oplossing.">
 <meta name="theme-color" content="#f5f1e8">
 <script src="./support.js"></script>
@@ -53,7 +58,7 @@
     html{ scroll-snap-type:y proximity; }
     .ms-snap, .ms-hero{ scroll-snap-align:start; scroll-margin-top:85px; }
     .ms-fullsec{ min-height:min(calc(100vh - 85px), 880px); min-height:min(calc(100svh - 85px), 880px); display:flex; flex-direction:column; justify-content:center; }
-    .ms-fullsec > .ms-mq{ margin-bottom:0; }
+    .ms-fullsec > .ms-mq{ margin-bottom:72px; }
     .ms-footsnap{ scroll-snap-align:end; }
   }
   @media (prefers-reduced-motion: reduce){
@@ -139,7 +144,7 @@
   <div style="position:fixed; top:0; left:0; right:0; z-index:50; backdrop-filter:blur(14px); background:rgba(245,241,232,0.82); border-bottom:1px solid rgba(24,24,27,0.06);">
     <div class="ms-navbar ms-pad" style="max-width:1240px; margin:0 auto; padding:16px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
       <div onClick="{{ goHome }}" style="cursor:pointer; display:flex; align-items:center; gap:11px;">
-        <span style="width:52px; height:52px; border-radius:13px; display:inline-flex; align-items:center; justify-content:center;"><img src="./logo-nieuw-28-08-2025-1--mqxyx4ba.png" alt="logo-nieuw-28-08-2025-1-" style="max-width: 100%; height: auto; display: block; object-fit: cover"></span>
+        <span style="width:52px; height:52px; border-radius:13px; display:inline-flex; align-items:center; justify-content:center;"><img src="./Logo_small.png" alt="Logo small" style="max-width: 100%; height: auto; display: block; object-fit: cover"></span>
         <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16px; letter-spacing:-0.01em;">Meester Solutions</span>
       </div>
       <div class="ms-navlinks" style="display:flex; align-items:center; gap:28px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px;">
@@ -172,7 +177,7 @@
     <div class="ms-pad ms-hero" style="max-width:1240px; margin:0 auto; padding:70px 40px 44px; display:flex; flex-wrap:wrap; gap:56px; align-items:center;">
       <div class="ms-herocol" style="flex:1.05; min-width:380px;">
         
-        <h1 lang="nl" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(28px,3.4vw,44px); line-height:1.08; letter-spacing:-0.03em; margin:24px 0 0; text-wrap:balance; overflow-wrap:break-word; hyphens:auto;">{{ t.h1a }}<span style="color:#6366f1;">{{ t.h1b }}</span></h1>
+        <h1 lang="nl" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(28px,3.4vw,44px); line-height:1.08; letter-spacing:-0.03em; margin:0; text-wrap:balance; overflow-wrap:break-word; hyphens:auto;">{{ t.h1a }}<span style="color:#6366f1;">{{ t.h1b }}</span></h1>
         <p style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:400; font-size:19px; line-height:1.6; color:#52525b; margin:26px 0 0; max-width:500px; text-wrap:pretty;">{{ t.heroSub }}</p>
         <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:34px;">
           <span onClick="{{ goSolutions }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:9px; padding:15px 28px; border-radius:999px; background:linear-gradient(135deg,#6366f1,#7c3aed); color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; box-shadow:0 14px 30px -10px rgba(99,102,241,0.65);">{{ t.ctaPrimary }} <i class="ph-bold ph-arrow-right" style="font-size:16px;"></i></span>
@@ -223,13 +228,13 @@
     
 
     <div class="ms-snap ms-fullsec">
-    <div class="ms-pad" id="solutions" style="max-width:1240px; margin:0 auto; padding:44px 40px 24px; scroll-margin-top:90px;">
-      <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:38px;">
+    <div class="ms-pad" id="solutions" style="max-width:1240px; margin:0 auto; padding:64px 40px 76px; scroll-margin-top:90px; width:100%;">
+      <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:40px;">
         <div>
           <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:#6366f1;">{{ t.solEyebrow }}</div>
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(30px,3.6vw,44px); line-height:1.05; letter-spacing:-0.03em; margin:12px 0 0;">{{ t.solTitle }}</h2>
         </div>
-        <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; line-height:1.55; color:#71717a; max-width:340px;">{{ t.solSub }}</p>
+        <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; line-height:1.55; color:#71717a; max-width:340px; margin:0;">{{ t.solSub }}</p>
       </div>
       <div class="ms-solgrid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:24px;">
         <sc-for list="{{ cards }}" as="c" hint-placeholder-count="4">
@@ -253,7 +258,31 @@
       </div>
     </div>
 
-    <div class="ms-pad" id="portfolio" style="max-width:1240px; margin:0 auto; padding:0 40px 22px; scroll-margin-top:90px; width:100%;">
+    <div class="ms-pad" id="training" style="max-width:1240px; margin:0 auto; padding:0 40px 64px; scroll-margin-top:90px; width:100%;">
+      <div style="text-align:center; max-width:640px; margin:0 auto;">
+        <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:#d97706;">{{ t.trainEyebrow }}</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(30px,3.6vw,44px); line-height:1.05; letter-spacing:-0.03em; margin:12px 0 0;">{{ t.trainTitle }}</h2>
+        <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; line-height:1.55; color:#71717a; margin:14px 0 0;">{{ t.trainSub }}<a href="https://globaltraining.nl/" target="_blank" style="color:#d97706; text-decoration:underline; font-weight:600;">Global Training</a>:</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),210px)); justify-content:center; gap:22px; margin-top:44px;">
+        <sc-for list="{{ trainLogos }}" as="lg" hint-placeholder-count="4">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px;">
+            <div onClick="{{ lg.onOpen }}" style="{{ lg.cardStyle }}" style-hover="{{ lg.cardHover }}">
+              <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; color:#c7c1b4;"><i class="ph-bold ph-buildings" style="font-size:22px;"></i><span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; font-weight:600;">{{ lg.label }}</span></div>
+              {{ lg.el }}
+            </div>
+            <sc-if value="{{ lg.hasCaption }}">
+              <span style="display:inline-flex; align-items:center; gap:6px; padding:5px 13px; border-radius:999px; background:rgba(217,119,6,0.1); color:#b45309; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px;"><i class="ph-bold ph-graduation-cap" style="font-size:14px;"></i> {{ lg.caption }}</span>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    </div>
+
+    <div class="ms-snap ms-fullsec">
+    <div class="ms-pad" id="portfolio" style="max-width:1240px; margin:0 auto; padding:64px 40px 32px; scroll-margin-top:90px; width:100%;">
       <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:20px;">
         <div>
           <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:#ec4899;">{{ t.sliderEyebrow }}</div>
@@ -294,24 +323,6 @@
             </div>
           </sc-for>
         </div>
-      </div>
-    </div>
-    </div>
-
-    <div class="ms-snap ms-fullsec">
-    <div class="ms-pad" id="training" style="max-width:1240px; margin:0 auto; padding:40px 40px 70px; scroll-margin-top:90px;">
-      <div style="text-align:center; max-width:640px; margin:0 auto;">
-        <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:#d97706;">{{ t.trainEyebrow }}</div>
-        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(28px,3.4vw,42px); line-height:1.08; letter-spacing:-0.03em; margin:12px 0 0;">{{ t.trainTitle }}</h2>
-        <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; line-height:1.55; color:#71717a; margin:14px 0 0;">{{ t.trainSub }}</p>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr)); gap:22px; margin-top:46px;">
-        <sc-for list="{{ trainLogos }}" as="lg" hint-placeholder-count="4">
-          <div style="position:relative; height:120px; background:#fff; border-radius:20px; border:1px solid rgba(24,24,27,0.06); box-shadow:0 8px 24px rgba(24,24,27,0.05); overflow:hidden; transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;" style-hover="transform:translateY(-4px); box-shadow:0 18px 40px -16px rgba(24,24,27,0.18);">
-            <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; color:#c7c1b4;"><i class="ph-bold ph-buildings" style="font-size:22px;"></i><span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; font-weight:600;">{{ lg.label }}</span></div>
-            {{ lg.el }}
-          </div>
-        </sc-for>
       </div>
     </div>
 
@@ -534,7 +545,7 @@
     <div class="ms-foot" style="max-width:1240px; margin:0 auto; padding:64px 40px 30px; display:grid; grid-template-columns:1.7fr 1fr 1fr 1fr; gap:40px;">
       <div style="min-width:220px;">
         <div onClick="{{ goHome }}" style="cursor:pointer; display:flex; align-items:center; gap:11px;">
-          <span style="width:54px; height:54px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center;"><img src="./logo-nieuw-28-08-2025-1--mqxyx4ba.png" alt="Meester Solutions logo" style="max-width:100%; height:auto; display:block; object-fit:cover;"></span>
+          <span style="width:54px; height:54px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center;"><img src="./Logo_small.png" alt="Meester Solutions logo" style="max-width:100%; height:auto; display:block; object-fit:cover;"></span>
           <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:17px; letter-spacing:-0.01em;">Meester Solutions</span>
         </div>
         <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:14.5px; line-height:1.6; color:#71717a; margin:18px 0 0; max-width:280px; text-wrap:pretty;">{{ t.footerBlurb }}</p>
@@ -581,9 +592,9 @@ class Component extends DCLogic {
     this.SERVICES = [
       {
         num: '01', icon: 'ph-rocket-launch', accent: '#6366f1',
-        shortTitle: { nl: 'Prototype in een week', en: 'Prototype in a week' },
-        title: { nl: 'Prototype in een week', en: 'Prototype in a week' },
-        desc: { nl: 'Van idee naar werkend voorbeeld, in dagen.', en: 'From idea to a working example, in days.' },
+        shortTitle: { nl: 'Prototypes', en: 'Prototypes' },
+        title: { nl: 'Prototypes', en: 'Prototypes' },
+        desc: { nl: 'Van idee naar werkend voorbeeld.', en: 'From idea to a working example.' },
         tagline: { nl: 'Van idee naar werkend prototype. In dagen, niet maanden.', en: 'From idea to working prototype. In days, not months.' },
         long: { nl: 'In één week zet ik je idee om naar een demo. Echt werkend, zodat je snel weet of je idee mogelijk is.', en: 'In a single week I turn your idea into a demo. A working example, so you know quickly whether your idea is possible.' },
         caps: [
@@ -678,17 +689,17 @@ class Component extends DCLogic {
       },
       en: {
         eyebrow: 'ABOUT MEESTER SOLUTIONS',
-        title: 'Four services. One point of contact.',
+        title: 'Four services. One point of communication.',
         lead: 'I\u2019m Mees. I build smart software, automation and AI for founders who want to know fast whether an idea works.',
         bioLabel: 'Who I am',
-        bio1: 'No agency with multiple layers, but one point of contact from first sketch to working solution. I choose interesting projects, ideally always with a challenging angle, for companies I find compelling and believe in. That is why I am genuinely passionate about the work I do and love thinking outside the box. Beyond that, I have a strong network of specialists in the same field – if something falls outside my direct expertise, I can potentially connect you with the right partner or tackle a project collaboratively with one of my colleagues.',
+        bio1: 'No agency with multiple layers, but one point of communication from first sketch to working solution. I choose interesting projects, ideally always with a challenging angle, for companies I find compelling and believe in. That is why I am genuinely passionate about the work I do and love thinking outside the box. Beyond that, I have a strong network of specialists in the same field – if something falls outside my direct expertise, I can potentially connect you with the right partner or tackle a project collaboratively with one of my colleagues.',
         bio2: 'I love working with my hands and being creative; welding, metalworking, building bikes and tinkering are my passions. A great thing is that the same creativity applies to complex automation problems for which no solutions exist yet. I am also passionate about movement, motorbikes, and I have done quite a bit of acting as a hobby.',
         dropPortrait: 'Portrait: photo',
         approachTitle: 'How I work',
         steps: [
-          { n: '01', t: 'Meet & greet', d: 'We meet and see if we have an interesting match. No obligation, concrete.' },
+          { n: '01', t: 'Meet & greet', d: 'We meet and see if we have an interesting match. Is the project a good fit?'},
           { n: '02', t: 'Prototype in a week', d: 'I build a working example.' },
-          { n: '03', t: 'Refine', d: 'Based on your feedback we sharpen the solution.' },
+          { n: '03', t: 'Refine', d: 'Based on your feedback we refine the solution.' },
           { n: '04', t: 'Production', d: 'From prototype to production.' },
         ],
         ctaTitle: 'Curious what I could build for you?',
@@ -713,7 +724,7 @@ class Component extends DCLogic {
       en: {
         eyebrow: 'Legal',
         title: 'Legal information',
-        intro: 'Below you will find the key legal information about Meester Solutions. This is sample text. Always have final wording reviewed by a legal professional.',
+        intro: 'Below you will find the key legal information about Meester Solutions.',
         updated: 'Last updated: June 2026',
         contactLine: 'Questions about this information?',
         sections: [
@@ -728,7 +739,7 @@ class Component extends DCLogic {
       nl: {
         eyebrow: 'AI & AUTOMATISERING · FREELANCE',
         h1a: 'Maatwerk ', h1b: 'automatiseringsoplossingen',
-        heroSub: 'Een vrijblijvend voorbeeldprototype in een week. Geen verplichtingen, gewoon zien wat er mogelijk is voor je proces.',
+        heroSub: 'Een vrijblijvend voorbeeldprototype in een week. Geen verplichtingen, gewoon zien wat er mogelijk is.',
         ctaPrimary: 'Start met een prototype', ctaSecondary: 'Neem contact op',
         trust1: 'Eerste prototype binnen een week', trust2: 'Vrijblijvend & zonder verplichtingen',
         heroCardTitle: 'Vier diensten', heroCardSub: 'Eén aanspreekpunt',
@@ -736,7 +747,7 @@ class Component extends DCLogic {
         heroRow1: 'Prototype gebouwd', heroRow2: 'Automatisering live', heroRow3: 'Website gelanceerd',
         solEyebrow: 'Diensten', solTitle: 'Ontdek een service', solSub: 'Vier diensten die je idee naar werkende techniek brengen. Beweeg over een kaart, klik om verder te lezen.',
         sliderEyebrow: 'Portfolio', sliderTitle: 'Uitgelicht werk', sliderSub: 'Een greep uit eerdere projecten, over alle vier de diensten heen. Klik op een kaart voor het verhaal erachter.',
-        trainEyebrow: 'Kennisdeling', trainTitle: 'Ik gaf training bij', trainSub: 'Naast bouwen deel ik graag kennis: hands-on trainingen en workshops over AI, automatisering en software.',
+        trainEyebrow: 'Kennisdeling', trainTitle: 'Uitblinken in uitleggen', trainSub: 'Naast software bouwen deel ik graag kennis: hands-on trainingen en workshops over data science, data-analyse, machine learning, Power BI en Python. Een selectie van bedrijven waarvan ik werknemers heb getraind via ',
         contact: 'Contact', view: 'Bekijk dienst', back: 'Terug naar overzicht',
         navServices: 'Diensten', navAbout: 'Over Mees', navApproach: 'Werkwijze',
         work: 'Wat ik doe', portfolio: 'Voorbeelden van eerdere projecten', portfolioHint: 'Zie afbeeldingen',
@@ -744,7 +755,7 @@ class Component extends DCLogic {
         dropVideo: '(MP4)',
         ctaBandTitle: 'Klaar om iets te bouwen?', ctaBandSub: 'Vertel me over je idee. Binnen een week laat ik zien wat mogelijk is.',
         waBusiness: 'WhatsApp zakelijk',
-        formTitle: 'Stuur een bericht', formLead: 'Vul het formulier in, dan reageer ik snel.', formName: 'Naam', formNamePh: 'Je naam', formEmail: 'E-mailadres', formEmailPh: 'jij@bedrijf.nl', formMessage: 'Bericht', formMessagePh: 'Vertel kort over je idee of uitdaging…', formSend: 'Verstuur bericht', formSending: 'Bezig met verzenden…', formErr: 'Vul je naam, een geldig e-mailadres en een bericht in.', formPrivacy: '', formSentMsg: 'Ik neem waarschijnlijk binnen twee werkdagen contact op.', formAnother: 'Nog een bericht sturen', lbClose: 'Sluiten',
+        formTitle: 'Stuur een bericht', formLead: 'Vul het formulier in, dan reageer ik snel.', formName: 'Naam', formNamePh: 'Je naam', formEmail: 'E-mailadres', formEmailPh: 'jij@bedrijf.nl', formMessage: 'Bericht', formMessagePh: 'Vertel kort over je idee of uitdaging…', formSend: 'Verstuur bericht', formSending: 'Bezig met verzenden…', formErr: 'Vul je naam, een geldig e-mailadres en een bericht in.', formPrivacy: '', formSentTitle: 'Bedankt, bericht ontvangen!', formSentMsg: 'Ik neem waarschijnlijk binnen twee werkdagen contact op.', formAnother: 'Nog een bericht sturen', lbClose: 'Sluiten',
         detailCtaTitle: 'Past dit bij jouw uitdaging?', detailCtaSub: 'Bekijk de andere diensten of neem direct contact op.',
         allServices: 'Alle diensten', footerTag: 'Software · Automatisering · GIS · Computer Vision',
         footerBlurb: 'Freelance studio voor slimme software, automatisering en AI. Eén aanspreekpunt, van eerste prototype tot werkende oplossing.',
@@ -764,12 +775,12 @@ class Component extends DCLogic {
         heroSub: 'A demo of a working example prototype within a week: no strings attached, just finding out what’s possible.',
         ctaPrimary: 'Start with a prototype', ctaSecondary: 'Get in touch',
         trust1: 'First prototype within a week', trust2: 'Free & no obligation',
-        heroCardTitle: 'Four services', heroCardSub: 'One point of contact',
+        heroCardTitle: 'Four services', heroCardSub: 'One point of communication',
         heroMockTitle: 'Meester Solutions', heroMockSub: 'From prototype to working solution',
         heroRow1: 'Prototype built', heroRow2: 'Automation live', heroRow3: 'Website launched',
         solEyebrow: 'Services', solTitle: 'Explore a service', solSub: 'Four services that take your idea to working technology. Hover a card, click to read more.',
         sliderEyebrow: 'Portfolio', sliderTitle: 'Selected work', sliderSub: 'A selection of past projects across all four services. Click a card for the story behind it.',
-        trainEyebrow: 'Knowledge sharing', trainTitle: 'I provided training at', trainSub: 'Besides building, I love sharing knowledge: hands-on training and workshops on AI, automation and software.',
+        trainEyebrow: 'Knowledge sharing', trainTitle: 'Excellent in explaining', trainSub: 'Besides building, I love sharing knowledge: hands-on training and workshops on data science, data analysis, machine learning, Power BI and Python. A selection of companies whose employees I have trained via ',
         contact: 'Contact', view: 'View service', back: 'Back to overview',
         navServices: 'Services', navAbout: 'About Mees', navApproach: 'How I work',
         work: 'What I do', portfolio: 'Examples of previous projects', portfolioHint: 'See images',
@@ -780,7 +791,7 @@ class Component extends DCLogic {
         formTitle: 'Send a message', formLead: 'Fill in the form and I will get back to you soon.', formName: 'Name', formNamePh: 'Your name', formEmail: 'Email address', formEmailPh: 'you@company.com', formMessage: 'Message', formMessagePh: 'Briefly tell me about your idea or challenge…', formSend: 'Send message', formSending: 'Sending…', formErr: 'Please enter your name, a valid email address and a message.', formPrivacy: '', formSentTitle: 'Thanks, message received!', formSentMsg: 'I will get back to you within one business day.', formAnother: 'Send another message', lbClose: 'Close',
         detailCtaTitle: 'Does this fit your challenge?', detailCtaSub: 'Browse the other services or get in touch directly.',
         allServices: 'All services', footerTag: 'Software · Automation · GIS · Computer Vision',
-        footerBlurb: 'Freelance studio for smart software, automation and AI. One point of contact, from first prototype to working solution.',
+        footerBlurb: 'Freelance studio for smart software, automation and AI. One point of communication, from first prototype to working solution.',
         footerRights: 'All rights reserved',
         flowEyebrow: 'In action', flowTitle: 'Process automation in action',
         flowSub: 'One example: an incoming CV is read and answered automatically. No manual work, no waiting.',
@@ -811,11 +822,11 @@ class Component extends DCLogic {
     });
   }
 
-  logoNode(src) {
+  logoNode(src, alt) {
     const onError = (e) => { try { e.target.style.display = 'none'; } catch (err) {} };
     return React.createElement('img', {
-      src, alt: '', onError,
-      style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', background: '#fff', padding: '24px 30px', boxSizing: 'border-box', filter: 'grayscale(1)', opacity: 0.85, zIndex: 2 },
+      src, alt: alt || '', onError,
+      style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: '18px 22px', boxSizing: 'border-box', zIndex: 2 },
     });
   }
 
@@ -935,7 +946,31 @@ class Component extends DCLogic {
       });
     });
 
-    const trainLogos = [1, 2, 3, 4].map((n) => ({ label: 'Logo ' + n, el: this.logoNode('data/training' + n + '.png') }));
+    // Training partners. Each: file (in /data), name, url (opens on click), caption per language.
+    // Leave caption empty ('') to hide it; leave file empty to show a placeholder tile.
+    const trainLogos = [
+      { file: 'ns.webp',    name: 'NS',     url: 'https://www.ns.nl',      caption: { nl: 'Python cursus', en: 'Python course' } },
+      { file: 'lipton.avif', name: 'Lipton', url: 'https://www.lipton.com', caption: { nl: 'Data Science cursus', en: 'Data Science course' } },
+      { file: 'prorail.jpg',           name: 'Prorail', url: 'https://www.prorail.nl/', caption: { nl: 'Python cursus', en: 'Python course' } },
+      { file: 'asr.png',           name: 'A.S.R.', url: 'https://www.asr.nl/', caption: { nl: 'Python cursus', en: 'Python course' } },
+    ].map((o) => {
+      const hasUrl = !!o.url;
+      const cap = o.caption[L] || '';
+      return {
+        label: o.name,
+        caption: cap,
+        hasCaption: !!cap,
+        el: (o.file ? this.logoNode('data/' + o.file, o.name) : null),
+        onOpen: hasUrl ? (() => { try { window.open(o.url, '_blank', 'noopener'); } catch (e) {} }) : (() => {}),
+        cardStyle: {
+          position: 'relative', width: '100%', height: '120px', background: '#fff', borderRadius: '20px',
+          border: '1px solid rgba(24,24,27,0.06)', boxShadow: '0 8px 24px rgba(24,24,27,0.05)',
+          overflow: 'hidden', cursor: hasUrl ? 'pointer' : 'default',
+          transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease',
+        },
+        cardHover: hasUrl ? 'transform:translateY(-4px); box-shadow:0 18px 40px -16px rgba(24,24,27,0.18);' : '',
+      };
+    });
 
     const lk = (label, onClick) => ({ label, onClick });
     const footCols = [
