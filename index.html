@@ -3,7 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Meester Solutions — AI, automatisering & prototypes in een week</title>
+<title>Meester Solutions</title>
+<link rel="apple-touch-icon" sizes="180x180" href="data/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="data/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="data/favicon/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
 <meta name="description" content="Freelance studio voor slimme software, automatisering, GIS en computer vision. Eén aanspreekpunt, van eerste prototype tot werkende oplossing.">
 <meta name="theme-color" content="#f5f1e8">
 <script src="./support.js"></script>
@@ -46,6 +51,19 @@
   /* Full-screen hero on laptop/desktop */
   @media (min-width: 881px){
     .ms-hero{ min-height:calc(100vh - 85px); min-height:calc(100svh - 85px); padding-top:20px !important; padding-bottom:56px !important; }
+  }
+  /* Full-screen home sections with crisp snap scrolling (laptop/desktop) */
+  .ms-mq{ margin:0 0 84px; }
+  @media (min-width: 881px){
+    html{ scroll-snap-type:y proximity; }
+    .ms-snap, .ms-hero{ scroll-snap-align:start; scroll-margin-top:85px; }
+    .ms-fullsec{ min-height:min(calc(100vh - 85px), 880px); min-height:min(calc(100svh - 85px), 880px); display:flex; flex-direction:column; justify-content:center; }
+    .ms-fullsec > .ms-mq{ margin-bottom:0; }
+    .ms-footsnap{ scroll-snap-align:end; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html, body{ scroll-behavior:auto; }
+    html{ scroll-snap-type:none; }
   }
   /* Sliding portfolio cards (marquee) */
   @keyframes msMarquee { from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
@@ -110,19 +128,19 @@
   }
 </style>
 </helmet>
-<div style="position:relative; min-height:100vh; display:flex; flex-direction:column; background:#f5f1e8; color:#18181b; font-family:'Plus Jakarta Sans',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;">
+<div style="position:relative; min-height:100vh; padding-top:85px; display:flex; flex-direction:column; background:#f5f1e8; color:#18181b; font-family:'Plus Jakarta Sans',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;">
 
   <div style="position:fixed; top:-180px; right:-160px; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle, rgba(99,102,241,0.16), rgba(99,102,241,0) 70%); pointer-events:none; z-index:0;"></div>
   <div style="position:fixed; bottom:-200px; left:-180px; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle, rgba(236,72,153,0.12), rgba(236,72,153,0) 70%); pointer-events:none; z-index:0;"></div>
 
-  <div style="position:sticky; top:0; z-index:30; backdrop-filter:blur(14px); background:rgba(245,241,232,0.72); border-bottom:1px solid rgba(24,24,27,0.06);">
+  <div style="position:fixed; top:0; left:0; right:0; z-index:50; backdrop-filter:blur(14px); background:rgba(245,241,232,0.82); border-bottom:1px solid rgba(24,24,27,0.06);">
     <div class="ms-navbar ms-pad" style="max-width:1240px; margin:0 auto; padding:16px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
       <div onClick="{{ goHome }}" style="cursor:pointer; display:flex; align-items:center; gap:11px;">
-        <span style="width:52px; height:52px; border-radius:13px; display:inline-flex; align-items:center; justify-content:center;"><img src="./logo-nieuw-28-08-2025-1--mqxyx4ba.png" alt="logo-nieuw-28-08-2025-1-" style="max-width: 100%; height: auto; display: block; object-fit: cover"></span>
+        <span style="width:52px; height:52px; border-radius:13px; display:inline-flex; align-items:center; justify-content:center;"><img src="./Logo_small.png" alt="logo-nieuw-28-08-2025-1-" style="max-width: 100%; height: auto; display: block; object-fit: cover"></span>
         <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16px; letter-spacing:-0.01em;">Meester Solutions</span>
       </div>
       <div class="ms-navlinks" style="display:flex; align-items:center; gap:28px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px;">
-        <span onClick="{{ goSolutions }}" style="cursor:pointer; color:#3f3f46; transition:color 0.25s ease;" style-hover="color:#6366f1;">{{ t.navServices }}</span>
+        <span onClick="{{ goServices }}" style="cursor:pointer; color:#3f3f46; transition:color 0.25s ease;" style-hover="color:#6366f1;">{{ t.navServices }}</span>
         <span onClick="{{ goAbout }}" style="cursor:pointer; color:#3f3f46; transition:color 0.25s ease;" style-hover="color:#6366f1;">{{ t.navAbout }}</span>
         <span onClick="{{ goApproach }}" style="cursor:pointer; color:#3f3f46; transition:color 0.25s ease;" style-hover="color:#6366f1;">{{ t.navApproach }}</span>
       </div>
@@ -201,7 +219,8 @@
 
     
 
-    <div class="ms-pad" id="solutions" style="max-width:1240px; margin:0 auto; padding:56px 40px 90px; scroll-margin-top:90px;">
+    <div class="ms-snap ms-fullsec">
+    <div class="ms-pad" id="solutions" style="max-width:1240px; margin:0 auto; padding:44px 40px 24px; scroll-margin-top:90px;">
       <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:38px;">
         <div>
           <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:#6366f1;">{{ t.solEyebrow }}</div>
@@ -231,7 +250,7 @@
       </div>
     </div>
 
-    <div class="ms-pad" id="portfolio" style="max-width:1240px; margin:0 auto; padding:0 40px 30px; scroll-margin-top:90px;">
+    <div class="ms-pad" id="portfolio" style="max-width:1240px; margin:0 auto; padding:0 40px 22px; scroll-margin-top:90px; width:100%;">
       <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:20px;">
         <div>
           <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:#ec4899;">{{ t.sliderEyebrow }}</div>
@@ -240,7 +259,7 @@
         <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; line-height:1.55; color:#71717a; max-width:340px; margin:0;">{{ t.sliderSub }}</p>
       </div>
     </div>
-    <div class="ms-mq" style="margin:0 0 84px; padding:8px 0 18px;">
+    <div class="ms-mq" style="padding:8px 0 18px;">
       <div class="ms-mq-track">
         <div class="ms-mq-group">
           <sc-for list="{{ workCards }}" as="w" hint-placeholder-count="6">
@@ -274,8 +293,26 @@
         </div>
       </div>
     </div>
+    </div>
 
-    <div class="ms-pad" id="contact" style="max-width:1240px; margin:0 auto 80px; padding:0 40px; scroll-margin-top:90px;">
+    <div class="ms-snap ms-fullsec">
+    <div class="ms-pad" id="training" style="max-width:1240px; margin:0 auto; padding:40px 40px 70px; scroll-margin-top:90px;">
+      <div style="text-align:center; max-width:640px; margin:0 auto;">
+        <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:#d97706;">{{ t.trainEyebrow }}</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(28px,3.4vw,42px); line-height:1.08; letter-spacing:-0.03em; margin:12px 0 0;">{{ t.trainTitle }}</h2>
+        <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; line-height:1.55; color:#71717a; margin:14px 0 0;">{{ t.trainSub }}</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr)); gap:22px; margin-top:46px;">
+        <sc-for list="{{ trainLogos }}" as="lg" hint-placeholder-count="4">
+          <div style="position:relative; height:120px; background:#fff; border-radius:20px; border:1px solid rgba(24,24,27,0.06); box-shadow:0 8px 24px rgba(24,24,27,0.05); overflow:hidden; transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;" style-hover="transform:translateY(-4px); box-shadow:0 18px 40px -16px rgba(24,24,27,0.18);">
+            <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; color:#c7c1b4;"><i class="ph-bold ph-buildings" style="font-size:22px;"></i><span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; font-weight:600;">{{ lg.label }}</span></div>
+            {{ lg.el }}
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="ms-pad" id="contact" style="max-width:1240px; margin:0 auto 60px; padding:0 40px; scroll-margin-top:90px;">
       <div class="ms-band" style="position:relative; overflow:hidden; border-radius:34px; background:linear-gradient(120deg,#6366f1,#7c3aed 55%,#ec4899); padding:52px 52px; box-shadow:0 40px 90px -34px rgba(124,58,237,0.65);">
         <div style="position:absolute; top:-60px; right:-30px; width:220px; height:220px; border-radius:50%; background:rgba(251,191,36,0.35); filter:blur(8px); animation:floatD 7s ease-in-out infinite;"></div>
         <div class="ms-contact-grid" style="position:relative; z-index:2; display:grid; grid-template-columns:1fr; gap:24px; align-items:start;">
@@ -291,6 +328,7 @@
 
         </div>
       </div>
+    </div>
     </div>
 
   </div>
@@ -352,7 +390,10 @@
         <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:22px; letter-spacing:-0.02em;">{{ t.detailCtaTitle }}</div>
         <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:15px; color:#71717a; margin-top:5px;">{{ t.detailCtaSub }}</div>
       </div>
-      <span onClick="{{ goHome }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:9px; padding:14px 26px; border-radius:999px; background:#18181b; color:#f5f1e8; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px;">{{ t.allServices }} <i class="ph-bold ph-squares-four" style="font-size:16px;"></i></span>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <span onClick="{{ goServices }}" style="cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:14px 26px; border-radius:999px; background:#18181b; color:#f5f1e8; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px;">{{ t.allServices }} <i class="ph-bold ph-squares-four" style="font-size:16px;"></i></span>
+        <span onClick="{{ goContact }}" style="cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:14px 26px; border-radius:999px; background:linear-gradient(135deg,#6366f1,#7c3aed); color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; box-shadow:0 14px 30px -10px rgba(99,102,241,0.6);">{{ t.contact }} <i class="ph-bold ph-envelope-simple" style="font-size:16px;"></i></span>
+      </div>
     </div>
 
   </div>
@@ -454,11 +495,11 @@
   </div>
   </sc-if>
 
-  <div style="position:relative; z-index:0; background:#efe9da; border-top:1px solid rgba(24,24,27,0.07); margin-top:auto;">
+  <div class="ms-footsnap" style="position:relative; z-index:0; background:#efe9da; border-top:1px solid rgba(24,24,27,0.07); margin-top:auto;">
     <div class="ms-foot" style="max-width:1240px; margin:0 auto; padding:64px 40px 30px; display:grid; grid-template-columns:1.7fr 1fr 1fr 1fr; gap:40px;">
       <div style="min-width:220px;">
         <div onClick="{{ goHome }}" style="cursor:pointer; display:flex; align-items:center; gap:11px;">
-          <span style="width:54px; height:54px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center;"><img src="./logo-nieuw-28-08-2025-1--mqxyx4ba.png" alt="Meester Solutions logo" style="max-width:100%; height:auto; display:block; object-fit:cover;"></span>
+          <span style="width:54px; height:54px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center;"><img src="./Logo_small.png" alt="Meester Solutions logo" style="max-width:100%; height:auto; display:block; object-fit:cover;"></span>
           <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:17px; letter-spacing:-0.01em;">Meester Solutions</span>
         </div>
         <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:14.5px; line-height:1.6; color:#71717a; margin:18px 0 0; max-width:280px; text-wrap:pretty;">{{ t.footerBlurb }}</p>
@@ -660,6 +701,7 @@ class Component extends DCLogic {
         heroRow1: 'Prototype gebouwd', heroRow2: 'Automatisering live', heroRow3: 'Website gelanceerd',
         solEyebrow: 'Diensten', solTitle: 'Ontdek een service', solSub: 'Vier diensten die je idee naar werkende techniek brengen. Beweeg over een kaart, klik om verder te lezen.',
         sliderEyebrow: 'Portfolio', sliderTitle: 'Uitgelicht werk', sliderSub: 'Een greep uit eerdere projecten, over alle vier de diensten heen. Klik op een kaart voor het verhaal erachter.',
+        trainEyebrow: 'Kennisdeling', trainTitle: 'Ik gaf training bij', trainSub: 'Naast bouwen deel ik graag kennis: hands-on trainingen en workshops over AI, automatisering en software.',
         contact: 'Contact', view: 'Bekijk dienst', back: 'Terug naar overzicht',
         navServices: 'Diensten', navAbout: 'Over Mees', navApproach: 'Werkwijze',
         work: 'Wat ik doe', portfolio: 'Voorbeelden van eerdere projecten', portfolioHint: 'Zie afbeeldingen',
@@ -692,6 +734,7 @@ class Component extends DCLogic {
         heroRow1: 'Prototype built', heroRow2: 'Automation live', heroRow3: 'Website launched',
         solEyebrow: 'Services', solTitle: 'Explore a service', solSub: 'Four services that take your idea to working technology. Hover a card, click to read more.',
         sliderEyebrow: 'Portfolio', sliderTitle: 'Selected work', sliderSub: 'A selection of past projects across all four services. Click a card for the story behind it.',
+        trainEyebrow: 'Knowledge sharing', trainTitle: 'I provided training at', trainSub: 'Besides building, I love sharing knowledge: hands-on training and workshops on AI, automation and software.',
         contact: 'Contact', view: 'View service', back: 'Back to overview',
         navServices: 'Services', navAbout: 'About Mees', navApproach: 'How I work',
         work: 'What I do', portfolio: 'Examples of previous projects', portfolioHint: 'See images',
@@ -730,6 +773,14 @@ class Component extends DCLogic {
     }
     return React.createElement('img', {
       src, alt: (w.title ? w.title[lang] : ''), onError, style: base,
+    });
+  }
+
+  logoNode(src) {
+    const onError = (e) => { try { e.target.style.display = 'none'; } catch (err) {} };
+    return React.createElement('img', {
+      src, alt: '', onError,
+      style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', background: '#fff', padding: '24px 30px', boxSizing: 'border-box', filter: 'grayscale(1)', opacity: 0.85, zIndex: 2 },
     });
   }
 
@@ -779,7 +830,7 @@ class Component extends DCLogic {
     try {
       const el = document.getElementById(id);
       if (!el) return;
-      const target = el.getBoundingClientRect().top + (window.pageYOffset || 0) - 78;
+      const target = el.getBoundingClientRect().top + (window.pageYOffset || 0) - 85;
       let smoothWorked = false;
       try { window.scrollTo({ top: target, behavior: 'smooth' }); smoothWorked = true; } catch (e) {}
       // Fallback for containers/iframes where smooth window scroll is a no-op.
@@ -849,6 +900,8 @@ class Component extends DCLogic {
       });
     });
 
+    const trainLogos = [1, 2, 3, 4].map((n) => ({ label: 'Logo ' + n, el: this.logoNode('data/training' + n + '.png') }));
+
     const lk = (label, onClick) => ({ label, onClick });
     const footCols = [
       { title: (L === 'nl' ? 'Diensten' : 'Services'), links: S.map((s, i) => lk(s.shortTitle[L], () => this.openService(i))) },
@@ -900,11 +953,13 @@ class Component extends DCLogic {
       goHome: () => { this.setState({ screen: 'home' }); this.toTop(); },
       goAbout: () => this.goAbout(),
       goSolutions: () => this.goSolutionsRef(),
+      goServices: () => this.goHomeAnchor('solutions'),
+      trainLogos,
       goContact: () => this.goContactRef(),
       menuOpen: this.state.menuOpen,
       burgerIcon: (this.state.menuOpen ? 'ph-x' : 'ph-list'),
       toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
-      mServices: () => this.goSolutionsRef(),
+      mServices: () => this.goHomeAnchor('solutions'),
       mAbout: () => this.goAbout(),
       mApproach: () => this.goAboutAnchor('werkwijze'),
       mContact: () => this.goContactRef(),
