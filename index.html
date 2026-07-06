@@ -3,12 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Meester Solutions</title>
-<link rel="apple-touch-icon" sizes="180x180" href="data/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="data/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="data/favicon/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-
+<title>Meester Solutions — AI, automatisering & prototypes in een week</title>
 <meta name="description" content="Freelance studio voor slimme software, automatisering, GIS en computer vision. Eén aanspreekpunt, van eerste prototype tot werkende oplossing.">
 <meta name="theme-color" content="#f5f1e8">
 <script src="./support.js"></script>
@@ -93,6 +88,14 @@
   @media (max-width: 940px){
     .ms-2col{ grid-template-columns:1fr !important; gap:34px !important; }
   }
+  /* Contact form */
+  .ms-input{ width:100%; box-sizing:border-box; padding:12px 15px; border-radius:13px; border:1.5px solid rgba(24,24,27,0.12); background:#faf8f3; font-family:'Plus Jakarta Sans',sans-serif; font-size:15px; color:#18181b; outline:none; transition:border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
+  .ms-input::placeholder{ color:#a1a1aa; }
+  .ms-input:focus{ border-color:#6366f1; background:#fff; box-shadow:0 0 0 3px rgba(99,102,241,0.16); }
+  .ms-formcard{ align-self:stretch; }
+  @media (max-width: 860px){
+    .ms-contact-grid{ grid-template-columns:1fr !important; gap:30px !important; }
+  }
   @media (max-width: 880px){
     .ms-flow-grid{ grid-template-columns:1fr !important; }
     .ms-flow-arrow{ transform:rotate(90deg); justify-self:center; margin:4px 0 !important; }
@@ -136,7 +139,7 @@
   <div style="position:fixed; top:0; left:0; right:0; z-index:50; backdrop-filter:blur(14px); background:rgba(245,241,232,0.82); border-bottom:1px solid rgba(24,24,27,0.06);">
     <div class="ms-navbar ms-pad" style="max-width:1240px; margin:0 auto; padding:16px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
       <div onClick="{{ goHome }}" style="cursor:pointer; display:flex; align-items:center; gap:11px;">
-        <span style="width:52px; height:52px; border-radius:13px; display:inline-flex; align-items:center; justify-content:center;"><img src="./Logo_small.png" alt="logo-nieuw-28-08-2025-1-" style="max-width: 100%; height: auto; display: block; object-fit: cover"></span>
+        <span style="width:52px; height:52px; border-radius:13px; display:inline-flex; align-items:center; justify-content:center;"><img src="./logo-nieuw-28-08-2025-1--mqxyx4ba.png" alt="logo-nieuw-28-08-2025-1-" style="max-width: 100%; height: auto; display: block; object-fit: cover"></span>
         <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16px; letter-spacing:-0.01em;">Meester Solutions</span>
       </div>
       <div class="ms-navlinks" style="display:flex; align-items:center; gap:28px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px;">
@@ -315,7 +318,7 @@
     <div class="ms-pad" id="contact" style="max-width:1240px; margin:0 auto 60px; padding:0 40px; scroll-margin-top:90px;">
       <div class="ms-band" style="position:relative; overflow:hidden; border-radius:34px; background:linear-gradient(120deg,#6366f1,#7c3aed 55%,#ec4899); padding:52px 52px; box-shadow:0 40px 90px -34px rgba(124,58,237,0.65);">
         <div style="position:absolute; top:-60px; right:-30px; width:220px; height:220px; border-radius:50%; background:rgba(251,191,36,0.35); filter:blur(8px); animation:floatD 7s ease-in-out infinite;"></div>
-        <div class="ms-contact-grid" style="position:relative; z-index:2; display:grid; grid-template-columns:1fr; gap:24px; align-items:start;">
+        <div class="ms-contact-grid" style="position:relative; z-index:2; display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center;">
           <div>
             <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(28px,3.4vw,42px); line-height:1.08; letter-spacing:-0.03em; color:#fff; margin:0;">{{ t.ctaBandTitle }}</h2>
             <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:17px; line-height:1.6; color:rgba(255,255,255,0.85); margin:16px 0 26px;">{{ t.ctaBandSub }}</p>
@@ -324,6 +327,38 @@
             <a href="https://wa.me/31617005219" target="_blank" rel="noopener" style="text-decoration:none; cursor:pointer; display:inline-flex; align-items:center; gap:9px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#fff;"><i class="ph-bold ph-whatsapp-logo" style="font-size:18px;"></i> {{ t.waBusiness }}</a>
             <a href="tel:+31617005219" style="text-decoration:none; cursor:pointer; display:inline-flex; align-items:center; gap:9px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:#fff;"><i class="ph-bold ph-phone" style="font-size:18px;"></i> +31 6 17 00 52 19</a>
             </div>
+          </div>
+
+          <div class="ms-formcard" style="background:#fff; border-radius:24px; padding:30px 28px; box-shadow:0 30px 70px -28px rgba(24,24,27,0.5);">
+            <sc-if value="{{ formNotSent }}">
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; letter-spacing:-0.02em; color:#18181b;">{{ t.formTitle }}</div>
+              <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; color:#71717a; margin-top:5px;">{{ t.formLead }}</div>
+
+              <label for="ms-cf-name" style="display:block; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; color:#52525b; margin:20px 0 7px;">{{ t.formName }}</label>
+              <input id="ms-cf-name" class="ms-input" type="text" autocomplete="name" placeholder="{{ t.formNamePh }}">
+
+              <label for="ms-cf-email" style="display:block; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; color:#52525b; margin:16px 0 7px;">{{ t.formEmail }}</label>
+              <input id="ms-cf-email" class="ms-input" type="email" autocomplete="email" placeholder="{{ t.formEmailPh }}">
+
+              <label for="ms-cf-message" style="display:block; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; color:#52525b; margin:16px 0 7px;">{{ t.formMessage }}</label>
+              <textarea id="ms-cf-message" class="ms-input" rows="4" placeholder="{{ t.formMessagePh }}" style="resize:vertical; min-height:96px;"></textarea>
+
+              <sc-if value="{{ formError }}">
+                <div style="display:flex; align-items:center; gap:8px; margin-top:14px; font-family:'Plus Jakarta Sans',sans-serif; font-size:13.5px; color:#dc2626;"><i class="ph-bold ph-warning-circle" style="font-size:16px;"></i> {{ t.formErr }}</div>
+              </sc-if>
+
+              <span onClick="{{ submitForm }}" style="{{ sendBtnStyle }}">{{ sendLabel }} <i class="ph-bold ph-paper-plane-tilt" style="font-size:16px;"></i></span>
+              <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; line-height:1.5; color:#a1a1aa; margin-top:14px;">{{ t.formPrivacy }}</div>
+            </sc-if>
+
+            <sc-if value="{{ formSent }}">
+              <div style="text-align:center; padding:14px 6px 8px;">
+                <span style="display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; background:rgba(34,197,94,0.12); color:#16a34a; margin-bottom:18px;"><i class="ph-bold ph-check-circle" style="font-size:38px;"></i></span>
+                <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:21px; letter-spacing:-0.02em; color:#18181b;">{{ t.formSentTitle }}</div>
+                <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:14.5px; line-height:1.55; color:#71717a; margin-top:8px;">{{ t.formSentMsg }}</div>
+                <span onClick="{{ resetForm }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:8px; margin-top:24px; padding:12px 22px; border-radius:999px; background:#f4f1ea; color:#27272a; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px;"><i class="ph-bold ph-arrow-counter-clockwise" style="font-size:15px;"></i> {{ t.formAnother }}</span>
+              </div>
+            </sc-if>
           </div>
 
         </div>
@@ -499,7 +534,7 @@
     <div class="ms-foot" style="max-width:1240px; margin:0 auto; padding:64px 40px 30px; display:grid; grid-template-columns:1.7fr 1fr 1fr 1fr; gap:40px;">
       <div style="min-width:220px;">
         <div onClick="{{ goHome }}" style="cursor:pointer; display:flex; align-items:center; gap:11px;">
-          <span style="width:54px; height:54px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center;"><img src="./Logo_small.png" alt="Meester Solutions logo" style="max-width:100%; height:auto; display:block; object-fit:cover;"></span>
+          <span style="width:54px; height:54px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center;"><img src="./logo-nieuw-28-08-2025-1--mqxyx4ba.png" alt="Meester Solutions logo" style="max-width:100%; height:auto; display:block; object-fit:cover;"></span>
           <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:17px; letter-spacing:-0.01em;">Meester Solutions</span>
         </div>
         <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:14.5px; line-height:1.6; color:#71717a; margin:18px 0 0; max-width:280px; text-wrap:pretty;">{{ t.footerBlurb }}</p>
@@ -709,7 +744,7 @@ class Component extends DCLogic {
         dropVideo: '(MP4)',
         ctaBandTitle: 'Klaar om iets te bouwen?', ctaBandSub: 'Vertel me over je idee. Binnen een week laat ik zien wat mogelijk is.',
         waBusiness: 'WhatsApp zakelijk',
-        formName: 'Naam', formNamePh: 'Je naam', formEmail: 'E-mailadres', formEmailPh: 'jij@bedrijf.nl', formMessage: 'Bericht', formMessagePh: 'Vertel kort over je idee of uitdaging…', formSend: 'Verstuur bericht', formSentTitle: 'Bedankt, bericht ontvangen!', formSentMsg: 'Ik neem binnen één werkdag contact met je op.', formAnother: 'Nog een bericht sturen', lbClose: 'Sluiten',
+        formTitle: 'Stuur een bericht', formLead: 'Vul het formulier in, dan reageer ik snel.', formName: 'Naam', formNamePh: 'Je naam', formEmail: 'E-mailadres', formEmailPh: 'jij@bedrijf.nl', formMessage: 'Bericht', formMessagePh: 'Vertel kort over je idee of uitdaging…', formSend: 'Verstuur bericht', formSending: 'Bezig met verzenden…', formErr: 'Vul je naam, een geldig e-mailadres en een bericht in.', formPrivacy: '', formSentMsg: 'Ik neem waarschijnlijk binnen twee werkdagen contact op.', formAnother: 'Nog een bericht sturen', lbClose: 'Sluiten',
         detailCtaTitle: 'Past dit bij jouw uitdaging?', detailCtaSub: 'Bekijk de andere diensten of neem direct contact op.',
         allServices: 'Alle diensten', footerTag: 'Software · Automatisering · GIS · Computer Vision',
         footerBlurb: 'Freelance studio voor slimme software, automatisering en AI. Eén aanspreekpunt, van eerste prototype tot werkende oplossing.',
@@ -742,7 +777,7 @@ class Component extends DCLogic {
         dropVideo: '(MP4)',
         ctaBandTitle: 'Ready to build something?', ctaBandSub: 'Tell me about your idea. I will show what is possible within a week.',
         waBusiness: 'WhatsApp business',
-        formName: 'Name', formNamePh: 'Your name', formEmail: 'Email address', formEmailPh: 'you@company.com', formMessage: 'Message', formMessagePh: 'Briefly tell me about your idea or challenge…', formSend: 'Send message', formSentTitle: 'Thanks, message received!', formSentMsg: 'I will get back to you within one business day.', formAnother: 'Send another message', lbClose: 'Close',
+        formTitle: 'Send a message', formLead: 'Fill in the form and I will get back to you soon.', formName: 'Name', formNamePh: 'Your name', formEmail: 'Email address', formEmailPh: 'you@company.com', formMessage: 'Message', formMessagePh: 'Briefly tell me about your idea or challenge…', formSend: 'Send message', formSending: 'Sending…', formErr: 'Please enter your name, a valid email address and a message.', formPrivacy: '', formSentTitle: 'Thanks, message received!', formSentMsg: 'I will get back to you within one business day.', formAnother: 'Send another message', lbClose: 'Close',
         detailCtaTitle: 'Does this fit your challenge?', detailCtaSub: 'Browse the other services or get in touch directly.',
         allServices: 'All services', footerTag: 'Software · Automation · GIS · Computer Vision',
         footerBlurb: 'Freelance studio for smart software, automation and AI. One point of contact, from first prototype to working solution.',
@@ -965,21 +1000,48 @@ class Component extends DCLogic {
       mContact: () => this.goContactRef(),
       lb: this.state.lightbox || {}, lbOpen: !!this.state.lightbox,
       closeLb: () => this.setState({ lightbox: null }),
-      formName: this.state.form.name, formEmail: this.state.form.email, formMessage: this.state.form.message,
       formSent: this.state.sent, formNotSent: !this.state.sent,
+      formError: !!this.state.formError,
       stop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
-      onFormName: (e) => this.setState({ form: Object.assign({}, this.state.form, { name: e.target.value }) }),
-      onFormEmail: (e) => this.setState({ form: Object.assign({}, this.state.form, { email: e.target.value }) }),
-      onFormMessage: (e) => this.setState({ form: Object.assign({}, this.state.form, { message: e.target.value }) }),
+      sendLabel: (this.state.sending ? t.formSending : t.formSend),
+      sendBtnStyle: {
+        cursor: 'pointer', marginTop: '20px', width: '100%', boxSizing: 'border-box',
+        display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '9px',
+        padding: '14px 26px', borderRadius: '999px', background: 'linear-gradient(135deg,#6366f1,#7c3aed)',
+        color: '#fff', fontFamily: "'Space Grotesk',sans-serif", fontWeight: 600, fontSize: '15px',
+        boxShadow: '0 14px 30px -10px rgba(99,102,241,0.6)',
+        opacity: this.state.sending ? 0.65 : 1, pointerEvents: this.state.sending ? 'none' : 'auto',
+      },
       submitForm: (e) => {
         if (e && e.preventDefault) e.preventDefault();
-        const f = this.state.form || {};
-        const subj = encodeURIComponent('Aanvraag via website' + (f.name ? ' — ' + f.name : ''));
-        const body = encodeURIComponent('Naam: ' + (f.name || '') + '\nE-mail: ' + (f.email || '') + '\n\n' + (f.message || ''));
-        try { window.location.href = 'mailto:contact@meesmeester.nl?subject=' + subj + '&body=' + body; } catch (err) {}
-        this.setState({ sent: true });
+        if (this.state.sending) return;
+
+        // --- Your StaticForms API key goes here ---
+        const STATICFORMS_API_KEY = 'sf_157a6beabdfae7243c2dbfeb';
+
+        const val = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+        const name = val('ms-cf-name');
+        const email = val('ms-cf-email');
+        const message = val('ms-cf-message');
+
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!name || !emailOk || !message) { this.setState({ formError: true }); return; }
+
+        this.setState({ sending: true, formError: false });
+
+        fetch('https://api.staticforms.dev/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ apiKey: STATICFORMS_API_KEY, name: name, email: email, message: message, subject: 'Nieuw bericht via meesmeester.nl' }),
+        })
+          .then((r) => { if (!r.ok) throw new Error('Request failed: ' + r.status); return r; })
+          .then(() => {
+            ['ms-cf-name', 'ms-cf-email', 'ms-cf-message'].forEach((id) => { const el = document.getElementById(id); if (el) el.value = ''; });
+            this.setState({ sending: false, sent: true, formError: false });
+          })
+          .catch(() => { this.setState({ sending: false, formError: true }); });
       },
-      resetForm: () => this.setState({ sent: false, form: { name: '', email: '', message: '' } }),
+      resetForm: () => this.setState({ sent: false, formError: false, sending: false }),
     };
   }
 }
