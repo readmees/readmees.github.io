@@ -81,14 +81,22 @@
     .ms-mq::before, .ms-mq::after{ display:none; }
     .ms-reveal.in{ animation:none; }
   }
+  /* Portfolio pager arrows (mobile only) */
+  .ms-mq-arrows{ display:none; justify-content:center; gap:14px; margin:16px 0 0; }
+  .ms-mq-arrow{ cursor:pointer; width:46px; height:46px; border-radius:50%; border:1.5px solid rgba(24,24,27,0.12); background:#fff; color:#18181b; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(24,24,27,0.08); transition:transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease; }
+  .ms-mq-arrow:active{ transform:scale(0.94); }
   @media (max-width: 760px){
-    /* On touch devices: swipe instead of auto-scroll */
-    .ms-mq{ overflow-x:auto; -webkit-overflow-scrolling:touch; scroll-snap-type:x proximity; scroll-padding-left:22px; }
+    /* On touch devices: paged 2-column grid (2 cards per column, 6 columns = 12 cards)
+       instead of the auto-scrolling marquee. Swipe or use the arrows to page. */
+    .ms-mq{ overflow-x:auto; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; scroll-padding-left:22px; margin:0 0 14px; scrollbar-width:none; }
+    .ms-mq::-webkit-scrollbar{ display:none; }
     .ms-mq::before, .ms-mq::after{ display:none; }
     .ms-mq-track{ animation:none !important; }
     .ms-mq-group2{ display:none !important; }
-    .ms-mq-group{ padding-left:22px; }
-    .ms-slide{ scroll-snap-align:start; }
+    .ms-mq-group{ display:grid; grid-template-rows:repeat(2, auto); grid-auto-flow:column; grid-auto-columns:calc((100vw - 58px) / 2); gap:14px; padding:0 22px; }
+    .ms-slide{ width:auto !important; min-width:0; scroll-snap-align:start; }
+    .ms-slide > div:first-child{ height:118px !important; }
+    .ms-mq-arrows{ display:flex; margin:0 0 60px; }
   }
   @media (max-width: 940px){
     .ms-2col{ grid-template-columns:1fr !important; gap:34px !important; }
@@ -124,7 +132,14 @@
     .ms-herocol{ min-width:0 !important; flex:1 1 100% !important; }
     .ms-herovis{ min-width:0 !important; flex:1 1 100% !important; width:100% !important; height:480px !important; }
     .ms-herocard{ display:none !important; }
-    .ms-emailcard{ top:24px !important; left:16px !important; right:16px !important; bottom:16px !important; }
+    /* Email card: size to content instead of stretching to the container,
+       clamp to the visual's height and let the message body scroll if needed. */
+    .ms-emailcard{ top:24px !important; left:16px !important; right:16px !important; bottom:auto !important; max-height:calc(100% - 44px); }
+    .ms-emailbody{ overflow-y:auto !important; -webkit-overflow-scrolling:touch; }
+    /* Training partner logos: fixed 2×2 grid with smaller cards */
+    .ms-trainlogos{ grid-template-columns:repeat(2, minmax(0,1fr)) !important; gap:16px !important; max-width:420px; margin-left:auto; margin-right:auto; }
+    .ms-trainlogo{ height:84px !important; border-radius:16px !important; }
+    .ms-trainlogo img{ padding:12px 14px !important; }
     .ms-solgrid{ grid-template-columns:1fr !important; }
     .ms-2col{ grid-template-columns:1fr !important; gap:30px !important; }
     .ms-band{ padding:40px 26px !important; }
@@ -132,6 +147,7 @@
     .ms-foot{ grid-template-columns:1fr 1fr !important; padding-left:22px !important; padding-right:22px !important; }
   }
   @media (max-width: 460px){
+    .ms-herovis{ height:min(460px, 132vw) !important; }
     .ms-foot{ grid-template-columns:1fr !important; }
   }
 </style>
@@ -177,7 +193,7 @@
     <div class="ms-pad ms-hero" style="max-width:1240px; margin:0 auto; padding:70px 40px 44px; display:flex; flex-wrap:wrap; gap:56px; align-items:center;">
       <div class="ms-herocol" style="flex:1.05; min-width:380px;">
         
-        <h1 lang="nl" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(28px,3.4vw,44px); line-height:1.08; letter-spacing:-0.03em; margin:0; text-wrap:balance; overflow-wrap:break-word; hyphens:auto;">{{ t.h1a }}<span style="color:#6366f1;">{{ t.h1b }}</span></h1>
+        <h1 lang="nl" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(28px,3.4vw,44px); line-height:1.08; letter-spacing:-0.03em; margin:0; text-wrap:balance; overflow-wrap:break-word; -webkit-hyphens:manual; hyphens:manual;">{{ t.h1a }}<span style="color:#6366f1;">{{ h1bText }}</span></h1>
         <p style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:400; font-size:19px; line-height:1.6; color:#52525b; margin:26px 0 0; max-width:500px; text-wrap:pretty;">{{ t.heroSub }}</p>
         <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:34px;">
           <span onClick="{{ goSolutions }}" style="cursor:pointer; display:inline-flex; align-items:center; gap:9px; padding:15px 28px; border-radius:999px; background:linear-gradient(135deg,#6366f1,#7c3aed); color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; box-shadow:0 14px 30px -10px rgba(99,102,241,0.65);">{{ t.ctaPrimary }} <i class="ph-bold ph-arrow-right" style="font-size:16px;"></i></span>
@@ -199,7 +215,7 @@
             <span style="flex-shrink:0; width:38px; height:38px; border-radius:12px; background:rgba(236,72,153,0.12); color:#ec4899; display:inline-flex; align-items:center; justify-content:center;"><i class="ph-bold ph-envelope" style="font-size:19px;"></i></span>
             <span style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13.5px; color:#3f3f46;">{{ t.flowOutLabel }}</span>
           </div>
-          <div style="flex:1; min-height:0; margin:16px 18px 18px; background:linear-gradient(135deg,rgba(99,102,241,0.06),rgba(236,72,153,0.09)); border-radius:18px; border-left:4px solid #fbbf24; padding:18px 18px 18px 16px; overflow:hidden;">
+          <div class="ms-emailbody" style="flex:1; min-height:0; margin:16px 18px 18px; background:linear-gradient(135deg,rgba(99,102,241,0.06),rgba(236,72,153,0.09)); border-radius:18px; border-left:4px solid #fbbf24; padding:18px 18px 18px 16px; overflow:hidden;">
             <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#a1a1aa;">{{ t.flowSubjectLabel }}</div>
             <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:17px; letter-spacing:-0.01em; color:#27272a; margin-top:5px;">{{ t.flowSubject }}</div>
             <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:12.5px; color:#a1a1aa; margin-top:6px;">{{ t.flowFromLabel }}: {{ t.flowEmailAddr }}</div>
@@ -264,10 +280,10 @@
         <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(30px,3.6vw,44px); line-height:1.05; letter-spacing:-0.03em; margin:12px 0 0;">{{ t.trainTitle }}</h2>
         <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; line-height:1.55; color:#71717a; margin:14px 0 0;">{{ t.trainSub }}<a href="https://globaltraining.nl/" target="_blank" style="color:#d97706; text-decoration:underline; font-weight:600;">Global Training</a>:</p>
       </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),210px)); justify-content:center; gap:22px; margin-top:44px;">
+      <div class="ms-trainlogos" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),210px)); justify-content:center; gap:22px; margin-top:44px;">
         <sc-for list="{{ trainLogos }}" as="lg" hint-placeholder-count="4">
           <div style="display:flex; flex-direction:column; align-items:center; gap:12px;">
-            <div onClick="{{ lg.onOpen }}" style="{{ lg.cardStyle }}" style-hover="{{ lg.cardHover }}">
+            <div class="ms-trainlogo" onClick="{{ lg.onOpen }}" style="{{ lg.cardStyle }}" style-hover="{{ lg.cardHover }}">
               <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; color:#c7c1b4;"><i class="ph-bold ph-buildings" style="font-size:22px;"></i><span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; font-weight:600;">{{ lg.label }}</span></div>
               {{ lg.el }}
             </div>
@@ -324,6 +340,10 @@
           </sc-for>
         </div>
       </div>
+    </div>
+    <div class="ms-mq-arrows" role="group" aria-label="{{ t.sliderTitle }}">
+      <span class="ms-mq-arrow" role="button" tabindex="0" aria-label="Previous" onClick="{{ mqPrev }}"><i class="ph-bold ph-caret-left" style="font-size:20px;"></i></span>
+      <span class="ms-mq-arrow" role="button" tabindex="0" aria-label="Next" onClick="{{ mqNext }}"><i class="ph-bold ph-caret-right" style="font-size:20px;"></i></span>
     </div>
 
     <div class="ms-pad" id="contact" style="max-width:1240px; margin:0 auto 60px; padding:0 40px; scroll-margin-top:90px;">
@@ -895,6 +915,17 @@ class Component extends DCLogic {
     } catch (e) {}
   }
 
+  mqPage(dir) {
+    // Pages the mobile portfolio grid left/right by one viewport; scroll-snap aligns the columns.
+    try {
+      const el = document.querySelector('.ms-mq');
+      if (!el) return;
+      const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+      const page = Math.max(el.clientWidth - 44, 120);
+      el.scrollBy({ left: dir * page, behavior: reduce ? 'auto' : 'smooth' });
+    } catch (e) {}
+  }
+
   renderVals() {
     const L = this.state.lang;
     const S = this.SERVICES;
@@ -1012,11 +1043,18 @@ class Component extends DCLogic {
       };
     }
 
+    // Display-only transform for the hero H1: turn "…s- oplossingen" into a soft hyphen
+    // so it renders as one word when it fits and breaks cleanly as "automatiserings-\noplossingen"
+    // when it doesn't. No-op for strings without "- " (e.g. the EN "automation solutions").
+    const h1bText = String(t.h1b || '').replace(/-\s+/g, '\u00AD');
+
     return {
-      t, isHome, detail: isNum, isAbout, isLegal,
+      t, h1bText, isHome, detail: isNum, isAbout, isLegal,
       revealCls: (this.state.flowIn ? 'ms-reveal in' : 'ms-reveal'),
       card0: cards[0], card1: cards[1], card2: cards[2], card3: cards[3], cards,
       workCards,
+      mqPrev: () => this.mqPage(-1),
+      mqNext: () => this.mqPage(1),
       footCols,
       goApproach: () => this.goAboutAnchor('werkwijze'),
       about: this.ABOUT[L], legal: this.LEGAL[L],
